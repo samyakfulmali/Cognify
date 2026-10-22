@@ -4,16 +4,29 @@
   /* Common Brand Tokens */
   --primary: #6366f1;
   --primary-hover: #4f46e5;
-  --primary-glow: rgba(99, 102, 241, 0.25);
+  --primary-glow: rgba(99, 102, 241, 0.35);
   
   --success: #10b981;
-  --success-glow: rgba(16, 185, 129, 0.2);
+  --success-glow: rgba(16, 185, 129, 0.25);
   --warning: #f59e0b;
-  --warning-glow: rgba(245, 158, 11, 0.2);
+  --warning-glow: rgba(245, 158, 11, 0.25);
   --danger: #ef4444;
-  --danger-glow: rgba(239, 68, 68, 0.25);
+  --danger-glow: rgba(239, 68, 68, 0.3);
+  
   --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.3);
   --accent-purple: #a855f7;
+  --accent-purple-glow: rgba(168, 85, 247, 0.3);
+  --accent-violet: #8b5cf6;
+  --accent-pink: #ec4899;
+  --accent-pink-glow: rgba(236, 72, 153, 0.3);
+  --accent-rose: #f43f5e;
+  --accent-orange: #f97316;
+  --accent-sky: #0ea5e9;
+
+  --youtube-red: #ff0000;
+  --youtube-red-dark: #dc2626;
+  --youtube-glow: rgba(255, 0, 0, 0.35);
 
   --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -25,50 +38,54 @@
 
 /* Dark Theme Variables */
 [data-theme='dark'] {
-  --bg-base: #0a0e1a;
-  --bg-secondary: #121829;
-  --bg-card: rgba(23, 31, 51, 0.75);
-  --bg-card-hover: rgba(30, 41, 69, 0.9);
-  --bg-input: rgba(10, 14, 26, 0.85);
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(99, 102, 241, 0.35);
+  --bg-base: #080c16;
+  --bg-secondary: #0f1629;
+  --bg-card: rgba(19, 27, 47, 0.78);
+  --bg-card-hover: rgba(28, 39, 68, 0.9);
+  --bg-input: rgba(12, 17, 32, 0.9);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(99, 102, 241, 0.4);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35);
-  --shadow-dropdown: 0 12px 36px rgba(0, 0, 0, 0.5);
-  --bg-gradient: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                  radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+  --shadow-card: 0 10px 32px -4px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  --shadow-dropdown: 0 16px 40px rgba(0, 0, 0, 0.65);
+  --bg-gradient: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.14) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 20% 85%, rgba(236, 72, 153, 0.09) 0%, transparent 45%);
   
-  --graph-node-bg: #1e293b;
-  --graph-edge: rgba(148, 163, 184, 0.25);
-  --graph-edge-highlight: #6366f1;
+  --graph-node-bg: #1a2238;
+  --graph-edge: rgba(148, 163, 184, 0.3);
+  --graph-edge-highlight: #8b5cf6;
 }
 
 /* White (Light) Theme Variables */
 [data-theme='light'] {
-  --bg-base: #f8fafc;
+  --bg-base: #f4f6fc;
   --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: #f8fafc;
   --bg-input: #ffffff;
   --border-color: #e2e8f0;
-  --border-accent: rgba(79, 70, 229, 0.35);
+  --border-accent: rgba(99, 102, 241, 0.4);
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #94a3b8;
 
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-  --shadow-dropdown: 0 12px 36px rgba(0, 0, 0, 0.12);
-  --bg-gradient: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-                  radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.04) 0%, transparent 40%);
+  --shadow-card: 0 8px 30px -4px rgba(99, 102, 241, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-dropdown: 0 16px 36px rgba(0, 0, 0, 0.12);
+  --bg-gradient: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 20%, rgba(168, 85, 247, 0.07) 0%, transparent 45%),
+                  radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.07) 0%, transparent 45%),
+                  radial-gradient(circle at 20% 85%, rgba(236, 72, 153, 0.05) 0%, transparent 45%);
   
   --graph-node-bg: #ffffff;
-  --graph-edge: rgba(100, 116, 139, 0.3);
-  --graph-edge-highlight: #4f46e5;
+  --graph-edge: rgba(100, 116, 139, 0.35);
+  --graph-edge-highlight: #6366f1;
 }
 
 * {
@@ -286,4 +303,185 @@ body {
 
 .pulse-danger {
   animation: pulseBorder 2s infinite;
+}
+
+/* Colourful Badges & Accents */
+.badge-purple {
+  background: rgba(168, 85, 247, 0.15);
+  color: var(--accent-purple);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.badge-pink {
+  background: rgba(236, 72, 153, 0.15);
+  color: var(--accent-pink);
+  border: 1px solid rgba(236, 72, 153, 0.35);
+}
+
+.badge-rose {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.badge-emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.badge-youtube {
+  background: rgba(255, 0, 0, 0.15);
+  color: #ff4d4d;
+  border: 1px solid rgba(255, 0, 0, 0.35);
+}
+
+/* Distinct Colourful Option Badges (A, B, C, D) */
+.option-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option-pill-0 {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+.option-pill-1 {
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+}
+
+.option-pill-2 {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+}
+
+.option-pill-3 {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+}
+
+/* Option Card Hover & Active States */
+.quiz-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  text-align: left;
+  font-family: var(--font-main);
+  font-size: 15px;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  border-color: rgba(99, 102, 241, 0.5);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -4px rgba(99, 102, 241, 0.2);
+}
+
+.quiz-option-btn.selected {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 0 1px var(--primary), 0 8px 24px -4px var(--primary-glow);
+}
+
+.quiz-option-btn.correct-choice {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 0 1px var(--success), 0 8px 24px -4px var(--success-glow);
+}
+
+.quiz-option-btn.wrong-choice {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.12);
+  box-shadow: 0 0 0 1px var(--danger), 0 8px 24px -4px var(--danger-glow);
+}
+
+/* YouTube Button Styles */
+.btn-youtube {
+  background: linear-gradient(135deg, #ff0000 0%, #dc2626 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 4px 16px var(--youtube-glow);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-youtube:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.55);
+}
+
+.btn-youtube:active {
+  transform: translateY(0);
+}
+
+.btn-youtube-verify {
+  background: rgba(255, 0, 0, 0.1);
+  color: #f87171;
+  border: 1.5px solid rgba(255, 0, 0, 0.35);
+  font-weight: 700;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-youtube-verify:hover {
+  background: rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.6);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+}
+
+/* Video Assistance Container */
+.video-help-card {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border: 1px solid rgba(255, 0, 0, 0.28);
+  box-shadow: 0 8px 30px -6px rgba(255, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-frame-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.video-frame-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }

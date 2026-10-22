@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { fetchNextQuestion, fetchStudentMastery, submitAnswer } from '../services/api';
 import type { AnswerResponse, NextQuestionResponse, StudentMasteryResponse } from '../types';
-import { AlertTriangleIcon, ArrowRightIcon, CheckIcon, CloseIcon, RefreshIcon, SparklesIcon } from './Icons';
+import {
+  AlertTriangleIcon,
+  ArrowRightIcon,
+  CheckIcon,
+  CloseIcon,
+  ExternalLinkIcon,
+  PlayIcon,
+  RefreshIcon,
+  SparklesIcon,
+  YouTubeIcon,
+} from './Icons';
 
 interface QuizScreenProps {
   studentId: string;
@@ -25,6 +35,8 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
   const [studentMastery, setStudentMastery] = useState<StudentMasteryResponse | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
   const [activeConceptOverride, setActiveConceptOverride] = useState<string | null>(targetConceptId || null);
+  const [showVideoPlayer, setShowVideoPlayer] = useState<boolean>(false);
+  const [showRootGapVideo, setShowRootGapVideo] = useState<boolean>(false);
 
   const loadQuestionAndMastery = async (
     subjectToUse: string = selectedSubject,
@@ -34,6 +46,8 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
     setError(null);
     setSelectedOption(null);
     setAnswerResult(null);
+    setShowVideoPlayer(false);
+    setShowRootGapVideo(false);
 
     try {
       const subjectParam = subjectToUse === 'all' ? null : subjectToUse;
@@ -301,67 +315,41 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
                 const isCorrectOption = isAnswered && answerResult.correct_option === opt.id;
                 const isUserWrongChoice = isAnswered && !answerResult.is_correct && answerResult.selected_option === opt.id;
 
-                let border = '1px solid var(--border-color)';
-                let bg = 'var(--bg-input)';
-                let textColor = 'var(--text-primary)';
-
+                let btnClass = 'quiz-option-btn';
                 if (isAnswered) {
-                  if (isCorrectOption) {
-                    border = '2px solid var(--success)';
-                    bg = 'rgba(16, 185, 129, 0.15)';
-                  } else if (isUserWrongChoice) {
-                    border = '2px solid var(--danger)';
-                    bg = 'rgba(239, 68, 68, 0.15)';
-                  }
+                  if (isCorrectOption) btnClass += ' correct-choice';
+                  else if (isUserWrongChoice) btnClass += ' wrong-choice';
                 } else if (isSelected) {
-                  border = '2px solid var(--primary)';
-                  bg = 'rgba(99, 102, 241, 0.12)';
+                  btnClass += ' selected';
                 }
 
                 return (
                   <button
                     key={opt.id}
+                    className={btnClass}
                     onClick={() => !isAnswered && setSelectedOption(opt.id)}
                     disabled={isAnswered}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '14px',
-                      padding: '14px 18px',
-                      borderRadius: 'var(--radius-md)',
-                      background: bg,
-                      border: border,
-                      color: textColor,
-                      textAlign: 'left',
-                      fontSize: '15px',
                       cursor: isAnswered ? 'default' : 'pointer',
-                      transition: 'all 0.2s ease',
-                      outline: 'none',
                     }}
                   >
-                    <div
-                      style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '8px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontWeight: 700,
-                        fontSize: '13px',
-                        background: isSelected ? 'var(--primary)' : 'var(--border-color)',
-                        color: isSelected ? '#ffffff' : 'var(--text-secondary)',
-                        flexShrink: 0,
-                      }}
-                    >
+                    <div className={`option-pill option-pill-${idx % 4}`}>
                       {getOptionLetter(idx)}
                     </div>
-                    <span style={{ flex: 1, fontWeight: isSelected ? 600 : 400 }}>{opt.text}</span>
+                    <span style={{ flex: 1, fontWeight: isSelected ? 700 : 500, fontSize: '15.5px' }}>
+                      {opt.text}
+                    </span>
                     {isAnswered && isCorrectOption && (
-                      <CheckIcon size={20} style={{ color: 'var(--success)' }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--success)', fontWeight: 700, fontSize: '13px' }}>
+                        <span>Correct</span>
+                        <CheckIcon size={20} />
+                      </div>
                     )}
                     {isAnswered && isUserWrongChoice && (
-                      <CloseIcon size={20} style={{ color: 'var(--danger)' }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--danger)', fontWeight: 700, fontSize: '13px' }}>
+                        <span>Your Choice</span>
+                        <CloseIcon size={20} />
+                      </div>
                     )}
                   </button>
                 );
@@ -629,6 +617,192 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
                     );
                   })}
                 </div>
+              </div>
+            )}
+
+            {/* YouTube Video Assistance & Solution Verification (when answer is incorrect) */}
+            {!answerResult.is_correct && (answerResult.video_url || answerResult.video_search_url) && (
+              <div className="video-help-card animate-fade-in">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div
+                      style={{
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '10px',
+                        background: 'linear-gradient(135deg, #ff0000 0%, #dc2626 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#ffffff',
+                        boxShadow: '0 4px 14px rgba(255, 0, 0, 0.4)',
+                      }}
+                    >
+                      <YouTubeIcon size={18} />
+                    </div>
+                    <div>
+                      <span style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text-primary)', display: 'block', lineHeight: 1.2 }}>
+                        Video Solution & Concept Explanation
+                      </span>
+                      <span style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
+                        Watch this curated video to learn how to solve this step-by-step and verify your answer
+                      </span>
+                    </div>
+                  </div>
+                  <span className="badge badge-youtube" style={{ fontSize: '11px', fontWeight: 700 }}>
+                    ▶ YouTube Tutorial
+                  </span>
+                </div>
+
+                {/* Video Info Card */}
+                {answerResult.video_title && (
+                  <div
+                    style={{
+                      padding: '12px 16px',
+                      background: 'var(--bg-input)',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid rgba(255, 0, 0, 0.25)',
+                      marginBottom: '12px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: '8px',
+                    }}
+                  >
+                    <div>
+                      <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-primary)' }}>
+                        📺 {answerResult.video_title}
+                      </div>
+                      {answerResult.video_channel && (
+                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '3px' }}>
+                          Instructor / Channel: <strong style={{ color: '#f87171' }}>{answerResult.video_channel}</strong>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                  {answerResult.video_embed_url && (
+                    <button
+                      type="button"
+                      className="btn btn-youtube"
+                      onClick={() => setShowVideoPlayer(!showVideoPlayer)}
+                      style={{ padding: '9px 18px', fontSize: '13px' }}
+                    >
+                      <PlayIcon size={14} />
+                      <span>{showVideoPlayer ? 'Hide Video Player' : 'Watch Video Tutorial'}</span>
+                    </button>
+                  )}
+
+                  {answerResult.video_url && (
+                    <a
+                      href={answerResult.video_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                      style={{
+                        padding: '9px 16px',
+                        fontSize: '13px',
+                        textDecoration: 'none',
+                        color: 'var(--text-primary)',
+                      }}
+                    >
+                      <span>Open on YouTube</span>
+                      <ExternalLinkIcon size={14} />
+                    </a>
+                  )}
+
+                  {answerResult.video_search_url && (
+                    <a
+                      href={answerResult.video_search_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-youtube-verify"
+                      style={{
+                        padding: '9px 16px',
+                        fontSize: '13px',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      <span>🔍 Verify Solution on YouTube</span>
+                      <ExternalLinkIcon size={14} />
+                    </a>
+                  )}
+                </div>
+
+                {/* Inline Embedded Player */}
+                {showVideoPlayer && answerResult.video_embed_url && (
+                  <div className="video-frame-wrapper animate-fade-in">
+                    <iframe
+                      src={`${answerResult.video_embed_url}?autoplay=1&rel=0`}
+                      title={answerResult.video_title || 'Math Video Tutorial'}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )}
+
+                {/* Foundational Prerequisite Video Assistance (if root gap) */}
+                {answerResult.root_gap && answerResult.root_gap.video_url && (
+                  <div
+                    style={{
+                      marginTop: '14px',
+                      padding: '12px 14px',
+                      borderRadius: 'var(--radius-md)',
+                      background: 'rgba(245, 158, 11, 0.12)',
+                      border: '1px solid rgba(245, 158, 11, 0.4)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: '8px',
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--warning)', textTransform: 'uppercase', display: 'block', letterSpacing: '0.04em' }}>
+                        🚨 Foundational Prerequisite Video Helper
+                      </span>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>
+                        {answerResult.root_gap.video_title || `Prerequisite Tutorial: ${answerResult.root_gap.root_concept_name}`}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      {answerResult.root_gap.video_embed_url && (
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          onClick={() => setShowRootGapVideo(!showRootGapVideo)}
+                          style={{ padding: '6px 14px', fontSize: '12px' }}
+                        >
+                          <PlayIcon size={13} />
+                          <span>{showRootGapVideo ? 'Hide' : 'Watch Prerequisite'}</span>
+                        </button>
+                      )}
+                      <a
+                        href={answerResult.root_gap.video_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary"
+                        style={{ padding: '6px 14px', fontSize: '12px', textDecoration: 'none', color: 'var(--text-primary)' }}
+                      >
+                        <span>Open ↗</span>
+                      </a>
+                    </div>
+                    {showRootGapVideo && answerResult.root_gap.video_embed_url && (
+                      <div className="video-frame-wrapper animate-fade-in" style={{ marginTop: '10px' }}>
+                        <iframe
+                          src={`${answerResult.root_gap.video_embed_url}?autoplay=1&rel=0`}
+                          title={answerResult.root_gap.video_title || 'Prerequisite Tutorial'}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>

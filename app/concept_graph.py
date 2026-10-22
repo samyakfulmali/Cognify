@@ -40,6 +40,7 @@ class ConceptGraph:
                 category=item.get("category", "General"),
                 difficulty=item.get("difficulty", 1),
                 prerequisites=item.get("prerequisites", []),
+                youtube_video=item.get("youtube_video"),
             )
 
         # Add prerequisite edges: prereq -> concept

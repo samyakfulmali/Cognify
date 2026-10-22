@@ -28,6 +28,9 @@ export interface RootGapInfo {
     is_weak: boolean;
   }>;
   message: string;
+  video_url?: string | null;
+  video_title?: string | null;
+  video_embed_url?: string | null;
 }
 
 export interface NextQuestionResponse {
@@ -49,6 +52,15 @@ export interface AnswerPayload {
   selected_option: number;
 }
 
+export interface YouTubeVideoInfo {
+  title: string;
+  channel: string;
+  video_id: string;
+  url: string;
+  embed_url: string;
+  search_query?: string;
+}
+
 export interface AnswerResponse {
   student_id: string;
   question_id: string;
@@ -66,6 +78,11 @@ export interface AnswerResponse {
   p_known_before: number;
   p_known_after: number;
   root_gap: RootGapInfo | null;
+  video_url?: string | null;
+  video_title?: string | null;
+  video_embed_url?: string | null;
+  video_channel?: string | null;
+  video_search_url?: string | null;
 }
 
 export interface ConceptNode {
@@ -74,6 +91,7 @@ export interface ConceptNode {
   category: string;
   difficulty: number;
   prerequisites: string[];
+  youtube_video?: YouTubeVideoInfo | null;
 }
 
 export interface ConceptEdge {

@@ -5,7 +5,15 @@
     "description": "Understanding numerators, denominators, and visual representations of fractions as parts of a whole.",
     "category": "Fractions",
     "difficulty": 1,
-    "prerequisites": []
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "Fractions Are Parts (Fractions Basics)",
+      "channel": "Math Antics",
+      "video_id": "CA9XLJpQp3c",
+      "url": "https://www.youtube.com/watch?v=CA9XLJpQp3c",
+      "embed_url": "https://www.youtube.com/embed/CA9XLJpQp3c",
+      "search_query": "fractions basics math antics parts of a whole numerator denominator"
+    }
   },
   {
     "id": "equivalent_fractions",
@@ -13,7 +21,17 @@
     "description": "Generating equivalent fractions by multiplying or dividing numerator and denominator by the same non-zero factor.",
     "category": "Fractions",
     "difficulty": 2,
-    "prerequisites": ["fractions_basics"]
+    "prerequisites": [
+      "fractions_basics"
+    ],
+    "youtube_video": {
+      "title": "Equivalent Fractions & Simplifying",
+      "channel": "Math Antics",
+      "video_id": "qcHHhd6H67s",
+      "url": "https://www.youtube.com/watch?v=qcHHhd6H67s",
+      "embed_url": "https://www.youtube.com/embed/qcHHhd6H67s",
+      "search_query": "equivalent fractions simplifying math antics"
+    }
   },
   {
     "id": "common_denominators",
@@ -21,7 +39,17 @@
     "description": "Finding least common multiples to convert fractions to have identical denominators.",
     "category": "Fractions",
     "difficulty": 2,
-    "prerequisites": ["equivalent_fractions"]
+    "prerequisites": [
+      "equivalent_fractions"
+    ],
+    "youtube_video": {
+      "title": "Finding Common Denominators (LCM)",
+      "channel": "Math Antics",
+      "video_id": "pZEmFSP3Z0I",
+      "url": "https://www.youtube.com/watch?v=pZEmFSP3Z0I",
+      "embed_url": "https://www.youtube.com/embed/pZEmFSP3Z0I",
+      "search_query": "finding common denominators LCM math antics"
+    }
   },
   {
     "id": "fraction_addition",
@@ -29,7 +57,17 @@
     "description": "Adding and subtracting fractions with like and unlike denominators using common denominators.",
     "category": "Fractions",
     "difficulty": 3,
-    "prerequisites": ["common_denominators"]
+    "prerequisites": [
+      "common_denominators"
+    ],
+    "youtube_video": {
+      "title": "Adding & Subtracting Fractions with Unlike Denominators",
+      "channel": "Math Antics",
+      "video_id": "52ZlXsFJULI",
+      "url": "https://www.youtube.com/watch?v=52ZlXsFJULI",
+      "embed_url": "https://www.youtube.com/embed/52ZlXsFJULI",
+      "search_query": "adding subtracting fractions unlike denominators math antics"
+    }
   },
   {
     "id": "fraction_multiplication",
@@ -37,7 +75,17 @@
     "description": "Multiplying numerators and denominators, canceling common factors, and scaling fractional quantities.",
     "category": "Fractions",
     "difficulty": 2,
-    "prerequisites": ["fractions_basics"]
+    "prerequisites": [
+      "fractions_basics"
+    ],
+    "youtube_video": {
+      "title": "Multiplying Fractions - Step by Step",
+      "channel": "Math Antics",
+      "video_id": "qmfXyR7Z6Lk",
+      "url": "https://www.youtube.com/watch?v=qmfXyR7Z6Lk",
+      "embed_url": "https://www.youtube.com/embed/qmfXyR7Z6Lk",
+      "search_query": "multiplying fractions step by step math antics"
+    }
   },
   {
     "id": "fraction_division",
@@ -45,7 +93,17 @@
     "description": "Dividing fractions by multiplying by the reciprocal (keep-change-flip).",
     "category": "Fractions",
     "difficulty": 3,
-    "prerequisites": ["fraction_multiplication"]
+    "prerequisites": [
+      "fraction_multiplication"
+    ],
+    "youtube_video": {
+      "title": "Dividing Fractions (Keep, Change, Flip)",
+      "channel": "Math Antics",
+      "video_id": "4lkq3DgvmJo",
+      "url": "https://www.youtube.com/watch?v=4lkq3DgvmJo",
+      "embed_url": "https://www.youtube.com/embed/4lkq3DgvmJo",
+      "search_query": "dividing fractions keep change flip reciprocals math antics"
+    }
   },
   {
     "id": "negative_numbers",
@@ -53,7 +111,15 @@
     "description": "Understanding positive and negative signed integers, number lines, and integer arithmetic rules.",
     "category": "Pre-Algebra",
     "difficulty": 1,
-    "prerequisites": []
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "Negative Numbers & Integers Rules",
+      "channel": "Math Antics",
+      "video_id": "OAoLCXpao6s",
+      "url": "https://www.youtube.com/watch?v=OAoLCXpao6s",
+      "embed_url": "https://www.youtube.com/embed/OAoLCXpao6s",
+      "search_query": "negative numbers and integers arithmetic rules math antics"
+    }
   },
   {
     "id": "order_of_operations",
@@ -61,7 +127,17 @@
     "description": "Applying standard operator precedence: Parentheses, Exponents, Multiplication & Division, Addition & Subtraction.",
     "category": "Pre-Algebra",
     "difficulty": 2,
-    "prerequisites": ["negative_numbers"]
+    "prerequisites": [
+      "negative_numbers"
+    ],
+    "youtube_video": {
+      "title": "Order of Operations (PEMDAS)",
+      "channel": "Math Antics",
+      "video_id": "dAgfnK528RA",
+      "url": "https://www.youtube.com/watch?v=dAgfnK528RA",
+      "embed_url": "https://www.youtube.com/embed/dAgfnK528RA",
+      "search_query": "order of operations PEMDAS math antics"
+    }
   },
   {
     "id": "variables_expressions",
@@ -69,7 +145,17 @@
     "description": "Evaluating algebraic expressions with variable substitution and understanding algebraic terms.",
     "category": "Algebra Basics",
     "difficulty": 2,
-    "prerequisites": ["order_of_operations"]
+    "prerequisites": [
+      "order_of_operations"
+    ],
+    "youtube_video": {
+      "title": "Variables & Algebraic Expressions (What is Algebra?)",
+      "channel": "Math Antics",
+      "video_id": "tHYis-DP0oU",
+      "url": "https://www.youtube.com/watch?v=tHYis-DP0oU",
+      "embed_url": "https://www.youtube.com/embed/tHYis-DP0oU",
+      "search_query": "what is algebra evaluating expressions variables math antics"
+    }
   },
   {
     "id": "combining_like_terms",
@@ -77,7 +163,18 @@
     "description": "Simplifying algebraic expressions by grouping terms with identical variable components and adding coefficients.",
     "category": "Algebra Basics",
     "difficulty": 3,
-    "prerequisites": ["variables_expressions", "negative_numbers"]
+    "prerequisites": [
+      "variables_expressions",
+      "negative_numbers"
+    ],
+    "youtube_video": {
+      "title": "Combining Like Terms in Algebra",
+      "channel": "Brian McLogan / Khan Academy",
+      "video_id": "CLWpkv6ccpA",
+      "url": "https://www.youtube.com/watch?v=CLWpkv6ccpA",
+      "embed_url": "https://www.youtube.com/embed/CLWpkv6ccpA",
+      "search_query": "how to combine like terms algebra tutorial"
+    }
   },
   {
     "id": "one_step_equations_add",
@@ -85,7 +182,18 @@
     "description": "Solving one-step linear equations of the form x + a = b using additive inverse operations.",
     "category": "Equations",
     "difficulty": 2,
-    "prerequisites": ["variables_expressions", "negative_numbers"]
+    "prerequisites": [
+      "variables_expressions",
+      "negative_numbers"
+    ],
+    "youtube_video": {
+      "title": "Solving One-Step Equations (Addition & Subtraction)",
+      "channel": "Math Antics",
+      "video_id": "l3XzepN03KQ",
+      "url": "https://www.youtube.com/watch?v=l3XzepN03KQ",
+      "embed_url": "https://www.youtube.com/embed/l3XzepN03KQ",
+      "search_query": "solving one step equations addition subtraction math antics"
+    }
   },
   {
     "id": "one_step_equations_mult",
@@ -93,7 +201,18 @@
     "description": "Solving one-step linear equations of the form ax = b or x/a = b using multiplicative inverse operations.",
     "category": "Equations",
     "difficulty": 3,
-    "prerequisites": ["fraction_division", "one_step_equations_add"]
+    "prerequisites": [
+      "fraction_division",
+      "one_step_equations_add"
+    ],
+    "youtube_video": {
+      "title": "Solving One-Step Equations (Multiplication & Division)",
+      "channel": "Math Antics",
+      "video_id": "Qyd_v3DGzTM",
+      "url": "https://www.youtube.com/watch?v=Qyd_v3DGzTM",
+      "embed_url": "https://www.youtube.com/embed/Qyd_v3DGzTM",
+      "search_query": "solving one step equations multiplication division math antics"
+    }
   },
   {
     "id": "distributive_property",
@@ -101,7 +220,17 @@
     "description": "Multiplying a single term over terms inside parentheses: a(b + c) = ab + ac.",
     "category": "Algebra Basics",
     "difficulty": 3,
-    "prerequisites": ["combining_like_terms"]
+    "prerequisites": [
+      "combining_like_terms"
+    ],
+    "youtube_video": {
+      "title": "The Distributive Property in Algebra",
+      "channel": "Math Antics",
+      "video_id": "v-6MShC82ow",
+      "url": "https://www.youtube.com/watch?v=v-6MShC82ow",
+      "embed_url": "https://www.youtube.com/embed/v-6MShC82ow",
+      "search_query": "the distributive property in algebra math antics"
+    }
   },
   {
     "id": "two_step_equations",
@@ -109,7 +238,18 @@
     "description": "Solving linear equations in the form ax + b = c by undoing addition/subtraction then multiplication/division.",
     "category": "Equations",
     "difficulty": 4,
-    "prerequisites": ["one_step_equations_mult", "combining_like_terms"]
+    "prerequisites": [
+      "one_step_equations_mult",
+      "combining_like_terms"
+    ],
+    "youtube_video": {
+      "title": "Solving Two-Step Linear Equations Step by Step",
+      "channel": "Math Antics",
+      "video_id": "LDIiYKYvvdA",
+      "url": "https://www.youtube.com/watch?v=LDIiYKYvvdA",
+      "embed_url": "https://www.youtube.com/embed/LDIiYKYvvdA",
+      "search_query": "solving two step equations algebra math antics"
+    }
   },
   {
     "id": "multi_step_equations",
@@ -117,7 +257,18 @@
     "description": "Solving complex linear equations involving the distributive property, combining like terms, and variables on both sides.",
     "category": "Equations",
     "difficulty": 5,
-    "prerequisites": ["two_step_equations", "distributive_property"]
+    "prerequisites": [
+      "two_step_equations",
+      "distributive_property"
+    ],
+    "youtube_video": {
+      "title": "Solving Multi-Step Equations with Variables on Both Sides",
+      "channel": "Brian McLogan",
+      "video_id": "1c5HY3z4k8M",
+      "url": "https://www.youtube.com/watch?v=1c5HY3z4k8M",
+      "embed_url": "https://www.youtube.com/embed/1c5HY3z4k8M",
+      "search_query": "how to solve multi step equations variables on both sides"
+    }
   },
   {
     "id": "linear_inequalities",
@@ -125,6 +276,17 @@
     "description": "Solving linear inequalities and remembering to flip the inequality sign when multiplying or dividing by a negative number.",
     "category": "Inequalities",
     "difficulty": 5,
-    "prerequisites": ["multi_step_equations", "negative_numbers"]
+    "prerequisites": [
+      "multi_step_equations",
+      "negative_numbers"
+    ],
+    "youtube_video": {
+      "title": "Solving Linear Inequalities (When to Flip the Sign)",
+      "channel": "Khan Academy",
+      "video_id": "0X-bMehNhmY",
+      "url": "https://www.youtube.com/watch?v=0X-bMehNhmY",
+      "embed_url": "https://www.youtube.com/embed/0X-bMehNhmY",
+      "search_query": "solving linear inequalities flip inequality sign negative numbers"
+    }
   }
 ]

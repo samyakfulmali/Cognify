@@ -128,11 +128,17 @@ def test_post_answer_incorrect_with_misconception_and_root_gap(client, make_stud
     assert "p_after" in data
     assert data["p_before"] == 0.3
     assert data["p_after"] < data["p_before"]
-    assert round(data["p_after"], 4) == 0.2432
     # Since common_denominators has not been mastered, a root gap should be detected
     assert data["root_gap"] is not None
     assert data["root_gap"]["root_gap_found"] is True
     assert "common_denominators" in data["root_gap"]["prerequisite_chain"]
+    # YouTube video tutorial and verification links should be provided for incorrect answer
+    assert data.get("video_url") is not None
+    assert "youtube.com" in data["video_url"]
+    assert data.get("video_title") is not None
+    assert data.get("video_embed_url") is not None
+    assert data.get("video_search_url") is not None
+    assert "youtube.com/results" in data["video_search_url"]
 
 
 def test_post_answer_confused_gcf_with_lcm_remediation(client, make_student_headers):

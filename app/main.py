@@ -11,6 +11,7 @@ from app.auth import (
 )
 from app.bkt import bkt_engine
 from app.concept_graph import concept_graph
+from app.concept_videos import get_concept_video, build_youtube_search_url
 from app.config import BKT_P_INIT, MASTERY_THRESHOLD, TEACHER_PIN
 from app.database import (
     create_or_get_student,
@@ -302,6 +303,30 @@ def submit_answer(payload: AnswerRequest, current_user: dict = Depends(get_curre
         if detected:
             root_gap_data = RootGapInfo(**detected)
 
+    # 8. YouTube Video Assistance for Incorrect Answers
+    video_url = None
+    video_title = None
+    video_embed_url = None
+    video_channel = None
+    video_search_url = None
+
+    if not is_correct:
+        video_info = get_concept_video(concept_id)
+        if video_info:
+            video_url = video_info.get("url")
+            video_title = video_info.get("title")
+            video_embed_url = video_info.get("embed_url")
+            video_channel = video_info.get("channel")
+        video_search_url = build_youtube_search_url(concept_name, q.get("prompt", ""))
+
+        # If a prerequisite root gap exists, also link the foundational concept video
+        if root_gap_data and root_gap_data.root_gap_found:
+            rg_video = get_concept_video(root_gap_data.root_concept_id)
+            if rg_video:
+                root_gap_data.video_url = rg_video.get("url")
+                root_gap_data.video_title = rg_video.get("title")
+                root_gap_data.video_embed_url = rg_video.get("embed_url")
+
     return AnswerResponse(
         student_id=payload.student_id,
         question_id=payload.question_id,
@@ -319,6 +344,11 @@ def submit_answer(payload: AnswerRequest, current_user: dict = Depends(get_curre
         p_known_before=round(p_before, 4),
         p_known_after=round(p_after, 4),
         root_gap=root_gap_data,
+        video_url=video_url,
+        video_title=video_title,
+        video_embed_url=video_embed_url,
+        video_channel=video_channel,
+        video_search_url=video_search_url,
     )
 
 

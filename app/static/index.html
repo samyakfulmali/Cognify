@@ -354,31 +354,32 @@
       background: var(--bg-card-hover);
       border-color: var(--primary);
       transform: translateX(4px);
+      box-shadow: 0 4px 16px -2px rgba(99, 102, 241, 0.2);
     }
 
     .opt-indicator {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 12px;
-      color: var(--text-secondary);
+      font-weight: 800;
+      font-size: 13px;
+      color: #ffffff;
       flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
+
+    .opt-indicator.opt-0 { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+    .opt-indicator.opt-1 { background: linear-gradient(135deg, #06b6d4, #0284c7); }
+    .opt-indicator.opt-2 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+    .opt-indicator.opt-3 { background: linear-gradient(135deg, #f59e0b, #ea580c); }
 
     .opt-btn.selected {
       border-color: var(--primary);
       background: rgba(99, 102, 241, 0.15);
-    }
-
-    .opt-btn.selected .opt-indicator {
-      background: var(--primary);
-      color: white;
+      box-shadow: 0 0 0 1px var(--primary);
     }
 
     /* Feedback & Root Gap Box */
@@ -391,12 +392,26 @@
 
     .feedback-correct {
       background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.35);
     }
 
     .feedback-incorrect {
       background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .btn-youtube {
+      background: linear-gradient(135deg, #ff0000 0%, #dc2626 100%);
+      color: #ffffff;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-youtube:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
     }
 
     .gap-alert-box {
@@ -1393,7 +1408,7 @@
         currentQuestion.options.forEach((opt, idx) => {
           const btn = document.createElement('button');
           btn.className = 'opt-btn';
-          btn.innerHTML = `<span class="opt-indicator">${String.fromCharCode(65 + idx)}</span> <span>${opt.text}</span>`;
+          btn.innerHTML = `<span class="opt-indicator opt-${idx % 4}">${String.fromCharCode(65 + idx)}</span> <span style="font-size: 15px; font-weight: 500;">${opt.text}</span>`;
           btn.onclick = () => selectOption(idx);
           optGrid.appendChild(btn);
         });
@@ -1510,6 +1525,85 @@
 
         const formattedLabel = formatMisconceptionLabel(data.misconception);
 
+        let videoHtml = '';
+        if (data.video_url || data.video_search_url) {
+          const videoTitle = data.video_title || 'Math Concept Tutorial';
+          const videoChannel = data.video_channel ? `<span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px;">Channel: <strong style="color: #f87171;">${data.video_channel}</strong></span>` : '';
+          
+          let embedSection = '';
+          if (data.video_embed_url) {
+            embedSection = `
+              <div id="yt-player-box" style="display: none; position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; margin-top: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);">
+                <iframe id="yt-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            `;
+          }
+
+          let rootGapVideoHtml = '';
+          if (data.root_gap && data.root_gap.video_url) {
+            rootGapVideoHtml = `
+              <div style="margin-top: 12px; padding: 10px 14px; border-radius: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <span style="font-size: 10.5px; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.04em; display: block;">🚨 Foundational Prerequisite Video</span>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">${data.root_gap.video_title || 'Prerequisite Tutorial'}</span>
+                </div>
+                <a href="${data.root_gap.video_url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px; text-decoration: none; color: var(--text-primary);">
+                  Watch Prerequisite ↗
+                </a>
+              </div>
+            `;
+          }
+
+          videoHtml = `
+            <div style="margin-top: 16px; padding: 18px 20px; border-radius: 14px; background: linear-gradient(135deg, rgba(255, 0, 0, 0.09) 0%, rgba(168, 85, 247, 0.08) 100%); border: 1px solid rgba(255, 0, 0, 0.3); box-shadow: 0 8px 24px -4px rgba(255, 0, 0, 0.15); text-align: left;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <div style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, #ff0000, #dc2626); display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);">
+                    ▶
+                  </div>
+                  <div>
+                    <span style="font-size: 14.5px; font-weight: 800; color: var(--text-primary); display: block; line-height: 1.2;">
+                      Video Solution & Concept Explanation
+                    </span>
+                    <span style="font-size: 12px; color: var(--text-secondary);">
+                      Watch this curated video to learn how to solve this step-by-step and verify your answer
+                    </span>
+                  </div>
+                </div>
+                <span style="background: rgba(255, 0, 0, 0.15); color: #f87171; border: 1px solid rgba(255, 0, 0, 0.35); padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 700; text-transform: uppercase;">
+                  ▶ YouTube Tutorial
+                </span>
+              </div>
+
+              <div style="padding: 10px 14px; background: var(--bg-card); border-radius: 10px; border: 1px solid rgba(255, 0, 0, 0.2); margin-bottom: 12px;">
+                <div style="font-size: 13.5px; font-weight: 700; color: var(--text-primary);">📺 ${videoTitle}</div>
+                ${videoChannel}
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                ${data.video_embed_url ? `
+                  <button type="button" class="btn btn-primary" onclick="toggleYtPlayer('${data.video_embed_url}')" style="background: linear-gradient(135deg, #ff0000, #dc2626); border: none; font-weight: 700; padding: 8px 16px; font-size: 13px; box-shadow: 0 4px 14px rgba(255, 0, 0, 0.35);">
+                    ▶ Watch Video Tutorial
+                  </button>
+                ` : ''}
+                ${data.video_url ? `
+                  <a href="${data.video_url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 14px; font-size: 13px; text-decoration: none; color: var(--text-primary);">
+                    Open on YouTube ↗
+                  </a>
+                ` : ''}
+                ${data.video_search_url ? `
+                  <a href="${data.video_search_url}" target="_blank" rel="noopener noreferrer" class="btn" style="background: rgba(255, 0, 0, 0.12); color: #f87171; border: 1px solid rgba(255, 0, 0, 0.4); font-weight: 700; padding: 8px 14px; font-size: 13px; text-decoration: none;">
+                    🔍 Verify Solution on YouTube ↗
+                  </a>
+                ` : ''}
+              </div>
+
+              ${embedSection}
+              ${rootGapVideoHtml}
+            </div>
+          `;
+        }
+
         fb.innerHTML = `
           <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #f87171; font-size: 16px; margin-bottom: 6px;">
             ✗ Incorrect
@@ -1523,7 +1617,21 @@
             BKT P(known): <strong>${(pBefore * 100).toFixed(1)}%</strong> ➔ <strong style="color: #f87171;">${(pAfter * 100).toFixed(1)}%</strong> (${deltaFormatted})
           </div>
           ${rootGapHtml}
+          ${videoHtml}
         `;
+      }
+    }
+
+    function toggleYtPlayer(embedUrl) {
+      const box = document.getElementById('yt-player-box');
+      const iframe = document.getElementById('yt-iframe');
+      if (!box || !iframe) return;
+      if (box.style.display === 'none' || box.style.display === '') {
+        iframe.src = embedUrl + '?autoplay=1&rel=0';
+        box.style.display = 'block';
+      } else {
+        iframe.src = '';
+        box.style.display = 'none';
       }
     }
 

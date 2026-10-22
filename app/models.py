@@ -19,6 +19,9 @@ class RootGapInfo(BaseModel):
     prerequisite_chain: List[str]
     unmastered_ancestors: List[dict]
     message: str
+    video_url: Optional[str] = None
+    video_title: Optional[str] = None
+    video_embed_url: Optional[str] = None
 
 
 class AnswerResponse(BaseModel):
@@ -44,6 +47,11 @@ class AnswerResponse(BaseModel):
     p_known_before: float
     p_known_after: float
     root_gap: Optional[RootGapInfo] = None
+    video_url: Optional[str] = Field(None, description="YouTube tutorial video URL for the concept to help solve it")
+    video_title: Optional[str] = Field(None, description="Title of the recommended YouTube tutorial video")
+    video_embed_url: Optional[str] = Field(None, description="Embedded YouTube player URL")
+    video_channel: Optional[str] = Field(None, description="YouTube channel name (e.g. Math Antics)")
+    video_search_url: Optional[str] = Field(None, description="YouTube search URL to verify the specific problem solution")
 
 
 class QuestionOptionOut(BaseModel):
