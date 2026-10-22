@@ -1,10 +1,7 @@
 {
   "functions": {
     "index.py": {
-      "includeFiles": [
-        "app/**",
-        "data/**"
-      ]
+      "includeFiles": "{app/**,data/**}"
     }
   },
   "rewrites": [
