@@ -109,60 +109,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* BKT Parameter Chips and Controls */}
+        {/* Header Controls */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <div
-            style={{
-              padding: '6px 12px',
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: '11px',
-              fontFamily: 'var(--font-mono)',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            P(init): <strong style={{ color: 'var(--accent-cyan)' }}>0.30</strong>
-          </div>
-          <div
-            style={{
-              padding: '6px 12px',
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: '11px',
-              fontFamily: 'var(--font-mono)',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            P(learn): <strong style={{ color: 'var(--success)' }}>0.20</strong>
-          </div>
-          <div
-            style={{
-              padding: '6px 12px',
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: '11px',
-              fontFamily: 'var(--font-mono)',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            P(slip): <strong style={{ color: 'var(--warning)' }}>0.10</strong>
-          </div>
-          <div
-            style={{
-              padding: '6px 12px',
-              background: 'var(--bg-input)',
-              border: '1px solid var(--border-color)',
-              borderRadius: 'var(--radius-md)',
-              fontSize: '11px',
-              fontFamily: 'var(--font-mono)',
-              color: 'var(--text-secondary)',
-            }}
-          >
-            P(guess): <strong style={{ color: 'var(--primary)' }}>0.25</strong>
-          </div>
 
           {/* Teacher-Only Student Dropdown: Strictly hidden for students */}
           {userRole === 'teacher' && students.length > 0 && (
