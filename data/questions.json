@@ -726,7 +726,7 @@
         "text": "Yes, common denominators are mandatory for all fraction operations",
         "is_correct": false,
         "misconception": "applied_addition_rules_to_multiplication",
-        "remediation": "You looked for common denominators. Multiplication does not require common denominators; multiply straight across (top × top, bottom × bottom)."
+        "remediation": "You looked for common denominators. Multiplication does not require common denominators; multiply straight across (top \u00d7 top, bottom \u00d7 bottom)."
       },
       {
         "id": 3,
@@ -742,7 +742,7 @@
   {
     "id": "q_frac_div_01",
     "concept_id": "fraction_division",
-    "prompt": "Calculate: 3/4 ÷ 2/5",
+    "prompt": "Calculate: 3/4 \u00f7 2/5",
     "options": [
       {
         "id": 0,
@@ -816,7 +816,7 @@
   {
     "id": "q_frac_div_03",
     "concept_id": "fraction_division",
-    "prompt": "Calculate: 2/3 ÷ 4",
+    "prompt": "Calculate: 2/3 \u00f7 4",
     "options": [
       {
         "id": 0,
@@ -848,12 +848,12 @@
       }
     ],
     "correct_option": 2,
-    "explanation": "Write 4 as 4/1. 2/3 ÷ 4/1 = 2/3 * 1/4 = 2/12 = 1/6."
+    "explanation": "Write 4 as 4/1. 2/3 \u00f7 4/1 = 2/3 * 1/4 = 2/12 = 1/6."
   },
   {
     "id": "q_frac_div_04",
     "concept_id": "fraction_division",
-    "prompt": "Calculate: 1/2 ÷ 1/8",
+    "prompt": "Calculate: 1/2 \u00f7 1/8",
     "options": [
       {
         "id": 0,
@@ -885,7 +885,7 @@
       }
     ],
     "correct_option": 0,
-    "explanation": "1/2 ÷ 1/8 = 1/2 * 8/1 = 8/2 = 4."
+    "explanation": "1/2 \u00f7 1/8 = 1/2 * 8/1 = 8/2 = 4."
   },
   {
     "id": "q_neg_01",
@@ -971,7 +971,7 @@
         "text": "10",
         "is_correct": false,
         "misconception": "added_absolute_values",
-        "remediation": "You added the absolute values without multiplying. Evaluate the product first, then apply the sign rule (negative × negative = positive)."
+        "remediation": "You added the absolute values without multiplying. Evaluate the product first, then apply the sign rule (negative \u00d7 negative = positive)."
       },
       {
         "id": 1,
@@ -1001,14 +1001,14 @@
   {
     "id": "q_neg_04",
     "concept_id": "negative_numbers",
-    "prompt": "Calculate: -18 ÷ 3",
+    "prompt": "Calculate: -18 \u00f7 3",
     "options": [
       {
         "id": 0,
         "text": "6",
         "is_correct": false,
         "misconception": "dropped_negative_sign_in_division",
-        "remediation": "You dropped the negative sign during division. Dividing numbers with different signs (positive ÷ negative) always produces a negative quotient."
+        "remediation": "You dropped the negative sign during division. Dividing numbers with different signs (positive \u00f7 negative) always produces a negative quotient."
       },
       {
         "id": 1,
@@ -1103,7 +1103,7 @@
         "text": "13",
         "is_correct": false,
         "misconception": "multiplied_base_by_exponent",
-        "remediation": "You multiplied the base by the exponent (e.g., 2 × 2). An exponent means multiplying the base by itself that many times (e.g., 2² = 2 × 2, 3² = 3 × 3 = 9)."
+        "remediation": "You multiplied the base by the exponent (e.g., 2 \u00d7 2). An exponent means multiplying the base by itself that many times (e.g., 2\u00b2 = 2 \u00d7 2, 3\u00b2 = 3 \u00d7 3 = 9)."
       }
     ],
     "correct_option": 1,
@@ -1112,7 +1112,7 @@
   {
     "id": "q_pemdas_03",
     "concept_id": "order_of_operations",
-    "prompt": "Calculate: 20 - 4 ÷ 2 + 3",
+    "prompt": "Calculate: 20 - 4 \u00f7 2 + 3",
     "options": [
       {
         "id": 0,
@@ -1144,12 +1144,12 @@
       }
     ],
     "correct_option": 1,
-    "explanation": "Division first: 4 ÷ 2 = 2. Then from left to right: 20 - 2 = 18, and 18 + 3 = 21."
+    "explanation": "Division first: 4 \u00f7 2 = 2. Then from left to right: 20 - 2 = 18, and 18 + 3 = 21."
   },
   {
     "id": "q_pemdas_04",
     "concept_id": "order_of_operations",
-    "prompt": "Calculate: 8 ÷ 2 * 4",
+    "prompt": "Calculate: 8 \u00f7 2 * 4",
     "options": [
       {
         "id": 0,
@@ -1181,7 +1181,7 @@
       }
     ],
     "correct_option": 0,
-    "explanation": "Multiplication and Division have equal precedence and are performed strictly left-to-right: 8 ÷ 2 = 4, then 4 * 4 = 16."
+    "explanation": "Multiplication and Division have equal precedence and are performed strictly left-to-right: 8 \u00f7 2 = 4, then 4 * 4 = 16."
   },
   {
     "id": "q_var_01",
@@ -1200,7 +1200,7 @@
         "text": "14",
         "is_correct": false,
         "misconception": "added_variable_value_directly",
-        "remediation": "You added the variable value instead of multiplying by its coefficient. Compute coefficient × variable before performing subsequent additions."
+        "remediation": "You added the variable value instead of multiplying by its coefficient. Compute coefficient \u00d7 variable before performing subsequent additions."
       },
       {
         "id": 2,
@@ -1325,7 +1325,7 @@
         "text": "-3",
         "is_correct": false,
         "misconception": "squared_without_parentheses_giving_negative",
-        "remediation": "You assumed (-x)² is negative. When a negative number is squared inside parentheses, negative × negative produces a positive result."
+        "remediation": "You assumed (-x)\u00b2 is negative. When a negative number is squared inside parentheses, negative \u00d7 negative produces a positive result."
       }
     ],
     "correct_option": 2,
@@ -1415,7 +1415,7 @@
         "text": "Yes, but it equals 7x instead",
         "is_correct": false,
         "misconception": "ignored_higher_degree_exponent",
-        "remediation": "You combined terms with different powers. Terms like x and x² have different degrees and cannot be added together."
+        "remediation": "You combined terms with different powers. Terms like x and x\u00b2 have different degrees and cannot be added together."
       },
       {
         "id": 1,
@@ -2366,5 +2366,412 @@
     ],
     "correct_option": 1,
     "explanation": "Only multiplying or dividing both sides by a negative number reverses the order of the numbers on the number line, requiring the inequality symbol to flip."
+  },
+  {
+    "id": "q_eng_gram_01",
+    "concept_id": "english_grammar",
+    "prompt": "Which sentence demonstrates correct subject-verb agreement?",
+    "options": [
+      {
+        "id": 0,
+        "text": "The box of colorful crayons are on the teacher's desk.",
+        "is_correct": false,
+        "misconception": "agreement_with_intervening_prepositional_noun",
+        "remediation": "You matched the verb with 'crayons' instead of the singular subject 'box'."
+      },
+      {
+        "id": 1,
+        "text": "The box of colorful crayons is on the teacher's desk.",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "The boxes of crayons was left outside in the rain.",
+        "is_correct": false,
+        "misconception": "plural_subject_with_singular_verb",
+        "remediation": "The plural subject 'boxes' requires the plural verb 'were'."
+      },
+      {
+        "id": 3,
+        "text": "Neither the teacher nor the students is absent.",
+        "is_correct": false,
+        "misconception": "compound_subject_proximity_rule_error",
+        "remediation": "With neither/nor, the verb matches the closer subject ('students', plural)."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "The subject of the sentence is 'The box' (singular), which correctly takes the singular verb 'is'."
+  },
+  {
+    "id": "q_eng_lit_01",
+    "concept_id": "english_literature",
+    "prompt": "In literature and theatre, what device occurs when the audience understands a critical situation that a character does not yet realize?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Verbal Irony",
+        "is_correct": false,
+        "misconception": "confused_verbal_with_dramatic_irony",
+        "remediation": "Verbal irony occurs when a character says the opposite of what they mean."
+      },
+      {
+        "id": 1,
+        "text": "Situational Irony",
+        "is_correct": false,
+        "misconception": "confused_situational_with_dramatic_irony",
+        "remediation": "Situational irony is when an outcome contradicts the logical expectation."
+      },
+      {
+        "id": 2,
+        "text": "Dramatic Irony",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "Foreshadowing",
+        "is_correct": false,
+        "misconception": "confused_foreshadowing_with_irony",
+        "remediation": "Foreshadowing gives literary clues about future plot developments."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "Dramatic irony occurs when the audience possesses knowledge unknown to characters on stage or page."
+  },
+  {
+    "id": "q_world_hist_01",
+    "concept_id": "world_history",
+    "prompt": "Which ancient river valley civilization developed cuneiform script and the renowned Code of Hammurabi?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Ancient Egypt (Nile River Valley)",
+        "is_correct": false,
+        "misconception": "confused_egypt_with_mesopotamia",
+        "remediation": "Ancient Egypt developed hieroglyphic script, not cuneiform."
+      },
+      {
+        "id": 1,
+        "text": "Mesopotamia (Tigris and Euphrates)",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "Indus Valley (Harappan Civilization)",
+        "is_correct": false,
+        "misconception": "confused_indus_with_mesopotamia",
+        "remediation": "The Indus Valley developed Indus script and planned grid cities like Mohenjo-Daro."
+      },
+      {
+        "id": 3,
+        "text": "Shang Dynasty China (Yellow River)",
+        "is_correct": false,
+        "misconception": "confused_china_with_mesopotamia",
+        "remediation": "Early China developed oracle bone script, not cuneiform."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Mesopotamia (modern-day Iraq) produced the cuneiform wedge writing system and Hammurabi's Code."
+  },
+  {
+    "id": "q_mod_hist_01",
+    "concept_id": "modern_history",
+    "prompt": "Which landmark document adopted on July 4, 1776, formally declared the thirteen American colonies free from British rule?",
+    "options": [
+      {
+        "id": 0,
+        "text": "The United States Constitution",
+        "is_correct": false,
+        "misconception": "confused_constitution_with_declaration",
+        "remediation": "The Constitution was written in 1787 to establish the federal government framework."
+      },
+      {
+        "id": 1,
+        "text": "The Articles of Confederation",
+        "is_correct": false,
+        "misconception": "confused_articles_with_declaration",
+        "remediation": "The Articles of Confederation served as the first governing constitution from 1781."
+      },
+      {
+        "id": 2,
+        "text": "The Declaration of Independence",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "The Bill of Rights",
+        "is_correct": false,
+        "misconception": "confused_bill_of_rights_with_declaration",
+        "remediation": "The Bill of Rights comprises the first 10 amendments ratified in 1791."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "The Declaration of Independence was drafted primarily by Thomas Jefferson and adopted on July 4, 1776."
+  },
+  {
+    "id": "q_phys_01",
+    "concept_id": "physics",
+    "prompt": "According to Newton's Second Law of Motion, what is the formula relating Force (F), Mass (m), and Acceleration (a)?",
+    "options": [
+      {
+        "id": 0,
+        "text": "F = m / a",
+        "is_correct": false,
+        "misconception": "inverted_force_mass_acceleration_formula",
+        "remediation": "Force is directly proportional to both mass and acceleration: F = m * a."
+      },
+      {
+        "id": 1,
+        "text": "F = m * a",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "F = m + a",
+        "is_correct": false,
+        "misconception": "additive_force_formula_misconception",
+        "remediation": "Force is the product of mass and acceleration, not their sum."
+      },
+      {
+        "id": 3,
+        "text": "F = 0.5 * m * a^2",
+        "is_correct": false,
+        "misconception": "confused_force_with_kinetic_energy",
+        "remediation": "0.5 * m * v^2 is kinetic energy, while force is F = m * a."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Newton's Second Law defines force as the product of an object's mass and its acceleration: F = ma."
+  },
+  {
+    "id": "q_chem_01",
+    "concept_id": "chemistry",
+    "prompt": "Which subatomic particle has a negative electric charge and orbits the atomic nucleus in shells or clouds?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Proton",
+        "is_correct": false,
+        "misconception": "confused_proton_with_electron",
+        "remediation": "Protons carry a positive electrical charge and reside inside the nucleus."
+      },
+      {
+        "id": 1,
+        "text": "Neutron",
+        "is_correct": false,
+        "misconception": "confused_neutron_with_electron",
+        "remediation": "Neutrons have neutral charge (zero) and reside inside the nucleus."
+      },
+      {
+        "id": 2,
+        "text": "Electron",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "Positron",
+        "is_correct": false,
+        "misconception": "confused_antimatter_with_electron",
+        "remediation": "A positron is an antimatter particle with a positive charge."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "Electrons are the negatively charged particles orbiting the central nucleus of an atom."
+  },
+  {
+    "id": "q_bio_01",
+    "concept_id": "biology",
+    "prompt": "Which cellular organelle is known as the 'powerhouse of the cell' due to its primary role in generating cellular ATP energy?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Ribosome",
+        "is_correct": false,
+        "misconception": "confused_ribosome_with_mitochondria",
+        "remediation": "Ribosomes assemble proteins from amino acids, not ATP."
+      },
+      {
+        "id": 1,
+        "text": "Mitochondria",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "Endoplasmic Reticulum",
+        "is_correct": false,
+        "misconception": "confused_er_with_mitochondria",
+        "remediation": "The ER synthesizes proteins and lipids."
+      },
+      {
+        "id": 3,
+        "text": "Golgi Apparatus",
+        "is_correct": false,
+        "misconception": "confused_golgi_with_mitochondria",
+        "remediation": "The Golgi apparatus packages and ships macromolecules."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Mitochondria perform aerobic cellular respiration, synthesizing adenosine triphosphate (ATP)."
+  },
+  {
+    "id": "q_cs_01",
+    "concept_id": "computer_science",
+    "prompt": "In Python, which built-in data type is ordered, mutable, and created using square brackets like items = [1, 2, 3]?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Tuple",
+        "is_correct": false,
+        "misconception": "confused_tuple_with_list",
+        "remediation": "Tuples use parentheses (1, 2, 3) and cannot be modified after creation (immutable)."
+      },
+      {
+        "id": 1,
+        "text": "List",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "Dictionary",
+        "is_correct": false,
+        "misconception": "confused_dict_with_list",
+        "remediation": "Dictionaries store key-value pairs using curly braces {key: val}."
+      },
+      {
+        "id": 3,
+        "text": "Set",
+        "is_correct": false,
+        "misconception": "confused_set_with_list",
+        "remediation": "Sets store unordered, unique elements using curly braces {1, 2}."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "A list in Python is an ordered, mutable sequence defined with square brackets []."
+  },
+  {
+    "id": "q_geo_01",
+    "concept_id": "geography",
+    "prompt": "What type of tectonic boundary occurs when two continental or oceanic plates slide horizontally past one another?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Divergent Boundary",
+        "is_correct": false,
+        "misconception": "confused_divergent_with_transform",
+        "remediation": "Divergent boundaries pull apart from each other, forming rifts and ridges."
+      },
+      {
+        "id": 1,
+        "text": "Convergent Boundary",
+        "is_correct": false,
+        "misconception": "confused_convergent_with_transform",
+        "remediation": "Convergent boundaries collide head-on, creating mountain ranges or trenches."
+      },
+      {
+        "id": 2,
+        "text": "Transform Boundary",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "Subduction Zone",
+        "is_correct": false,
+        "misconception": "confused_subduction_with_transform",
+        "remediation": "Subduction zones occur where one plate is forced under another."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "Transform boundaries occur where plates slide horizontally, such as the San Andreas Fault."
+  },
+  {
+    "id": "q_econ_01",
+    "concept_id": "economics",
+    "prompt": "In basic microeconomics, what generally happens to the market equilibrium price of a product if consumer demand increases while supply remains unchanged?",
+    "options": [
+      {
+        "id": 0,
+        "text": "The price falls",
+        "is_correct": false,
+        "misconception": "inverse_demand_price_relationship",
+        "remediation": "When demand rises and supply is constant, competition among buyers bids the price up."
+      },
+      {
+        "id": 1,
+        "text": "The price rises",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "The price remains strictly unchanged",
+        "is_correct": false,
+        "misconception": "static_price_fallacy",
+        "remediation": "Market prices adjust dynamically to imbalances between supply and demand."
+      },
+      {
+        "id": 3,
+        "text": "Supply automatically doubles",
+        "is_correct": false,
+        "misconception": "instantaneous_supply_adjustment",
+        "remediation": "Supply cannot instantly double without production changes and time."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Higher consumer demand against fixed supply causes a shortage, driving the equilibrium price higher."
+  },
+  {
+    "id": "q_psych_01",
+    "concept_id": "psychology",
+    "prompt": "Ivan Pavlov's classical experiments where dogs learned to salivate at the sound of a tone associated with food established which principle?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Operant Conditioning",
+        "is_correct": false,
+        "misconception": "confused_operant_with_classical",
+        "remediation": "Operant conditioning (B.F. Skinner) involves voluntary behavior reinforced by consequences."
+      },
+      {
+        "id": 1,
+        "text": "Classical Conditioning",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
+        "text": "Observational Learning",
+        "is_correct": false,
+        "misconception": "confused_observational_with_classical",
+        "remediation": "Observational learning (Albert Bandura) involves imitating models."
+      },
+      {
+        "id": 3,
+        "text": "Cognitive Dissonance",
+        "is_correct": false,
+        "misconception": "confused_dissonance_with_conditioning",
+        "remediation": "Cognitive dissonance is the psychological discomfort of holding conflicting beliefs."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Classical conditioning pairs an unconditioned stimulus with a neutral conditioned stimulus to elicit a reflex response."
   }
 ]

@@ -13,6 +13,7 @@ from app.bkt import bkt_engine
 from app.concept_graph import concept_graph
 from app.concept_videos import get_concept_video, build_youtube_search_url
 from app.config import BKT_P_INIT, MASTERY_THRESHOLD, TEACHER_PIN
+from app.subjects import SUBJECTS_CATALOG
 from app.database import (
     create_or_get_student,
     get_all_cached_misconceptions,
@@ -166,6 +167,16 @@ def health():
         "status": "healthy",
         "concepts_count": len(concept_graph.concepts_data),
         "questions_count": len(question_bank.questions_by_id),
+    }
+
+
+@app.get("/subjects")
+def get_subjects():
+    """Returns the catalog of 16 supported academic subjects."""
+    return {
+        "total": len(SUBJECTS_CATALOG),
+        "total_subjects": len(SUBJECTS_CATALOG),
+        "subjects": SUBJECTS_CATALOG,
     }
 
 

@@ -288,5 +288,191 @@
       "embed_url": "https://www.youtube.com/embed/0X-bMehNhmY",
       "search_query": "solving linear inequalities flip inequality sign negative numbers"
     }
+  },
+  {
+    "id": "english_grammar",
+    "name": "English Grammar & Syntax",
+    "description": "Mastering subject-verb agreement, active/passive voice, clause structures, and punctuation mechanics.",
+    "category": "English Grammar",
+    "difficulty": 1,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "Subject-Verb Agreement & Syntax Rules",
+      "channel": "Khan Academy",
+      "video_id": "0k5G6Gq1kYI",
+      "url": "https://www.youtube.com/watch?v=0k5G6Gq1kYI",
+      "embed_url": "https://www.youtube.com/embed/0k5G6Gq1kYI",
+      "search_query": "subject verb agreement english grammar syntax tutorial"
+    }
+  },
+  {
+    "id": "english_literature",
+    "name": "English Literature & Reading",
+    "description": "Analyzing literary devices, figurative language, rhetorical strategies, and reading comprehension themes.",
+    "category": "English Literature",
+    "difficulty": 2,
+    "prerequisites": [
+      "english_grammar"
+    ],
+    "youtube_video": {
+      "title": "How and Why We Read: Crash Course Literature #1",
+      "channel": "CrashCourse",
+      "video_id": "MSYw502dJNY",
+      "url": "https://www.youtube.com/watch?v=MSYw502dJNY",
+      "embed_url": "https://www.youtube.com/embed/MSYw502dJNY",
+      "search_query": "literary devices figurative language reading comprehension analysis"
+    }
+  },
+  {
+    "id": "world_history",
+    "name": "World History & Ancient Civilizations",
+    "description": "Studying early human civilizations, Mesopotamia, the Silk Road, Greece, and Classical Rome.",
+    "category": "World History",
+    "difficulty": 1,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "The Agricultural Revolution: Crash Course World History #1",
+      "channel": "CrashCourse",
+      "video_id": "Yocja_N5s1I",
+      "url": "https://www.youtube.com/watch?v=Yocja_N5s1I",
+      "embed_url": "https://www.youtube.com/embed/Yocja_N5s1I",
+      "search_query": "ancient civilizations world history crash course"
+    }
+  },
+  {
+    "id": "modern_history",
+    "name": "Modern History & Civics",
+    "description": "Exploring democratic revolutions, Enlightenment philosophies, the World Wars, and civic institutions.",
+    "category": "Modern History",
+    "difficulty": 2,
+    "prerequisites": [
+      "world_history"
+    ],
+    "youtube_video": {
+      "title": "The American Revolution: Crash Course US History #7",
+      "channel": "CrashCourse",
+      "video_id": "3EiSymRrKI4",
+      "url": "https://www.youtube.com/watch?v=3EiSymRrKI4",
+      "embed_url": "https://www.youtube.com/embed/3EiSymRrKI4",
+      "search_query": "modern world history civics and democracy crash course"
+    }
+  },
+  {
+    "id": "physics",
+    "name": "Physics (Mechanics & Energy)",
+    "description": "Understanding kinematics, Newton's laws of motion, gravity, kinetic and potential energy conservation.",
+    "category": "Physics",
+    "difficulty": 2,
+    "prerequisites": [
+      "variables_expressions"
+    ],
+    "youtube_video": {
+      "title": "Newton's Laws of Motion: Crash Course Physics #5",
+      "channel": "CrashCourse",
+      "video_id": "kKKM8Y-u7ds",
+      "url": "https://www.youtube.com/watch?v=kKKM8Y-u7ds",
+      "embed_url": "https://www.youtube.com/embed/kKKM8Y-u7ds",
+      "search_query": "newtons laws of motion physics mechanics crash course"
+    }
+  },
+  {
+    "id": "chemistry",
+    "name": "Chemistry (Matter & Reactions)",
+    "description": "Investigating atomic models, subatomic particles, valence electrons, and stoichiometry basics.",
+    "category": "Chemistry",
+    "difficulty": 2,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "The Nucleus & Periodic Table: Crash Course Chemistry #1",
+      "channel": "CrashCourse",
+      "video_id": "FSyAehMdpyI",
+      "url": "https://www.youtube.com/watch?v=FSyAehMdpyI",
+      "embed_url": "https://www.youtube.com/embed/FSyAehMdpyI",
+      "search_query": "atomic structure periodic table chemical reactions crash course"
+    }
+  },
+  {
+    "id": "biology",
+    "name": "Biology & Life Sciences",
+    "description": "Exploring eukaryotic cell structures, DNA replication, Mendelian genetics, and ecosystem dynamics.",
+    "category": "Biology",
+    "difficulty": 2,
+    "prerequisites": [
+      "chemistry"
+    ],
+    "youtube_video": {
+      "title": "DNA, Chromosomes, Genes, and Traits",
+      "channel": "Amoeba Sisters",
+      "video_id": "8m6hHRlKwxY",
+      "url": "https://www.youtube.com/watch?v=8m6hHRlKwxY",
+      "embed_url": "https://www.youtube.com/embed/8m6hHRlKwxY",
+      "search_query": "cell biology genetics dna organelles amoeba sisters"
+    }
+  },
+  {
+    "id": "computer_science",
+    "name": "Computer Science & Python",
+    "description": "Learning algorithmic logic, variables, control flow, functions, and fundamental data structures in Python.",
+    "category": "Computer Science",
+    "difficulty": 2,
+    "prerequisites": [
+      "variables_expressions"
+    ],
+    "youtube_video": {
+      "title": "Python for Beginners - Full Course",
+      "channel": "freeCodeCamp.org",
+      "video_id": "eWRfhZUzrAc",
+      "url": "https://www.youtube.com/watch?v=eWRfhZUzrAc",
+      "embed_url": "https://www.youtube.com/embed/eWRfhZUzrAc",
+      "search_query": "python programming basics computer science tutorial"
+    }
+  },
+  {
+    "id": "geography",
+    "name": "World Geography & Earth Science",
+    "description": "Examining physical geography, continents, tectonic boundaries, climate zones, and global landmarks.",
+    "category": "Geography",
+    "difficulty": 1,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "What is Geography? Crash Course Geography #1",
+      "channel": "CrashCourse",
+      "video_id": "A3x7bMffl40",
+      "url": "https://www.youtube.com/watch?v=A3x7bMffl40",
+      "embed_url": "https://www.youtube.com/embed/A3x7bMffl40",
+      "search_query": "world geography earth science crash course"
+    }
+  },
+  {
+    "id": "economics",
+    "name": "Economics & Personal Finance",
+    "description": "Understanding supply and demand equilibrium, opportunity cost, market structures, and financial budgeting.",
+    "category": "Economics",
+    "difficulty": 2,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "Intro to Economics: Crash Course Economics #1",
+      "channel": "CrashCourse",
+      "video_id": "3ez10ADR_gM",
+      "url": "https://www.youtube.com/watch?v=3ez10ADR_gM",
+      "embed_url": "https://www.youtube.com/embed/3ez10ADR_gM",
+      "search_query": "intro to economics supply and demand crash course"
+    }
+  },
+  {
+    "id": "psychology",
+    "name": "Psychology & Cognitive Sciences",
+    "description": "Investigating memory encoding, classical and operant conditioning, cognitive biases, and sensory perception.",
+    "category": "Psychology",
+    "difficulty": 2,
+    "prerequisites": [],
+    "youtube_video": {
+      "title": "Intro to Psychology: Crash Course Psychology #1",
+      "channel": "CrashCourse",
+      "video_id": "vo4pMVb0R6M",
+      "url": "https://www.youtube.com/watch?v=vo4pMVb0R6M",
+      "embed_url": "https://www.youtube.com/embed/vo4pMVb0R6M",
+      "search_query": "intro to psychology cognitive science memory conditioning"
+    }
   }
 ]

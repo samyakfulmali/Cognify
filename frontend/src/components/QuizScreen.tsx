@@ -20,6 +20,26 @@ interface QuizScreenProps {
   onClearTargetConcept?: () => void;
 }
 
+export const ALL_SUBJECTS = [
+  { id: 'all', label: '🎯 All Subjects (AI Recommended)' },
+  { id: 'Fractions', label: '🍕 Fractions & Decimals (Basics, LCM, Add/Sub, Mult, Div)' },
+  { id: 'Pre-Algebra', label: '🔢 Pre-Algebra (Integers, Absolute Values & PEMDAS)' },
+  { id: 'Algebra Basics', label: '📐 Algebra Basics (Variables & Expressions)' },
+  { id: 'Equations', label: '⚖️ Linear Equations (One-Step, Two-Step, Multi-Step)' },
+  { id: 'Inequalities', label: '📊 Linear Inequalities & Graphing' },
+  { id: 'English Grammar', label: '📖 English Grammar & Syntax' },
+  { id: 'English Literature', label: '✍️ English Literature & Reading' },
+  { id: 'World History', label: '🏛️ World History & Ancient Civilizations' },
+  { id: 'Modern History', label: '🇺🇸 Modern History & Civics' },
+  { id: 'Physics', label: '⚡ Physics (Mechanics & Energy)' },
+  { id: 'Chemistry', label: '🧪 Chemistry (Matter & Reactions)' },
+  { id: 'Biology', label: '🧬 Biology & Life Sciences' },
+  { id: 'Computer Science', label: '💻 Computer Science & Python' },
+  { id: 'Geography', label: '🌍 World Geography & Earth Science' },
+  { id: 'Economics', label: '📈 Economics & Personal Finance' },
+  { id: 'Psychology', label: '🧠 Psychology & Cognitive Sciences' },
+];
+
 export const QuizScreen: React.FC<QuizScreenProps> = ({
   studentId,
   studentName,
@@ -185,11 +205,11 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
               }}
             >
               <option value="all">🎯 All Subjects (AI Recommended)</option>
-              <option value="Fractions">🍕 Fractions (Basics, LCM, Add/Sub, Mult, Div)</option>
-              <option value="Pre-Algebra">🔢 Pre-Algebra (Negatives & PEMDAS)</option>
-              <option value="Algebra Basics">📐 Algebra Basics (Variables & Expressions)</option>
-              <option value="Equations">⚖️ Equations (One-Step, Two-Step, Multi-Step)</option>
-              <option value="Inequalities">📊 Linear Inequalities</option>
+              {ALL_SUBJECTS.map((subj) => (
+                <option key={subj.id} value={subj.id}>
+                  {subj.label}
+                </option>
+              ))}
             </select>
           </div>
 

@@ -104,7 +104,12 @@ class RecommendationEngine:
         elif subject_clean:
             subject_concepts = [
                 cid for cid in topo_order
-                if self.graph.get_concept(cid).get("category", "").lower() == subject_clean
+                if (
+                    self.graph.get_concept(cid).get("category", "").lower() == subject_clean
+                    or subject_clean in self.graph.get_concept(cid).get("category", "").lower()
+                    or self.graph.get_concept(cid).get("category", "").lower() in subject_clean
+                    or cid.lower() == subject_clean
+                )
             ]
 
             if subject_concepts:

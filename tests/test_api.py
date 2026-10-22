@@ -40,6 +40,21 @@ def test_health(client):
     assert data["questions_count"] >= 60
 
 
+def test_subjects_catalog(client):
+    response = client.get("/subjects")
+    assert response.status_code == 200
+    data = response.json()
+    assert "subjects" in data
+    assert data["total"] == 16
+    subject_ids = [s["id"] for s in data["subjects"]]
+    assert "English Grammar" in subject_ids
+    assert "World History" in subject_ids
+    assert "Physics" in subject_ids
+    assert "Chemistry" in subject_ids
+    assert "Biology" in subject_ids
+    assert "Computer Science" in subject_ids
+
+
 def test_missing_token_returns_401(client):
     """Endpoints require Authorization header; unauthenticated requests get 401."""
     assert client.get("/mastery/std_frac_01").status_code == 401
