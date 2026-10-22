@@ -2,8 +2,8 @@
   "functions": {
     "index.py": {
       "includeFiles": [
-        "data/**",
-        "app/static/**"
+        "app/**",
+        "data/**"
       ]
     }
   },
