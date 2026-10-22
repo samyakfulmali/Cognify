@@ -79,12 +79,25 @@ app.add_middleware(
 
 
 from pathlib import Path
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 STATIC_INDEX = STATIC_DIR / "index.html"
+
+
+@app.middleware("http")
+async def fix_vercel_path(request, call_next):
+    """Normalize paths when Vercel serverless rewrites include filename prefixes."""
+    raw_path = request.scope.get("path", "")
+    for prefix in ("/index.py", "/api/index.py", "/api/index"):
+        if raw_path.startswith(prefix):
+            remainder = raw_path[len(prefix):]
+            request.scope["path"] = remainder if remainder.startswith("/") else ("/" + remainder) if remainder else "/"
+            break
+    return await call_next(request)
+
 
 # Mount static files directory if present
 if STATIC_DIR.exists():
@@ -97,14 +110,20 @@ if react_dist_assets.exists():
 
 
 @app.get("/", include_in_schema=False)
+@app.get("/index.py", include_in_schema=False)
+@app.get("/api/index.py", include_in_schema=False)
+@app.get("/api/index", include_in_schema=False)
+@app.get("/api", include_in_schema=False)
 @app.get("/dashboard", include_in_schema=False)
 def dashboard():
     if STATIC_INDEX.exists():
-        return FileResponse(str(STATIC_INDEX))
+        with open(STATIC_INDEX, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
     react_index = BASE_DIR / "frontend" / "dist" / "index.html"
     if react_index.exists():
-        return FileResponse(str(react_index))
-    return {"message": "Cognify API is running. Access /docs for Swagger UI."}
+        with open(react_index, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="<h1>Cognify API is running</h1><p>Static index not found.</p>")
 
 
 
