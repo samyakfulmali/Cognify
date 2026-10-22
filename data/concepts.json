@@ -1,0 +1,130 @@
+[
+  {
+    "id": "fractions_basics",
+    "name": "Fractions Basics",
+    "description": "Understanding numerators, denominators, and visual representations of fractions as parts of a whole.",
+    "category": "Fractions",
+    "difficulty": 1,
+    "prerequisites": []
+  },
+  {
+    "id": "equivalent_fractions",
+    "name": "Equivalent Fractions & Simplifying",
+    "description": "Generating equivalent fractions by multiplying or dividing numerator and denominator by the same non-zero factor.",
+    "category": "Fractions",
+    "difficulty": 2,
+    "prerequisites": ["fractions_basics"]
+  },
+  {
+    "id": "common_denominators",
+    "name": "Finding Common Denominators (LCM)",
+    "description": "Finding least common multiples to convert fractions to have identical denominators.",
+    "category": "Fractions",
+    "difficulty": 2,
+    "prerequisites": ["equivalent_fractions"]
+  },
+  {
+    "id": "fraction_addition",
+    "name": "Adding & Subtracting Fractions",
+    "description": "Adding and subtracting fractions with like and unlike denominators using common denominators.",
+    "category": "Fractions",
+    "difficulty": 3,
+    "prerequisites": ["common_denominators"]
+  },
+  {
+    "id": "fraction_multiplication",
+    "name": "Multiplying Fractions",
+    "description": "Multiplying numerators and denominators, canceling common factors, and scaling fractional quantities.",
+    "category": "Fractions",
+    "difficulty": 2,
+    "prerequisites": ["fractions_basics"]
+  },
+  {
+    "id": "fraction_division",
+    "name": "Dividing Fractions & Reciprocals",
+    "description": "Dividing fractions by multiplying by the reciprocal (keep-change-flip).",
+    "category": "Fractions",
+    "difficulty": 3,
+    "prerequisites": ["fraction_multiplication"]
+  },
+  {
+    "id": "negative_numbers",
+    "name": "Negative Numbers & Integers",
+    "description": "Understanding positive and negative signed integers, number lines, and integer arithmetic rules.",
+    "category": "Pre-Algebra",
+    "difficulty": 1,
+    "prerequisites": []
+  },
+  {
+    "id": "order_of_operations",
+    "name": "Order of Operations (PEMDAS)",
+    "description": "Applying standard operator precedence: Parentheses, Exponents, Multiplication & Division, Addition & Subtraction.",
+    "category": "Pre-Algebra",
+    "difficulty": 2,
+    "prerequisites": ["negative_numbers"]
+  },
+  {
+    "id": "variables_expressions",
+    "name": "Variables & Algebraic Expressions",
+    "description": "Evaluating algebraic expressions with variable substitution and understanding algebraic terms.",
+    "category": "Algebra Basics",
+    "difficulty": 2,
+    "prerequisites": ["order_of_operations"]
+  },
+  {
+    "id": "combining_like_terms",
+    "name": "Combining Like Terms",
+    "description": "Simplifying algebraic expressions by grouping terms with identical variable components and adding coefficients.",
+    "category": "Algebra Basics",
+    "difficulty": 3,
+    "prerequisites": ["variables_expressions", "negative_numbers"]
+  },
+  {
+    "id": "one_step_equations_add",
+    "name": "One-Step Equations (Add/Subtract)",
+    "description": "Solving one-step linear equations of the form x + a = b using additive inverse operations.",
+    "category": "Equations",
+    "difficulty": 2,
+    "prerequisites": ["variables_expressions", "negative_numbers"]
+  },
+  {
+    "id": "one_step_equations_mult",
+    "name": "One-Step Equations (Multiply/Divide)",
+    "description": "Solving one-step linear equations of the form ax = b or x/a = b using multiplicative inverse operations.",
+    "category": "Equations",
+    "difficulty": 3,
+    "prerequisites": ["fraction_division", "one_step_equations_add"]
+  },
+  {
+    "id": "distributive_property",
+    "name": "Distributive Property",
+    "description": "Multiplying a single term over terms inside parentheses: a(b + c) = ab + ac.",
+    "category": "Algebra Basics",
+    "difficulty": 3,
+    "prerequisites": ["combining_like_terms"]
+  },
+  {
+    "id": "two_step_equations",
+    "name": "Two-Step Linear Equations",
+    "description": "Solving linear equations in the form ax + b = c by undoing addition/subtraction then multiplication/division.",
+    "category": "Equations",
+    "difficulty": 4,
+    "prerequisites": ["one_step_equations_mult", "combining_like_terms"]
+  },
+  {
+    "id": "multi_step_equations",
+    "name": "Multi-Step Equations (Variables Both Sides)",
+    "description": "Solving complex linear equations involving the distributive property, combining like terms, and variables on both sides.",
+    "category": "Equations",
+    "difficulty": 5,
+    "prerequisites": ["two_step_equations", "distributive_property"]
+  },
+  {
+    "id": "linear_inequalities",
+    "name": "Linear Inequalities",
+    "description": "Solving linear inequalities and remembering to flip the inequality sign when multiplying or dividing by a negative number.",
+    "category": "Inequalities",
+    "difficulty": 5,
+    "prerequisites": ["multi_step_equations", "negative_numbers"]
+  }
+]

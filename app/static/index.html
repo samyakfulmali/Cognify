@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognify — AI Learning-Gap Detection Tutor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #121829;
+      --bg-card: rgba(23, 31, 51, 0.75);
+      --bg-card-hover: rgba(30, 41, 69, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.2);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --danger-glow: rgba(239, 68, 68, 0.2);
+      --accent-cyan: #06b6d4;
+      --accent-purple: #a855f7;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --font-main: 'Outfit', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
+    }
+
+    /* Layout */
+    .app-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 32px 64px 32px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 28px;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: white;
+      box-shadow: 0 4px 16px var(--primary-glow);
+    }
+
+    .brand-title h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .bkt-chips {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .bkt-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+    }
+
+    .bkt-chip strong {
+      color: var(--accent-cyan);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(18, 24, 41, 0.6);
+      padding: 6px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 28px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-main);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: white;
+      box-shadow: 0 4px 16px var(--primary-glow);
+    }
+
+    /* Content Views */
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .badge-primary { background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-success { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* Student Selector */
+    .selector-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    select, button, input {
+      font-family: inherit;
+    }
+
+    .select-dropdown {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(10, 14, 26, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .select-dropdown:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: white;
+      box-shadow: 0 4px 16px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Question Box */
+    .question-box {
+      background: rgba(10, 14, 26, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .q-concept {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .q-prompt {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .opt-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: 12px;
+      color: var(--text-primary);
+      text-align: left;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .opt-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .opt-indicator {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .opt-btn.selected {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .opt-btn.selected .opt-indicator {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Feedback & Root Gap Box */
+    .feedback-box {
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .feedback-correct {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .feedback-incorrect {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .gap-alert-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .gap-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fbbf24;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .prereq-chain {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .prereq-node {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .prereq-node.root-weak {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: #ef4444;
+      color: #fca5a5;
+      font-weight: 700;
+    }
+
+    .prereq-node.failed-target {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: #f59e0b;
+      color: #fde68a;
+    }
+
+    /* Heatmap Table */
+    .heatmap-wrapper {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      background: rgba(10, 14, 26, 0.8);
+    }
+
+    .heatmap-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .heatmap-table th {
+      padding: 12px 14px;
+      background: rgba(18, 24, 41, 0.95);
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .heatmap-table th:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      text-align: left;
+      background: rgba(18, 24, 41, 0.98);
+      min-width: 160px;
+    }
+
+    .heatmap-table td {
+      padding: 8px 10px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      border-right: 1px solid rgba(255, 255, 255, 0.03);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .heatmap-table td:hover {
+      transform: scale(1.15);
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .heatmap-table td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      text-align: left;
+      font-family: var(--font-main);
+      font-weight: 500;
+      background: rgba(18, 24, 41, 0.9);
+      color: var(--text-primary);
+    }
+
+    /* Metric Cards */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .metric-title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .metric-val {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .metric-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Misconceptions List */
+    .misc-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .misc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 26, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px 20px;
+      transition: all 0.2s ease;
+    }
+
+    .misc-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: var(--border-accent);
+    }
+
+    .misc-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+
+    .misc-concept {
+      font-size: 13px;
+      color: var(--accent-cyan);
+    }
+
+    .misc-count-box {
+      text-align: right;
+    }
+
+    .misc-count {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f87171;
+    }
+
+    .misc-students {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Progress bar */
+    .bkt-meter {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .bkt-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1, #10b981);
+      border-radius: 999px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Concept Hierarchy Graph View */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .concept-card {
+      background: rgba(10, 14, 26, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .concept-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .concept-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .concept-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    /* Role Login Overlay Modal */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 14, 26, 0.95);
+      backdrop-filter: blur(16px);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .login-modal-box {
+      width: 100%;
+      max-width: 940px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .role-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .role-card {
+      background: rgba(23, 31, 51, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justifyContent: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .role-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .role-card.teacher-card:hover {
+      border-color: var(--success);
+    }
+
+    .role-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .student-icon-box {
+      background: linear-gradient(135deg, #6366f1, #3b82f6);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+    }
+
+    .teacher-icon-box {
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+    }
+  </style>
+</head>
+<body>
+  <!-- Role-Based Login Screen Modal -->
+  <div id="login-modal" class="login-overlay">
+    <div class="login-modal-box">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #6366f1, #06b6d4); font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 12px; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);">
+          C
+        </div>
+        <h2 style="font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 6px;">Choose Your Learning Portal</h2>
+        <p style="font-size: 14px; color: var(--text-secondary); max-width: 580px; margin: 0 auto;">
+          Select your role to access the personalized student tutor or the educator cohort analytics dashboard.
+        </p>
+      </div>
+
+      <div class="role-cards-grid">
+        <!-- Student Card -->
+        <div class="role-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div class="role-icon-box student-icon-box">🎓</div>
+              <span class="badge badge-primary">Student Mode</span>
+            </div>
+            <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">I'm a Student</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+              Practice adaptive math questions, overcome misconceptions with AI tutor explanations, and build prerequisite mastery.
+            </p>
+
+            <div style="margin-bottom: 12px;">
+              <label for="modal-student-login-id" style="display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px;">
+                Student Login ID:
+              </label>
+              <input type="text" id="modal-student-login-id" value="std_frac_01" placeholder="e.g. std_frac_01" style="width: 100%; padding: 10px 14px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-size: 13px;" />
+            </div>
+
+            <div style="margin-bottom: 14px;">
+              <label style="display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px;">
+                Quick-select seeded student:
+              </label>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-student-login-id').value='std_frac_01'" style="padding: 4px 8px; font-size: 11px; border-radius: 6px;">Noah Miller (std_frac_01)</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-student-login-id').value='std_adv_01'" style="padding: 4px 8px; font-size: 11px; border-radius: 6px;">Aria Chen (std_adv_01)</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-student-login-id').value='std_gap_01'" style="padding: 4px 8px; font-size: 11px; border-radius: 6px;">Alexander Garcia (std_gap_01)</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-student-login-id').value='std_neg_01'" style="padding: 4px 8px; font-size: 11px; border-radius: 6px;">James Thomas (std_neg_01)</button>
+                <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-student-login-id').value='std_beg_01'" style="padding: 4px 8px; font-size: 11px; border-radius: 6px;">Sebastian Hall (std_beg_01)</button>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+              <label for="modal-student-password" style="display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px;">
+                Password:
+              </label>
+              <input type="password" id="modal-student-password" value="student123" placeholder="••••••••" style="width: 100%; padding: 10px 14px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-size: 13px;" />
+              <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block;">Demo Credentials: <strong>std_frac_01</strong> / <strong>student123</strong></span>
+              <div id="modal-student-error" style="color: var(--danger); font-size: 12px; margin-top: 4px; display: none;"></div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+              <div>✓ Interactive Adaptive Quiz & targeted insights</div>
+              <div>✓ Prerequisite Knowledge-Graph Explorer</div>
+              <div>✓ Teacher cohort analytics kept private</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="submitStudentLogin()" style="width: 100%; padding: 12px; font-weight: 700; border-radius: 12px;">
+            Login as Student ➔
+          </button>
+        </div>
+
+        <!-- Teacher Card -->
+        <div class="role-card teacher-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <div class="role-icon-box teacher-icon-box">📊</div>
+              <span class="badge badge-success">Educator Portal</span>
+            </div>
+            <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">I'm a Teacher</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.4;">
+              Inspect class-wide BKT mastery heatmaps, diagnose foundational root gaps, and examine systemic misconception frequency.
+            </p>
+
+            <div style="margin-bottom: 14px;">
+              <label for="modal-teacher-login-id" style="display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px;">
+                Teacher Login ID:
+              </label>
+              <input type="text" id="modal-teacher-login-id" value="teacher" placeholder="e.g. teacher or admin" style="width: 100%; padding: 10px 14px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-size: 13px;" />
+              <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block;">Demo ID: <strong>teacher</strong></span>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+              <label for="modal-teacher-password" style="display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px;">
+                Password:
+              </label>
+              <input type="password" id="modal-teacher-password" value="teacher123" placeholder="••••••••" style="width: 100%; padding: 10px 14px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-size: 13px;" />
+              <span style="font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block;">Demo Password: <strong>teacher123</strong> (or PIN <strong>1234</strong>)</span>
+              <div id="modal-teacher-error" style="color: var(--danger); font-size: 12px; margin-top: 4px; display: none;"></div>
+            </div>
+
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px;">
+              <div>✓ 2D Cohort Mastery Heatmap (30 students)</div>
+              <div>✓ Prerequisite root-gap detection & alerts</div>
+              <div>✓ Systemic misconception breakdown</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="submitTeacherLogin()" style="width: 100%; padding: 12px; font-weight: 700; border-radius: 12px; background: linear-gradient(135deg, #10b981, #06b6d4);">
+            Login as Teacher ➔
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="logo-badge">C</div>
+        <div class="brand-title">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h1>Cognify AI Tutor</h1>
+            <span id="header-role-badge" class="badge badge-primary">Student</span>
+          </div>
+          <p id="header-subtitle">Bayesian Knowledge Tracing & Prerequisite Root-Gap Detection</p>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <div class="bkt-chips">
+          <div class="bkt-chip">P(init) = <strong>0.30</strong></div>
+          <div class="bkt-chip">P(learn) = <strong>0.20</strong></div>
+          <div class="bkt-chip">P(slip) = <strong>0.10</strong></div>
+          <div class="bkt-chip">P(guess) = <strong>0.25</strong></div>
+        </div>
+        <button class="btn btn-secondary" onclick="logoutRole()" style="padding: 6px 14px; font-size: 12px; border-radius: 8px; font-weight: 600;">
+          🚪 Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs (Filtered by Role) -->
+    <div class="nav-tabs" id="main-nav-tabs">
+      <button class="tab-btn active" id="tab-btn-tutor" onclick="switchTab('tutor')">🎯 Interactive Tutor</button>
+      <button class="tab-btn" id="tab-btn-curriculum" onclick="switchTab('curriculum')">🕸️ Concept Curriculum Graph</button>
+      <button class="tab-btn" id="tab-btn-heatmap" onclick="switchTab('heatmap')">📊 Class Mastery Heatmap</button>
+      <button class="tab-btn" id="tab-btn-misconceptions" onclick="switchTab('misconceptions')">🔍 Misconception Analytics</button>
+      <button class="tab-btn" id="tab-btn-profile" onclick="switchTab('student-profile')">👤 Student Profile</button>
+    </div>
+
+    <!-- TAB 1: INTERACTIVE TUTOR -->
+    <div id="tab-tutor" class="tab-view active">
+      <div class="grid-2">
+        <!-- Question Panel -->
+        <div class="card">
+          <div class="section-header">
+            <span class="section-title">Practice Session</span>
+            <span id="target-badge" class="badge badge-primary">Curriculum</span>
+          </div>
+
+          <!-- Student Identity Banner (Shown for students, dropdown removed completely) -->
+          <div id="student-identity-banner" style="display: none; justify-content: space-between; align-items: center; background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;">
+            <div>
+              <span style="font-size: 11px; text-transform: uppercase; color: #818cf8; font-weight: 700; letter-spacing: 0.05em; display: block; margin-bottom: 2px;">Active Student</span>
+              <span id="student-banner-name" style="font-size: 15px; font-weight: 700; color: #fff;">—</span>
+            </div>
+            <button class="btn btn-secondary" onclick="loadNextQuestion()" style="padding: 6px 12px; font-size: 12px; border-radius: 8px;">🔄 Next Question</button>
+          </div>
+
+          <!-- Teacher Selector Group (Dropdown only shown in teacher mode) -->
+          <div class="selector-group" id="tutor-student-selector-group" style="display: none;">
+            <label for="student-select" style="font-size: 13px; color: var(--text-secondary); font-weight: 600;">Student:</label>
+            <select id="student-select" class="select-dropdown" onchange="loadNextQuestion()">
+              <!-- Options populated dynamically for teacher -->
+            </select>
+            <button class="btn btn-secondary" onclick="loadNextQuestion()">🔄 Next Question</button>
+          </div>
+
+          <!-- Question Display -->
+          <div id="question-container">
+            <div class="question-box">
+              <div class="q-meta">
+                <span id="q-concept" class="q-concept">Concept</span>
+                <span id="q-diff" class="badge badge-primary">Diff 1</span>
+              </div>
+              <div id="q-prompt" class="q-prompt">Loading question...</div>
+              <div id="q-options" class="options-grid"></div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span id="rec-reason" style="font-size: 12px; color: var(--text-muted); max-width: 70%;"></span>
+              <button id="submit-btn" class="btn btn-primary" onclick="submitAnswer()">Submit Answer ➔</button>
+            </div>
+          </div>
+
+          <!-- Live Feedback -->
+          <div id="feedback-container" style="display: none;"></div>
+        </div>
+
+        <!-- Student State / BKT Inspector -->
+        <div class="card">
+          <div class="section-header">
+            <span class="section-title">Live Bayesian Tracing</span>
+            <span id="student-persona-badge" class="badge badge-primary">Active</span>
+          </div>
+
+          <div id="student-quick-stats">
+            <div class="metric-card" style="margin-bottom: 16px;">
+              <div class="metric-title">Current Concept Mastery: <span id="stat-concept-name" style="color: var(--accent-cyan);">—</span></div>
+              <div class="metric-val" id="stat-pknown">0.30</div>
+              <div class="bkt-meter">
+                <div id="stat-meter-fill" class="bkt-fill" style="width: 30%;"></div>
+              </div>
+              <div class="metric-sub" id="stat-mastery-status">Initial prior state</div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">Active Root Learning Gaps</div>
+              <div id="active-gaps-list" style="margin-top: 10px;">
+                <p style="font-size: 13px; color: var(--text-muted);">No active prerequisite gaps for this student.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CLASS HEATMAP -->
+    <div id="tab-heatmap" class="tab-view">
+      <div class="metrics-row" id="heatmap-metrics"></div>
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Cohort Mastery Matrix (30 Students × 16 Concepts)</span>
+          <div style="display: flex; gap: 14px; font-size: 12px; align-items: center;">
+            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; background: #ef4444; border-radius: 3px; display: inline-block;"></span> &lt;40% Gap</span>
+            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; background: #f59e0b; border-radius: 3px; display: inline-block;"></span> 40-70% In-Progress</span>
+            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; background: #10b981; border-radius: 3px; display: inline-block;"></span> ≥85% Mastered</span>
+          </div>
+        </div>
+        <div class="heatmap-wrapper">
+          <table class="heatmap-table" id="heatmap-table">
+            <thead id="heatmap-head"></thead>
+            <tbody id="heatmap-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: MISCONCEPTIONS -->
+    <div id="tab-misconceptions" class="tab-view">
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Cognitive Misconceptions Leaderboard</span>
+          <span id="misc-total-badge" class="badge badge-danger">170+ Recorded</span>
+        </div>
+        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+          Aggregated common student error patterns tagged across the MCQ question bank. Identifies where targeted class-wide intervention is most critical.
+        </p>
+        <div class="misc-list" id="misc-list-container"></div>
+      </div>
+    </div>
+
+    <!-- TAB 4: CURRICULUM GRAPH -->
+    <div id="tab-curriculum" class="tab-view">
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Curriculum Prerequisite Hierarchy (Fractions → Algebra)</span>
+          <span class="badge badge-primary">16 Concepts DAG</span>
+        </div>
+        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">
+          Directed Acyclic Graph loaded via NetworkX. Root-gap detection walks backwards through these prerequisite edges whenever a student struggles.
+        </p>
+        <div class="concept-grid" id="curriculum-grid"></div>
+      </div>
+    </div>
+
+    <!-- TAB 5: STUDENT PROFILE -->
+    <div id="tab-student-profile" class="tab-view">
+      <div class="card">
+        <div class="section-header">
+          <span class="section-title">Student Knowledge Tracing Breakdown</span>
+          <div class="selector-group" style="margin: 0; min-width: 260px;">
+            <select id="profile-student-select" class="select-dropdown" onchange="loadStudentProfile()">
+            </select>
+          </div>
+        </div>
+        <div id="profile-summary" class="metrics-row" style="margin-top: 16px;"></div>
+        <div id="profile-concepts-list" class="concept-grid" style="margin-top: 20px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentQuestion = null;
+    let selectedOptionIndex = null;
+    let studentsCache = [];
+    let conceptsCache = [];
+
+    // Authenticated API request wrapper
+    async function authFetch(url, options = {}) {
+      const token = localStorage.getItem('cognify_token');
+      const headers = {
+        ...(options.headers || {}),
+      };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      const res = await fetch(url, { ...options, headers });
+      if (res.status === 401 || res.status === 403) {
+        console.warn(`Authentication or authorization error (${res.status}) on ${url}. Redirecting to login.`);
+        logoutRole();
+        throw new Error(`Authentication error (${res.status}): Please log in.`);
+      }
+      return res;
+    }
+
+    // Color mapper for heatmap
+    function getMasteryColor(p) {
+      if (p >= 0.85) return 'rgba(16, 185, 129, 0.75)'; // Emerald
+      if (p >= 0.70) return 'rgba(52, 211, 153, 0.45)';
+      if (p >= 0.50) return 'rgba(245, 158, 11, 0.65)'; // Amber
+      if (p >= 0.35) return 'rgba(239, 68, 68, 0.45)'; // Soft red
+      return 'rgba(239, 68, 68, 0.75)'; // High danger red
+    }
+
+    async function initApp() {
+      const token = localStorage.getItem('cognify_token');
+      const role = localStorage.getItem('cognify_user_role');
+
+      if (!token || !role) {
+        document.getElementById('login-modal').style.display = 'flex';
+        return;
+      }
+
+      applyRoleFilter();
+
+      try {
+        await loadConcepts();
+
+        if (role === 'teacher') {
+          await loadStudentsForTeacher();
+          loadHeatmap();
+          loadMisconceptions();
+        } else {
+          await loadNextQuestion();
+        }
+      } catch (err) {
+        console.error('App initialization error:', err);
+      }
+    }
+
+    async function loadConcepts() {
+      const cRes = await authFetch('/concepts');
+      const cData = await cRes.json();
+      conceptsCache = cData.nodes;
+      renderCurriculum(cData);
+    }
+
+    async function loadStudentsForTeacher() {
+      try {
+        const sRes = await authFetch('/students');
+        studentsCache = await sRes.json();
+
+        const profileSelect = document.getElementById('profile-student-select');
+        const tutorSelect = document.getElementById('student-select');
+        if (profileSelect) {
+          profileSelect.innerHTML = '';
+          studentsCache.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.student_id;
+            opt.textContent = `${s.name} (${s.student_id})`;
+            profileSelect.appendChild(opt);
+          });
+        }
+        if (tutorSelect) {
+          tutorSelect.innerHTML = '';
+          studentsCache.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.student_id;
+            opt.textContent = `${s.name} (${s.student_id})`;
+            tutorSelect.appendChild(opt);
+          });
+        }
+      } catch (err) {
+        console.error('Failed to load students for teacher:', err);
+      }
+    }
+
+    function applyRoleFilter() {
+      const token = localStorage.getItem('cognify_token');
+      const role = localStorage.getItem('cognify_user_role');
+      const studentId = localStorage.getItem('cognify_student_id') || '';
+      const studentName = localStorage.getItem('cognify_user_name') || studentId;
+      const loginId = localStorage.getItem('cognify_login_id') || 'teacher';
+
+      const modal = document.getElementById('login-modal');
+      const roleBadge = document.getElementById('header-role-badge');
+      const subtitle = document.getElementById('header-subtitle');
+      const studentBanner = document.getElementById('student-identity-banner');
+      const studentBannerName = document.getElementById('student-banner-name');
+      const tutorSelectorGroup = document.getElementById('tutor-student-selector-group');
+
+      if (!token || !role) {
+        modal.style.display = 'flex';
+        return;
+      }
+
+      modal.style.display = 'none';
+
+      const btnTutor = document.getElementById('tab-btn-tutor');
+      const btnCurriculum = document.getElementById('tab-btn-curriculum');
+      const btnHeatmap = document.getElementById('tab-btn-heatmap');
+      const btnMisc = document.getElementById('tab-btn-misconceptions');
+      const btnProfile = document.getElementById('tab-btn-profile');
+
+      if (role === 'student') {
+        if (roleBadge) {
+          roleBadge.className = 'badge badge-primary';
+          roleBadge.textContent = `Student: ${studentName} (${studentId})`;
+        }
+        if (subtitle) subtitle.textContent = 'Bayesian Knowledge Tracing & Prerequisite Root-Gap Detection';
+
+        // Show student banner, completely remove/hide selector dropdown for student
+        if (studentBanner) studentBanner.style.display = 'flex';
+        if (studentBannerName) studentBannerName.textContent = `${studentName} (${studentId})`;
+        if (tutorSelectorGroup) tutorSelectorGroup.style.display = 'none';
+
+        // Student-only tabs: Quiz and Knowledge Graph
+        if (btnTutor) btnTutor.style.display = 'inline-flex';
+        if (btnCurriculum) btnCurriculum.style.display = 'inline-flex';
+        if (btnHeatmap) btnHeatmap.style.display = 'none';
+        if (btnMisc) btnMisc.style.display = 'none';
+        if (btnProfile) btnProfile.style.display = 'none';
+
+        switchTab('tutor');
+      } else if (role === 'teacher') {
+        if (roleBadge) {
+          roleBadge.className = 'badge badge-success';
+          roleBadge.textContent = 'Teacher: ' + loginId;
+        }
+        if (subtitle) subtitle.textContent = 'Cohort Mastery Heatmap & Prerequisite Root-Gap Analytics';
+
+        if (studentBanner) studentBanner.style.display = 'none';
+        if (tutorSelectorGroup) tutorSelectorGroup.style.display = 'none';
+
+        // Teacher-only tabs: Heatmap, Misconceptions, and Student Profile
+        if (btnTutor) btnTutor.style.display = 'none';
+        if (btnCurriculum) btnCurriculum.style.display = 'none';
+        if (btnHeatmap) btnHeatmap.style.display = 'inline-flex';
+        if (btnMisc) btnMisc.style.display = 'inline-flex';
+        if (btnProfile) btnProfile.style.display = 'inline-flex';
+
+        switchTab('heatmap');
+      }
+    }
+
+    async function submitStudentLogin() {
+      const loginIdInput = document.getElementById('modal-student-login-id');
+      const passInput = document.getElementById('modal-student-password');
+      const errDiv = document.getElementById('modal-student-error');
+
+      const loginId = loginIdInput ? loginIdInput.value.trim() : '';
+      const password = passInput ? passInput.value.trim() : '';
+
+      if (!loginId) {
+        if (errDiv) {
+          errDiv.style.display = 'block';
+          errDiv.textContent = 'Please enter a Student Login ID.';
+        }
+        return;
+      }
+
+      if (errDiv) errDiv.style.display = 'none';
+
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            role: 'student',
+            student_id: loginId,
+            password: password || 'student123',
+          }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || 'Login failed. Please check credentials.');
+        }
+
+        const data = await res.json();
+        localStorage.setItem('cognify_token', data.access_token);
+        localStorage.setItem('cognify_user_role', 'student');
+        localStorage.setItem('cognify_student_id', data.student_id);
+        localStorage.setItem('cognify_user_name', data.name || data.student_id);
+
+        document.getElementById('login-modal').style.display = 'none';
+        applyRoleFilter();
+        await loadConcepts();
+        await loadNextQuestion();
+      } catch (e) {
+        if (errDiv) {
+          errDiv.style.display = 'block';
+          errDiv.textContent = e.message;
+        }
+      }
+    }
+
+    async function submitTeacherLogin() {
+      const loginIdInput = document.getElementById('modal-teacher-login-id');
+      const passInput = document.getElementById('modal-teacher-password');
+      const errDiv = document.getElementById('modal-teacher-error');
+
+      const loginId = loginIdInput ? loginIdInput.value.trim() : 'teacher';
+      const passVal = passInput ? passInput.value.trim() : '';
+
+      if (!passVal) {
+        if (errDiv) {
+          errDiv.style.display = 'block';
+          errDiv.textContent = 'Please enter password or PIN (demo: 1234 or teacher123).';
+        }
+        return;
+      }
+
+      if (errDiv) errDiv.style.display = 'none';
+
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            role: 'teacher',
+            pin: passVal,
+            password: passVal,
+          }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.detail || 'Invalid teacher credentials.');
+        }
+
+        const data = await res.json();
+        localStorage.setItem('cognify_token', data.access_token);
+        localStorage.setItem('cognify_user_role', 'teacher');
+        localStorage.setItem('cognify_login_id', loginId);
+        localStorage.setItem('cognify_user_name', data.name || 'Teacher');
+
+        document.getElementById('login-modal').style.display = 'none';
+        applyRoleFilter();
+        await loadConcepts();
+        await loadStudentsForTeacher();
+        loadHeatmap();
+        loadMisconceptions();
+      } catch (e) {
+        if (errDiv) {
+          errDiv.style.display = 'block';
+          errDiv.textContent = e.message;
+        }
+      }
+    }
+
+    function logoutRole() {
+      localStorage.removeItem('cognify_token');
+      localStorage.removeItem('cognify_user_role');
+      localStorage.removeItem('cognify_login_id');
+      localStorage.removeItem('cognify_student_id');
+      localStorage.removeItem('cognify_user_name');
+
+      const modal = document.getElementById('login-modal');
+      if (modal) modal.style.display = 'flex';
+      applyRoleFilter();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+
+      const targetBtn = document.getElementById('tab-btn-' + tabId) || (window.event && window.event.target);
+      if (targetBtn && targetBtn.classList) targetBtn.classList.add('active');
+      const targetTab = document.getElementById('tab-' + tabId);
+      if (targetTab) targetTab.classList.add('active');
+
+      if (tabId === 'heatmap') loadHeatmap();
+      if (tabId === 'misconceptions') loadMisconceptions();
+      if (tabId === 'student-profile') loadStudentProfile();
+    }
+
+    function getActiveStudentId() {
+      const role = localStorage.getItem('cognify_user_role');
+      if (role === 'student') {
+        return localStorage.getItem('cognify_student_id') || 'std_frac_01';
+      }
+      const select = document.getElementById('student-select');
+      return (select && select.value) ? select.value : 'std_frac_01';
+    }
+
+    async function loadNextQuestion() {
+      const studentId = getActiveStudentId();
+      if (!studentId) return;
+
+      document.getElementById('feedback-container').style.display = 'none';
+      selectedOptionIndex = null;
+      document.getElementById('submit-btn').disabled = false;
+
+      try {
+        const res = await authFetch(`/next-question/${studentId}`);
+        currentQuestion = await res.json();
+
+        document.getElementById('q-concept').textContent = currentQuestion.concept_name;
+        document.getElementById('q-diff').textContent = `Diff ${currentQuestion.difficulty} • ${currentQuestion.concept_category}`;
+        document.getElementById('q-prompt').textContent = currentQuestion.prompt;
+        document.getElementById('rec-reason').textContent = currentQuestion.recommendation_reason;
+
+        // Target Badge
+        const badge = document.getElementById('target-badge');
+        if (currentQuestion.root_gap_alert) {
+          badge.textContent = 'Root Gap Remediation';
+          badge.className = 'badge badge-warning';
+        } else {
+          badge.textContent = 'Curriculum Progression';
+          badge.className = 'badge badge-primary';
+        }
+
+        // Render Options
+        const optGrid = document.getElementById('q-options');
+        optGrid.innerHTML = '';
+        currentQuestion.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'opt-btn';
+          btn.innerHTML = `<span class="opt-indicator">${String.fromCharCode(65 + idx)}</span> <span>${opt.text}</span>`;
+          btn.onclick = () => selectOption(idx);
+          optGrid.appendChild(btn);
+        });
+
+        // Update student live stats
+        updateLiveStudentStats(studentId, currentQuestion.concept_id, currentQuestion.current_mastery);
+      } catch (err) {
+        console.error('Failed to load next question:', err);
+      }
+    }
+
+    function selectOption(index) {
+      selectedOptionIndex = index;
+      const btns = document.querySelectorAll('.opt-btn');
+      btns.forEach((b, idx) => {
+        b.classList.toggle('selected', idx === index);
+      });
+    }
+
+    function formatMisconceptionLabel(misc) {
+      if (!misc) return 'Unclassified Error';
+      return misc
+        .replace(/_/g, ' ')
+        .split(' ')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+
+    async function submitAnswer() {
+      if (selectedOptionIndex === null) {
+        alert('Please choose an answer option first!');
+        return;
+      }
+
+      const studentId = getActiveStudentId();
+      document.getElementById('submit-btn').disabled = true;
+
+      const payload = {
+        student_id: studentId,
+        question_id: currentQuestion.question_id,
+        selected_option: selectedOptionIndex,
+      };
+
+      try {
+        const res = await authFetch('/answer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        const pAfter = data.p_after !== undefined ? data.p_after : data.p_known_after;
+        renderFeedback(data);
+        updateLiveStudentStats(studentId, data.concept_id, pAfter);
+      } catch (err) {
+        console.error('Failed to submit answer:', err);
+        document.getElementById('submit-btn').disabled = false;
+      }
+    }
+
+    function renderFeedback(data) {
+      const fb = document.getElementById('feedback-container');
+      fb.style.display = 'block';
+
+      const pBefore = data.p_before !== undefined ? data.p_before : data.p_known_before;
+      const pAfter = data.p_after !== undefined ? data.p_after : data.p_known_after;
+      const delta = pAfter - pBefore;
+      const deltaPercent = (delta * 100).toFixed(1);
+      const deltaFormatted = delta >= 0 ? `+${deltaPercent}%` : `${deltaPercent}%`;
+
+      if (data.is_correct) {
+        fb.className = 'feedback-box feedback-correct';
+        fb.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #34d399; font-size: 16px; margin-bottom: 6px;">
+            ✓ Correct!
+          </div>
+          <p style="font-size: 14px; color: var(--text-primary); margin-bottom: 8px;">${data.explanation}</p>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">
+            BKT P(known): <strong>${(pBefore * 100).toFixed(1)}%</strong> ➔ <strong style="color: #34d399;">${(pAfter * 100).toFixed(1)}%</strong> (${deltaFormatted})
+          </div>
+        `;
+      } else {
+        fb.className = 'feedback-box feedback-incorrect';
+        let rootGapHtml = '';
+        if (data.root_gap && data.root_gap.root_gap_found) {
+          const chainNodes = data.root_gap.prerequisite_chain.map(c => {
+            const isRoot = (c === data.root_gap.root_concept_id);
+            const isTarget = (c === data.root_gap.failed_concept_id);
+            const cls = isRoot ? 'prereq-node root-weak' : (isTarget ? 'prereq-node failed-target' : 'prereq-node');
+            return `<span class="${cls}">${c}</span>`;
+          }).join(' ➔ ');
+
+          rootGapHtml = `
+            <div class="gap-alert-box">
+              <div class="gap-header">⚠️ Prerequisite Root Gap Detected!</div>
+              <p style="font-size: 13px; color: #fde68a; line-height: 1.4;">${data.root_gap.message}</p>
+              <div class="prereq-chain">
+                <span style="color: var(--text-muted); margin-right: 4px;">Dependency Chain:</span> ${chainNodes}
+              </div>
+            </div>
+          `;
+        }
+
+        const explanationText = data.remediation || data.misconception_explanation;
+        let aiInsightHtml = '';
+        if (explanationText) {
+          aiInsightHtml = `
+            <div style="margin: 12px 0; padding: 12px 14px; background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.35); border-radius: 8px; text-align: left;">
+              <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #818cf8; display: block; margin-bottom: 3px; letter-spacing: 0.03em;">💡 Targeted Remediation</span>
+              <p style="font-size: 13.5px; color: #f1f5f9; line-height: 1.45; margin: 0;">${explanationText}</p>
+            </div>
+          `;
+        }
+
+        const formattedLabel = formatMisconceptionLabel(data.misconception);
+
+        fb.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #f87171; font-size: 16px; margin-bottom: 6px;">
+            ✗ Incorrect
+          </div>
+          <p style="font-size: 13px; color: #fca5a5; margin-bottom: 4px;">
+            Tagged Misconception: <strong style="text-decoration: underline;">${formattedLabel}</strong>
+          </p>
+          ${aiInsightHtml}
+          <p style="font-size: 14px; color: var(--text-primary); margin-bottom: 8px;">${data.explanation}</p>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">
+            BKT P(known): <strong>${(pBefore * 100).toFixed(1)}%</strong> ➔ <strong style="color: #f87171;">${(pAfter * 100).toFixed(1)}%</strong> (${deltaFormatted})
+          </div>
+          ${rootGapHtml}
+        `;
+      }
+    }
+
+    async function updateLiveStudentStats(studentId, conceptId, pKnown) {
+      document.getElementById('stat-pknown').textContent = (pKnown * 100).toFixed(1) + '%';
+      document.getElementById('stat-meter-fill').style.width = `${Math.min(100, pKnown * 100)}%`;
+
+      const c = conceptsCache.find(x => x.id === conceptId);
+      document.getElementById('stat-concept-name').textContent = c ? c.name : conceptId;
+
+      const statusEl = document.getElementById('stat-mastery-status');
+      if (pKnown >= 0.85) {
+        statusEl.textContent = 'Concept Mastered (≥85%)';
+        statusEl.style.color = '#34d399';
+      } else if (pKnown < 0.40) {
+        statusEl.textContent = 'Critical Learning Gap (<40%)';
+        statusEl.style.color = '#f87171';
+      } else {
+        statusEl.textContent = 'In Progress Practice (40-85%)';
+        statusEl.style.color = '#fbbf24';
+      }
+
+      try {
+        const mRes = await authFetch(`/mastery/${studentId}`);
+        const mData = await mRes.json();
+        const gapsList = document.getElementById('active-gaps-list');
+        if (mData.active_root_gaps && mData.active_root_gaps.length > 0) {
+          gapsList.innerHTML = mData.active_root_gaps.map(g => `
+            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 10px; margin-bottom: 8px;">
+              <div style="font-size: 12px; font-weight: 700; color: #fca5a5;">${g.failed_concept_name} ➔ Weakness in: ${g.root_concept_name}</div>
+              <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">Mastery: ${(g.p_known * 100).toFixed(1)}%</div>
+            </div>
+          `).join('');
+        } else {
+          gapsList.innerHTML = `<p style="font-size: 13px; color: var(--text-muted);">No active prerequisite gaps for this student.</p>`;
+        }
+      } catch (err) {
+        console.error('Failed to update live gaps:', err);
+      }
+    }
+
+    async function loadHeatmap() {
+      try {
+        const res = await authFetch('/class-heatmap');
+        const data = await res.json();
+
+        // Top Metrics
+        const mContainer = document.getElementById('heatmap-metrics');
+        mContainer.innerHTML = `
+          <div class="metric-card">
+            <div class="metric-title">Cohort Size</div>
+            <div class="metric-val">${data.total_students}</div>
+            <div class="metric-sub">Active Students</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Class Average Mastery</div>
+            <div class="metric-val" style="color: #34d399;">${(data.class_average_mastery * 100).toFixed(1)}%</div>
+            <div class="metric-sub">Across 16 Math Concepts</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Hardest Concept</div>
+            <div class="metric-val" style="font-size: 20px; color: #f87171;">${data.hardest_concept || '—'}</div>
+            <div class="metric-sub">Lowest Cohort Average</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Most Mastered Concept</div>
+            <div class="metric-val" style="font-size: 20px; color: #06b6d4;">${data.most_mastered_concept || '—'}</div>
+            <div class="metric-sub">Highest Completion Rate</div>
+          </div>
+        `;
+
+        // Table Header
+        const head = document.getElementById('heatmap-head');
+        let ths = `<tr><th>Student Name (click to view profile)</th>`;
+        data.concepts.forEach(c => {
+          ths += `<th title="${c.name} (${c.mastery_percentage}% mastered)">${c.name.substring(0, 14)}..</th>`;
+        });
+        ths += `</tr>`;
+        head.innerHTML = ths;
+
+        // Table Body with click-a-student-row feature
+        const body = document.getElementById('heatmap-body');
+        let trs = '';
+        data.students.forEach(s => {
+          trs += `<tr style="cursor: pointer;" onclick="openStudentFromHeatmap('${s.student_id}')" title="Click to view detailed profile for ${s.name}">`;
+          trs += `<td style="font-weight: 600; text-decoration: underline; text-decoration-color: rgba(99, 102, 241, 0.4);">${s.name} <span style="font-size: 11px; color: var(--accent-cyan);">➔</span></td>`;
+          data.concepts.forEach(c => {
+            const score = data.matrix[s.student_id]?.[c.concept_id] ?? 0.3;
+            const bg = getMasteryColor(score);
+            trs += `<td style="background: ${bg};" title="${s.name} • ${c.name}: ${(score * 100).toFixed(1)}%">${(score * 100).toFixed(0)}%</td>`;
+          });
+          trs += `</tr>`;
+        });
+        body.innerHTML = trs;
+      } catch (err) {
+        console.error('Failed to load heatmap:', err);
+      }
+    }
+
+    function openStudentFromHeatmap(studentId) {
+      const profileSelect = document.getElementById('profile-student-select');
+      if (profileSelect) profileSelect.value = studentId;
+      switchTab('student-profile');
+      loadStudentProfile(studentId);
+    }
+
+    async function loadMisconceptions() {
+      try {
+        const res = await authFetch('/misconceptions');
+        const data = await res.json();
+
+        document.getElementById('misc-total-badge').textContent = `${data.total_occurrences} Occurrences Recorded`;
+        const container = document.getElementById('misc-list-container');
+
+        container.innerHTML = data.top_misconceptions.map(m => `
+          <div class="misc-item">
+            <div>
+              <div class="misc-name">${formatMisconceptionLabel(m.misconception)}</div>
+              <div class="misc-concept">Concept: ${m.concept_name}</div>
+            </div>
+            <div class="misc-count-box">
+              <div class="misc-count">${m.count}</div>
+              <div class="misc-students">${m.affected_students} students affected</div>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Failed to load misconceptions:', err);
+      }
+    }
+
+    function renderCurriculum(data) {
+      const grid = document.getElementById('curriculum-grid');
+      grid.innerHTML = data.nodes.map(c => `
+        <div class="concept-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <h4>${c.name}</h4>
+            <span class="badge badge-primary">Diff ${c.difficulty}</span>
+          </div>
+          <p>${c.category}</p>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Prerequisites: ${c.prerequisites.length > 0 ? c.prerequisites.map(p => `<span class="badge badge-primary" style="margin: 2px;">${p}</span>`).join(' ') : '<em>None (Foundational Root)</em>'}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadStudentProfile(explicitStudentId) {
+      const studentId = explicitStudentId || document.getElementById('profile-student-select').value || 'std_adv_01';
+      try {
+        const res = await authFetch(`/mastery/${studentId}`);
+        const data = await res.json();
+
+        const summary = document.getElementById('profile-summary');
+        summary.innerHTML = `
+          <div class="metric-card">
+            <div class="metric-title">Learner</div>
+            <div class="metric-val" style="font-size: 20px; color: #fff;">${data.name}</div>
+            <div class="metric-sub">${data.student_id}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Overall Mastery</div>
+            <div class="metric-val" style="color: #34d399;">${(data.overall_mastery * 100).toFixed(1)}%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Mastered Concepts</div>
+            <div class="metric-val">${data.mastered_count} / ${data.total_concepts}</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-title">Active Root Gaps</div>
+            <div class="metric-val" style="color: ${data.active_root_gaps.length > 0 ? '#f87171' : '#34d399'};">
+              ${data.active_root_gaps.length}
+            </div>
+          </div>
+        `;
+
+        const list = document.getElementById('profile-concepts-list');
+        list.innerHTML = data.concepts.map(c => {
+          let badgeCls = 'badge-primary';
+          if (c.status === 'mastered') badgeCls = 'badge-success';
+          if (c.status === 'struggling') badgeCls = 'badge-danger';
+          if (c.status === 'in_progress') badgeCls = 'badge-warning';
+
+          return `
+            <div class="concept-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h4 style="font-size: 15px;">${c.concept_name}</h4>
+                <span class="badge ${badgeCls}">${c.status}</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: #ffffff;">
+                P(known): ${(c.p_known * 100).toFixed(1)}%
+              </div>
+              <div class="bkt-meter">
+                <div class="bkt-fill" style="width: ${c.p_known * 100}%;"></div>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between;">
+                <span>Attempts: ${c.total_attempts}</span>
+                <span>Correct: ${c.correct_attempts}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error('Failed to load student profile:', err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
+
