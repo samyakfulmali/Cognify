@@ -2,15 +2,12 @@
   "functions": {
     "api/index.py": {
       "includeFiles": "{app/**,data/**}"
-    },
-    "index.py": {
-      "includeFiles": "{app/**,data/**}"
     }
   },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/index.py"
+      "destination": "/api/index.py?__path__=$1"
     }
   ]
 }

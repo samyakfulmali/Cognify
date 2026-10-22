@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from typing import Dict, List, Optional
-from fastapi import Depends, FastAPI, HTTPException, Query, status
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.auth import (
@@ -88,14 +88,36 @@ STATIC_INDEX = STATIC_DIR / "index.html"
 
 
 @app.middleware("http")
-async def fix_vercel_path(request, call_next):
-    """Normalize paths when Vercel serverless rewrites include filename prefixes."""
-    raw_path = request.scope.get("path", "")
-    for prefix in ("/index.py", "/api/index.py", "/api/index"):
-        if raw_path.startswith(prefix):
-            remainder = raw_path[len(prefix):]
-            request.scope["path"] = remainder if remainder.startswith("/") else ("/" + remainder) if remainder else "/"
-            break
+async def fix_vercel_path(request: Request, call_next):
+    """Restore client requested route from Vercel rewrite parameter or proxy headers."""
+    # 1. Captured path from Vercel rewrites: /api/index.py?__path__=$1
+    path_param = request.query_params.get("__path__")
+    if path_param is not None:
+        target = "/" + path_param.lstrip("/")
+        request.scope["path"] = target
+    else:
+        # 2. Captured from Vercel proxy headers
+        matched = (
+            request.headers.get("x-matched-path")
+            or request.headers.get("x-forwarded-uri")
+            or request.headers.get("x-original-uri")
+        )
+        if matched:
+            clean = matched.split("?")[0]
+            for prefix in ("/api/index.py", "/api/index", "/index.py"):
+                if clean.startswith(prefix):
+                    clean = clean[len(prefix):] or "/"
+                    break
+            request.scope["path"] = clean if clean.startswith("/") else ("/" + clean)
+        else:
+            raw_path = request.scope.get("path", "")
+            for prefix in ("/api/index.py", "/api/index", "/index.py"):
+                if raw_path.startswith(prefix):
+                    remainder = raw_path[len(prefix):]
+                    if remainder:
+                        request.scope["path"] = remainder if remainder.startswith("/") else ("/" + remainder)
+                    break
+
     return await call_next(request)
 
 
