@@ -2,7 +2,6 @@ import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import type { Student, UserRole } from '../types';
 import {
-  BrainIcon,
   BulbIcon,
   GraduationCapIcon,
   GraphIcon,
@@ -67,25 +66,18 @@ export const Header: React.FC<HeaderProps> = ({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <div
+          <img
+            src="/logo.svg"
+            alt="Cognify Logo"
             style={{
               width: '44px',
               height: '44px',
               borderRadius: '12px',
-              background: userRole === 'teacher'
-                ? 'linear-gradient(135deg, #10b981, #06b6d4)'
-                : 'linear-gradient(135deg, #6366f1, #06b6d4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
               boxShadow: userRole === 'teacher'
                 ? '0 4px 16px rgba(16, 185, 129, 0.3)'
                 : '0 4px 16px var(--primary-glow)',
             }}
-          >
-            {userRole === 'teacher' ? <GraduationCapIcon size={24} /> : <BrainIcon size={24} />}
-          </div>
+          />
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h1

@@ -148,6 +148,16 @@ def dashboard():
     return HTMLResponse(content="<h1>Cognify API is running</h1><p>Static index not found.</p>")
 
 
+@app.get("/logo.svg", include_in_schema=False)
+@app.get("/favicon.ico", include_in_schema=False)
+@app.get("/favicon.svg", include_in_schema=False)
+def get_logo():
+    logo_path = STATIC_DIR / "logo.svg"
+    if logo_path.exists():
+        return FileResponse(logo_path, media_type="image/svg+xml")
+    raise HTTPException(status_code=404, detail="Logo not found")
+
+
 
 @app.get("/health")
 def health():

@@ -6,10 +6,10 @@
     "options": [
       {
         "id": 0,
-        "text": "3/8",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "5/8",
+        "is_correct": false,
+        "misconception": "counted_unshaded_as_target",
+        "remediation": "You counted the remaining or unshaded parts instead of the target parts. Carefully check which portion the question asks you to measure."
       },
       {
         "id": 1,
@@ -27,13 +27,13 @@
       },
       {
         "id": 3,
-        "text": "5/8",
-        "is_correct": false,
-        "misconception": "counted_unshaded_as_target",
-        "remediation": "You counted the remaining or unshaded parts instead of the target parts. Carefully check which portion the question asks you to measure."
+        "text": "3/8",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Sarah ate 3 parts out of 8 total equal parts, which is represented as 3/8."
   },
   {
@@ -43,34 +43,34 @@
     "options": [
       {
         "id": 0,
-        "text": "The total number of equal parts that make up the whole",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "The number of parts being counted or selected",
         "is_correct": false,
         "misconception": "confused_numerator_and_denominator",
         "remediation": "You confused the numerator with the denominator. Remember: the denominator on the bottom shows the total equal partitions, while the numerator on top counts how many parts are taken."
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "The parts left over after selecting 5 parts",
         "is_correct": false,
         "misconception": "ratio_part_to_remaining_part",
         "remediation": "You compared the selected parts to the remaining parts rather than the whole. A fraction must compare the selected parts to the total number of equal parts."
       },
       {
-        "id": 3,
+        "id": 2,
         "text": "A number to multiply the numerator by",
         "is_correct": false,
         "misconception": "treated_fraction_as_multiplication",
         "remediation": "You treated the denominator as a multiplier. The denominator tells you how many equal pieces the whole is split into, not a value to multiply by."
+      },
+      {
+        "id": 3,
+        "text": "The total number of equal parts that make up the whole",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "The denominator indicates how many equal parts the whole is partitioned into."
   },
   {
@@ -124,24 +124,24 @@
       },
       {
         "id": 1,
+        "text": "No, it represents 4/1 instead",
+        "is_correct": false,
+        "misconception": "inverted_numerator_denominator",
+        "remediation": "You inverted the numerator and denominator. The numerator represents the counted parts, while the denominator represents the total equal parts that make up the whole."
+      },
+      {
+        "id": 2,
         "text": "Yes, because 1 out of 4 parts is colored regardless of size",
         "is_correct": false,
         "misconception": "ignored_equal_parts_requirement",
         "remediation": "You counted sections without checking if they are equal. Standard fractions require all partitions of the whole to be exactly equal in size."
       },
       {
-        "id": 2,
+        "id": 3,
         "text": "Yes, but only if the colored part is on the left side",
         "is_correct": false,
         "misconception": "spatial_orientation_bias",
         "remediation": "You based the fraction on location or visual direction rather than equal portion size. Fraction values depend strictly on equal part quantities, not spatial position."
-      },
-      {
-        "id": 3,
-        "text": "No, it represents 4/1 instead",
-        "is_correct": false,
-        "misconception": "inverted_numerator_denominator",
-        "remediation": "You inverted the numerator and denominator. The numerator represents the counted parts, while the denominator represents the total equal parts that make up the whole."
       }
     ],
     "correct_option": 0,
@@ -161,24 +161,24 @@
       },
       {
         "id": 1,
-        "text": "3/4",
-        "is_correct": false,
-        "misconception": "add_to_both_terms",
-        "remediation": "You added the same number to both numerator and denominator. To form equivalent fractions, you must multiply or divide both terms by the same non-zero factor, never add or subtract."
-      },
-      {
-        "id": 2,
         "text": "4/3",
         "is_correct": false,
         "misconception": "multiplied_only_numerator",
         "remediation": "You multiplied only the numerator. To preserve fraction equivalence, you must multiply both the numerator and the denominator by the exact same non-zero number."
       },
       {
-        "id": 3,
+        "id": 2,
         "text": "2/6",
         "is_correct": false,
         "misconception": "multiplied_only_denominator",
         "remediation": "You multiplied only the denominator. Multiplying only the bottom changes the partition size without scaling the parts; multiply both terms equally."
+      },
+      {
+        "id": 3,
+        "text": "3/4",
+        "is_correct": false,
+        "misconception": "add_to_both_terms",
+        "remediation": "You added the same number to both numerator and denominator. To form equivalent fractions, you must multiply or divide both terms by the same non-zero factor, never add or subtract."
       }
     ],
     "correct_option": 0,
@@ -191,34 +191,34 @@
     "options": [
       {
         "id": 0,
-        "text": "3/4",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "6/8",
-        "is_correct": false,
-        "misconception": "incomplete_simplification",
-        "remediation": "You simplified partially but did not reduce to lowest terms. Divide both numerator and denominator by their greatest common factor until no common factors remain."
-      },
-      {
-        "id": 2,
         "text": "4/3",
         "is_correct": false,
         "misconception": "inverted_numerator_denominator",
         "remediation": "You inverted the numerator and denominator. The numerator represents the counted parts, while the denominator represents the total equal parts that make up the whole."
       },
       {
-        "id": 3,
+        "id": 1,
+        "text": "3/4",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
         "text": "9/13",
         "is_correct": false,
         "misconception": "subtracted_from_both_terms",
         "remediation": "You subtracted numbers from both terms. Equivalence is created through multiplicative scaling, never by subtracting values from the top and bottom."
+      },
+      {
+        "id": 3,
+        "text": "6/8",
+        "is_correct": false,
+        "misconception": "incomplete_simplification",
+        "remediation": "You simplified partially but did not reduce to lowest terms. Divide both numerator and denominator by their greatest common factor until no common factors remain."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Dividing both 12 and 16 by their greatest common factor (4) yields 3/4."
   },
   {
@@ -235,10 +235,10 @@
       },
       {
         "id": 1,
-        "text": "Yes, adding any equal number to top and bottom always keeps equivalence",
+        "text": "No, fractions with different denominators can never be equivalent",
         "is_correct": false,
-        "misconception": "add_to_both_terms",
-        "remediation": "You added the same number to both numerator and denominator. To form equivalent fractions, you must multiply or divide both terms by the same non-zero factor, never add or subtract."
+        "misconception": "denominator_determines_value_exclusively",
+        "remediation": "You judged fraction value solely by the denominator. You must evaluate the ratio between both the numerator and denominator to determine equivalence."
       },
       {
         "id": 2,
@@ -249,10 +249,10 @@
       },
       {
         "id": 3,
-        "text": "No, fractions with different denominators can never be equivalent",
+        "text": "Yes, adding any equal number to top and bottom always keeps equivalence",
         "is_correct": false,
-        "misconception": "denominator_determines_value_exclusively",
-        "remediation": "You judged fraction value solely by the denominator. You must evaluate the ratio between both the numerator and denominator to determine equivalence."
+        "misconception": "add_to_both_terms",
+        "remediation": "You added the same number to both numerator and denominator. To form equivalent fractions, you must multiply or divide both terms by the same non-zero factor, never add or subtract."
       }
     ],
     "correct_option": 0,
@@ -302,17 +302,17 @@
     "options": [
       {
         "id": 0,
-        "text": "12",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "24",
         "is_correct": false,
         "misconception": "multiplied_denominators_instead_of_lcm",
         "remediation": "You multiplied the denominators directly instead of finding the Least Common Multiple (LCM). Listing multiples finds the smallest common denominator, avoiding unnecessarily large numbers."
+      },
+      {
+        "id": 1,
+        "text": "12",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 2,
@@ -329,7 +329,7 @@
         "remediation": "You picked the GCF. The LCD needs the least common multiple, so list multiples of each denominator and find the smallest shared one."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Multiples of 4 are 4, 8, 12, 16... Multiples of 6 are 6, 12, 18... The least common multiple is 12."
   },
   {
@@ -376,34 +376,34 @@
     "options": [
       {
         "id": 0,
-        "text": "24",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "96",
-        "is_correct": false,
-        "misconception": "multiplied_denominators_instead_of_lcm",
-        "remediation": "You multiplied the denominators directly instead of finding the Least Common Multiple (LCM). Listing multiples finds the smallest common denominator, avoiding unnecessarily large numbers."
-      },
-      {
-        "id": 2,
         "text": "20",
         "is_correct": false,
         "misconception": "added_denominators",
         "remediation": "You added the denominators together. Common denominators must be a shared multiple of both numbers, found using LCM rather than addition."
       },
       {
-        "id": 3,
+        "id": 1,
         "text": "4",
         "is_correct": false,
         "misconception": "confused_gcf_with_lcm",
         "remediation": "You picked the GCF. The LCD needs the least common multiple, so list multiples of each denominator and find the smallest shared one."
+      },
+      {
+        "id": 2,
+        "text": "24",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "96",
+        "is_correct": false,
+        "misconception": "multiplied_denominators_instead_of_lcm",
+        "remediation": "You multiplied the denominators directly instead of finding the Least Common Multiple (LCM). Listing multiples finds the smallest common denominator, avoiding unnecessarily large numbers."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Multiples of 8: 8, 16, 24; multiples of 12: 12, 24. The least common multiple is 24."
   },
   {
@@ -413,24 +413,24 @@
     "options": [
       {
         "id": 0,
+        "text": "Because the sum would exceed 1",
+        "is_correct": false,
+        "misconception": "fraction_sum_limit_bias",
+        "remediation": "You assumed fraction sums cannot exceed 1. Adding fractions can yield sums greater than 1, expressed as improper fractions or mixed numbers."
+      },
+      {
+        "id": 1,
         "text": "Because third-sized parts and fourth-sized parts have different sizes",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 2,
         "text": "Because fractions can only be multiplied, never added",
         "is_correct": false,
         "misconception": "addition_of_fractions_disallowed",
         "remediation": "You thought fractions cannot be added. Fractions can be added once they share a common denominator representing identical partition sizes."
-      },
-      {
-        "id": 2,
-        "text": "Because the sum would exceed 1",
-        "is_correct": false,
-        "misconception": "fraction_sum_limit_bias",
-        "remediation": "You assumed fraction sums cannot exceed 1. Adding fractions can yield sums greater than 1, expressed as improper fractions or mixed numbers."
       },
       {
         "id": 3,
@@ -440,7 +440,7 @@
         "remediation": "You added the denominators directly. When adding fractions, find a common denominator first, keep that denominator, and only add the numerators."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Fractions represent parts of a whole; you can only combine counted parts when the partition sizes (denominators) are identical."
   },
   {
@@ -487,17 +487,17 @@
     "options": [
       {
         "id": 0,
-        "text": "5/6",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "2/5",
         "is_correct": false,
         "misconception": "add_denominators_directly",
         "remediation": "You added the denominators directly. When adding fractions, find a common denominator first, keep that denominator, and only add the numerators."
+      },
+      {
+        "id": 1,
+        "text": "5/6",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 2,
@@ -514,7 +514,7 @@
         "remediation": "You added the numerators but multiplied the denominators. When fractions already share a common denominator, the denominator remains unchanged in the answer."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Convert to common denominator 6: 1/2 = 3/6 and 1/3 = 2/6. 3/6 + 2/6 = 5/6. Adding numerators and denominators (1+1)/(2+3)=2/5 is a frequent error."
   },
   {
@@ -524,10 +524,10 @@
     "options": [
       {
         "id": 0,
-        "text": "1/2",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "10/8",
+        "is_correct": false,
+        "misconception": "added_instead_of_subtracted",
+        "remediation": "You added instead of using the inverse operation. To eliminate an added constant, subtract that same amount from both sides of the equation."
       },
       {
         "id": 1,
@@ -545,13 +545,13 @@
       },
       {
         "id": 3,
-        "text": "10/8",
-        "is_correct": false,
-        "misconception": "added_instead_of_subtracted",
-        "remediation": "You added instead of using the inverse operation. To eliminate an added constant, subtract that same amount from both sides of the equation."
+        "text": "1/2",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "7/8 - 3/8 = 4/8, which simplifies to 1/2. Subtracting the denominators to get 0 is undefined!"
   },
   {
@@ -598,34 +598,34 @@
     "options": [
       {
         "id": 0,
-        "text": "8/15",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "10/12",
         "is_correct": false,
         "misconception": "cross_multiplied_instead_of_across",
         "remediation": "You cross-multiplied instead of multiplying across. To multiply fractions, multiply straight across: numerator times numerator, and denominator times denominator."
       },
       {
-        "id": 2,
-        "text": "6/8",
-        "is_correct": false,
-        "misconception": "added_numerators_and_denominators",
-        "remediation": "You added the terms instead of multiplying. In fraction multiplication, compute the product of the numerators over the product of the denominators."
+        "id": 1,
+        "text": "8/15",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
-        "id": 3,
+        "id": 2,
         "text": "22/15",
         "is_correct": false,
         "misconception": "cross_multiplied_and_added",
         "remediation": "You cross-multiplied and added the products. Simply multiply straight across: top times top, and bottom times bottom."
+      },
+      {
+        "id": 3,
+        "text": "6/8",
+        "is_correct": false,
+        "misconception": "added_numerators_and_denominators",
+        "remediation": "You added the terms instead of multiplying. In fraction multiplication, compute the product of the numerators over the product of the denominators."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Multiply numerators straight across: 2 * 4 = 8, and denominators straight across: 3 * 5 = 15. The product is 8/15."
   },
   {
@@ -635,17 +635,17 @@
     "options": [
       {
         "id": 0,
-        "text": "2/3",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "24/36",
         "is_correct": false,
         "misconception": "incomplete_simplification",
         "remediation": "You simplified partially but did not reduce to lowest terms. Divide both numerator and denominator by their greatest common factor until no common factors remain."
+      },
+      {
+        "id": 1,
+        "text": "11/13",
+        "is_correct": false,
+        "misconception": "added_numerators_and_denominators",
+        "remediation": "You added the terms instead of multiplying. In fraction multiplication, compute the product of the numerators over the product of the denominators."
       },
       {
         "id": 2,
@@ -656,13 +656,13 @@
       },
       {
         "id": 3,
-        "text": "11/13",
-        "is_correct": false,
-        "misconception": "added_numerators_and_denominators",
-        "remediation": "You added the terms instead of multiplying. In fraction multiplication, compute the product of the numerators over the product of the denominators."
+        "text": "2/3",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "(3 * 8) / (4 * 9) = 24 / 36. Dividing numerator and denominator by 12 yields 2/3."
   },
   {
@@ -672,17 +672,17 @@
     "options": [
       {
         "id": 0,
-        "text": "10/3",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "10/15",
         "is_correct": false,
         "misconception": "multiplied_whole_by_both_terms",
         "remediation": "You multiplied both the numerator and denominator by the whole number. Treat the whole number as a fraction over 1 (e.g., n/1) and multiply only the numerator."
+      },
+      {
+        "id": 1,
+        "text": "2/15",
+        "is_correct": false,
+        "misconception": "multiplied_whole_only_by_denominator",
+        "remediation": "You multiplied the whole number by the denominator. Whole numbers multiply the top numerator; the denominator remains unchanged when multiplied by an integer."
       },
       {
         "id": 2,
@@ -693,13 +693,13 @@
       },
       {
         "id": 3,
-        "text": "2/15",
-        "is_correct": false,
-        "misconception": "multiplied_whole_only_by_denominator",
-        "remediation": "You multiplied the whole number by the denominator. Whole numbers multiply the top numerator; the denominator remains unchanged when multiplied by an integer."
+        "text": "10/3",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Treat 5 as 5/1: (5/1) * (2/3) = (5*2)/(1*3) = 10/3."
   },
   {
@@ -709,24 +709,24 @@
     "options": [
       {
         "id": 0,
+        "text": "Only if the fractions are proper fractions",
+        "is_correct": false,
+        "misconception": "arbitrary_rule_generalization",
+        "remediation": "You applied an invalid arithmetic shortcut. Stick to the core rule: multiply numerators together and denominators together directly."
+      },
+      {
+        "id": 1,
         "text": "No, you simply multiply numerators together and denominators together",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 2,
         "text": "Yes, common denominators are mandatory for all fraction operations",
         "is_correct": false,
         "misconception": "applied_addition_rules_to_multiplication",
-        "remediation": "You looked for common denominators. Multiplication does not require common denominators; multiply straight across (top \u00d7 top, bottom \u00d7 bottom)."
-      },
-      {
-        "id": 2,
-        "text": "Only if the fractions are proper fractions",
-        "is_correct": false,
-        "misconception": "arbitrary_rule_generalization",
-        "remediation": "You applied an invalid arithmetic shortcut. Stick to the core rule: multiply numerators together and denominators together directly."
+        "remediation": "You looked for common denominators. Multiplication does not require common denominators; multiply straight across (top × top, bottom × bottom)."
       },
       {
         "id": 3,
@@ -736,20 +736,20 @@
         "remediation": "You mixed addition and multiplication procedures. Only addition and subtraction require common denominators; multiplication works straight across."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Common denominators are only needed for addition and subtraction, not multiplication."
   },
   {
     "id": "q_frac_div_01",
     "concept_id": "fraction_division",
-    "prompt": "Calculate: 3/4 \u00f7 2/5",
+    "prompt": "Calculate: 3/4 ÷ 2/5",
     "options": [
       {
         "id": 0,
-        "text": "15/8",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "8/15",
+        "is_correct": false,
+        "misconception": "flipped_dividend_not_divisor",
+        "remediation": "You inverted the first fraction instead of the second. Always keep the first fraction (dividend) unchanged and invert only the second fraction (divisor)."
       },
       {
         "id": 1,
@@ -760,20 +760,20 @@
       },
       {
         "id": 2,
-        "text": "8/15",
-        "is_correct": false,
-        "misconception": "flipped_dividend_not_divisor",
-        "remediation": "You inverted the first fraction instead of the second. Always keep the first fraction (dividend) unchanged and invert only the second fraction (divisor)."
-      },
-      {
-        "id": 3,
         "text": "5/9",
         "is_correct": false,
         "misconception": "added_inverted_fractions",
         "remediation": "You added the fractions after flipping. Dividing fractions transforms into multiplication by the reciprocal, not addition."
+      },
+      {
+        "id": 3,
+        "text": "15/8",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Keep the first fraction, change to multiplication, and flip the second: 3/4 * 5/2 = 15/8."
   },
   {
@@ -783,61 +783,61 @@
     "options": [
       {
         "id": 0,
-        "text": "3/7",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "-7/3",
         "is_correct": false,
         "misconception": "confused_reciprocal_with_opposite",
         "remediation": "You took the negative opposite instead of the reciprocal. The reciprocal flips the numerator and denominator without changing the sign."
       },
       {
-        "id": 2,
-        "text": "-3/7",
-        "is_correct": false,
-        "misconception": "opposite_and_reciprocal_merged",
-        "remediation": "You flipped the fraction AND changed its sign. A standard reciprocal only swaps the numerator and denominator; keep the original sign."
-      },
-      {
-        "id": 3,
+        "id": 1,
         "text": "14/6",
         "is_correct": false,
         "misconception": "doubled_terms_instead_of_reciprocal",
         "remediation": "You doubled the numbers instead of inverting. To find the reciprocal, swap the numerator and denominator positions."
-      }
-    ],
-    "correct_option": 0,
-    "explanation": "The reciprocal of a fraction a/b is b/a. The reciprocal of 7/3 is 3/7."
-  },
-  {
-    "id": "q_frac_div_03",
-    "concept_id": "fraction_division",
-    "prompt": "Calculate: 2/3 \u00f7 4",
-    "options": [
+      },
       {
-        "id": 0,
-        "text": "1/6",
+        "id": 2,
+        "text": "3/7",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 3,
+        "text": "-3/7",
+        "is_correct": false,
+        "misconception": "opposite_and_reciprocal_merged",
+        "remediation": "You flipped the fraction AND changed its sign. A standard reciprocal only swaps the numerator and denominator; keep the original sign."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "The reciprocal of a fraction a/b is b/a. The reciprocal of 7/3 is 3/7."
+  },
+  {
+    "id": "q_frac_div_03",
+    "concept_id": "fraction_division",
+    "prompt": "Calculate: 2/3 ÷ 4",
+    "options": [
+      {
+        "id": 0,
         "text": "8/3",
         "is_correct": false,
         "misconception": "multiplied_by_whole_number",
         "remediation": "You multiplied by the whole number instead of its reciprocal. When dividing by a whole number n, multiply by its reciprocal 1/n."
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "6",
         "is_correct": false,
         "misconception": "inverted_first_fraction_and_multiplied",
         "remediation": "You flipped the first fraction instead of the divisor. Keep the first fraction as-is and invert the fraction you are dividing by."
+      },
+      {
+        "id": 2,
+        "text": "1/6",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 3,
@@ -847,13 +847,13 @@
         "remediation": "You simplified partially but did not reduce to lowest terms. Divide both numerator and denominator by their greatest common factor until no common factors remain."
       }
     ],
-    "correct_option": 0,
-    "explanation": "Write 4 as 4/1. 2/3 \u00f7 4/1 = 2/3 * 1/4 = 2/12 = 1/6."
+    "correct_option": 2,
+    "explanation": "Write 4 as 4/1. 2/3 ÷ 4/1 = 2/3 * 1/4 = 2/12 = 1/6."
   },
   {
     "id": "q_frac_div_04",
     "concept_id": "fraction_division",
-    "prompt": "Calculate: 1/2 \u00f7 1/8",
+    "prompt": "Calculate: 1/2 ÷ 1/8",
     "options": [
       {
         "id": 0,
@@ -864,10 +864,10 @@
       },
       {
         "id": 1,
-        "text": "1/16",
+        "text": "2/10",
         "is_correct": false,
-        "misconception": "multiplied_without_inverting",
-        "remediation": "You multiplied without taking the reciprocal of the divisor. Use keep-change-flip: keep the first fraction, change division to multiplication, and flip the second fraction."
+        "misconception": "added_terms",
+        "remediation": "You added the numbers instead of multiplying by the reciprocal. Division is performed by multiplying by the flipped divisor."
       },
       {
         "id": 2,
@@ -878,14 +878,14 @@
       },
       {
         "id": 3,
-        "text": "2/10",
+        "text": "1/16",
         "is_correct": false,
-        "misconception": "added_terms",
-        "remediation": "You added the numbers instead of multiplying by the reciprocal. Division is performed by multiplying by the flipped divisor."
+        "misconception": "multiplied_without_inverting",
+        "remediation": "You multiplied without taking the reciprocal of the divisor. Use keep-change-flip: keep the first fraction, change division to multiplication, and flip the second fraction."
       }
     ],
     "correct_option": 0,
-    "explanation": "1/2 \u00f7 1/8 = 1/2 * 8/1 = 8/2 = 4."
+    "explanation": "1/2 ÷ 1/8 = 1/2 * 8/1 = 8/2 = 4."
   },
   {
     "id": "q_neg_01",
@@ -931,34 +931,34 @@
     "options": [
       {
         "id": 0,
-        "text": "13",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "-3",
         "is_correct": false,
         "misconception": "subtracted_directly_ignoring_double_negative",
         "remediation": "You treated subtracting a negative as regular subtraction. Subtracting a negative is equivalent to adding a positive (a - (-b) = a + b)."
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "-13",
         "is_correct": false,
         "misconception": "subtracted_to_negative_sum",
         "remediation": "You incorrectly evaluated the double negative. Remember that subtracting a negative number increases the value by turning into addition."
       },
       {
-        "id": 3,
+        "id": 2,
         "text": "3",
         "is_correct": false,
         "misconception": "subtracted_positive_values",
         "remediation": "You subtracted instead of adding. Two minus signs together (- -) cancel out to become a positive plus sign."
+      },
+      {
+        "id": 3,
+        "text": "13",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Subtracting a negative number is equivalent to adding its opposite: 5 - (-8) = 5 + 8 = 13."
   },
   {
@@ -968,54 +968,54 @@
     "options": [
       {
         "id": 0,
-        "text": "24",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "10",
+        "is_correct": false,
+        "misconception": "added_absolute_values",
+        "remediation": "You added the absolute values without multiplying. Evaluate the product first, then apply the sign rule (negative × negative = positive)."
       },
       {
         "id": 1,
-        "text": "-24",
-        "is_correct": false,
-        "misconception": "negative_times_negative_is_negative",
-        "remediation": "You concluded that a negative times a negative is negative. The product of two numbers with matching negative signs is always positive."
-      },
-      {
-        "id": 2,
         "text": "-10",
         "is_correct": false,
         "misconception": "added_instead_of_multiplied",
         "remediation": "You added the integers instead of multiplying them. Pay attention to parentheses indicating multiplication and multiply the values."
       },
       {
-        "id": 3,
-        "text": "10",
-        "is_correct": false,
-        "misconception": "added_absolute_values",
-        "remediation": "You added the absolute values without multiplying. Evaluate the product first, then apply the sign rule (negative \u00d7 negative = positive)."
-      }
-    ],
-    "correct_option": 0,
-    "explanation": "Multiplying two negative numbers produces a positive result: (-6) * (-4) = +24."
-  },
-  {
-    "id": "q_neg_04",
-    "concept_id": "negative_numbers",
-    "prompt": "Calculate: -18 \u00f7 3",
-    "options": [
-      {
-        "id": 0,
-        "text": "-6",
+        "id": 2,
+        "text": "24",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 3,
+        "text": "-24",
+        "is_correct": false,
+        "misconception": "negative_times_negative_is_negative",
+        "remediation": "You concluded that a negative times a negative is negative. The product of two numbers with matching negative signs is always positive."
+      }
+    ],
+    "correct_option": 2,
+    "explanation": "Multiplying two negative numbers produces a positive result: (-6) * (-4) = +24."
+  },
+  {
+    "id": "q_neg_04",
+    "concept_id": "negative_numbers",
+    "prompt": "Calculate: -18 ÷ 3",
+    "options": [
+      {
+        "id": 0,
         "text": "6",
         "is_correct": false,
         "misconception": "dropped_negative_sign_in_division",
-        "remediation": "You dropped the negative sign during division. Dividing numbers with different signs (positive \u00f7 negative) always produces a negative quotient."
+        "remediation": "You dropped the negative sign during division. Dividing numbers with different signs (positive ÷ negative) always produces a negative quotient."
+      },
+      {
+        "id": 1,
+        "text": "-54",
+        "is_correct": false,
+        "misconception": "multiplied_instead_of_divided",
+        "remediation": "You multiplied instead of dividing. To undo multiplication by a coefficient, divide both sides by that coefficient."
       },
       {
         "id": 2,
@@ -1026,13 +1026,13 @@
       },
       {
         "id": 3,
-        "text": "-54",
-        "is_correct": false,
-        "misconception": "multiplied_instead_of_divided",
-        "remediation": "You multiplied instead of dividing. To undo multiplication by a coefficient, divide both sides by that coefficient."
+        "text": "-6",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Dividing a negative by a positive yields a negative number: -18 / 3 = -6."
   },
   {
@@ -1042,17 +1042,17 @@
     "options": [
       {
         "id": 0,
-        "text": "11",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "14",
         "is_correct": false,
         "misconception": "evaluated_left_to_right_without_precedence",
         "remediation": "You evaluated from left to right without precedence. Follow PEMDAS: evaluate Parentheses and Exponents, then Multiplication and Division, before Addition and Subtraction."
+      },
+      {
+        "id": 1,
+        "text": "11",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 2,
@@ -1069,7 +1069,7 @@
         "remediation": "You added before multiplying. Under PEMDAS, multiplication must be computed before addition."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Multiplication takes precedence over addition: 4 * 2 = 8, then 3 + 8 = 11. Computing (3+4)*2 = 14 ignores PEMDAS."
   },
   {
@@ -1079,77 +1079,77 @@
     "options": [
       {
         "id": 0,
-        "text": "21",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "13",
-        "is_correct": false,
-        "misconception": "multiplied_base_by_exponent",
-        "remediation": "You multiplied the base by the exponent (e.g., 2 \u00d7 2). An exponent means multiplying the base by itself that many times (e.g., 2\u00b2 = 2 \u00d7 2, 3\u00b2 = 3 \u00d7 3 = 9)."
-      },
-      {
-        "id": 2,
         "text": "37",
         "is_correct": false,
         "misconception": "ignored_parentheses_applied_exponent_to_two",
         "remediation": "You applied the exponent before resolving the expression inside parentheses. Always evaluate operations inside parentheses first."
       },
       {
-        "id": 3,
-        "text": "81",
-        "is_correct": false,
-        "misconception": "added_before_squaring",
-        "remediation": "You added before evaluating the exponent. Exponents take precedence over addition; compute powers before adding terms outside."
-      }
-    ],
-    "correct_option": 0,
-    "explanation": "Parentheses first: (6 - 2) = 4. Exponents next: 4^2 = 16. Finally addition: 16 + 5 = 21."
-  },
-  {
-    "id": "q_pemdas_03",
-    "concept_id": "order_of_operations",
-    "prompt": "Calculate: 20 - 4 \u00f7 2 + 3",
-    "options": [
-      {
-        "id": 0,
+        "id": 1,
         "text": "21",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
+        "id": 2,
+        "text": "81",
+        "is_correct": false,
+        "misconception": "added_before_squaring",
+        "remediation": "You added before evaluating the exponent. Exponents take precedence over addition; compute powers before adding terms outside."
+      },
+      {
+        "id": 3,
+        "text": "13",
+        "is_correct": false,
+        "misconception": "multiplied_base_by_exponent",
+        "remediation": "You multiplied the base by the exponent (e.g., 2 × 2). An exponent means multiplying the base by itself that many times (e.g., 2² = 2 × 2, 3² = 3 × 3 = 9)."
+      }
+    ],
+    "correct_option": 1,
+    "explanation": "Parentheses first: (6 - 2) = 4. Exponents next: 4^2 = 16. Finally addition: 16 + 5 = 21."
+  },
+  {
+    "id": "q_pemdas_03",
+    "concept_id": "order_of_operations",
+    "prompt": "Calculate: 20 - 4 ÷ 2 + 3",
+    "options": [
+      {
+        "id": 0,
+        "text": "19",
+        "is_correct": false,
+        "misconception": "subtracted_three_at_the_end",
+        "remediation": "You grouped terms out of order. Complete division and multiplication first from left to right, then compute addition and subtraction."
+      },
+      {
         "id": 1,
+        "text": "21",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
         "text": "11",
         "is_correct": false,
         "misconception": "evaluated_left_to_right_without_precedence",
         "remediation": "You evaluated from left to right without precedence. Follow PEMDAS: evaluate Parentheses and Exponents, then Multiplication and Division, before Addition and Subtraction."
       },
       {
-        "id": 2,
+        "id": 3,
         "text": "15",
         "is_correct": false,
         "misconception": "added_two_and_three_before_division",
         "remediation": "You added before dividing. Division takes precedence over addition; perform division first."
-      },
-      {
-        "id": 3,
-        "text": "19",
-        "is_correct": false,
-        "misconception": "subtracted_three_at_the_end",
-        "remediation": "You grouped terms out of order. Complete division and multiplication first from left to right, then compute addition and subtraction."
       }
     ],
-    "correct_option": 0,
-    "explanation": "Division first: 4 \u00f7 2 = 2. Then from left to right: 20 - 2 = 18, and 18 + 3 = 21."
+    "correct_option": 1,
+    "explanation": "Division first: 4 ÷ 2 = 2. Then from left to right: 20 - 2 = 18, and 18 + 3 = 21."
   },
   {
     "id": "q_pemdas_04",
     "concept_id": "order_of_operations",
-    "prompt": "Calculate: 8 \u00f7 2 * 4",
+    "prompt": "Calculate: 8 ÷ 2 * 4",
     "options": [
       {
         "id": 0,
@@ -1167,21 +1167,21 @@
       },
       {
         "id": 2,
-        "text": "8",
-        "is_correct": false,
-        "misconception": "divided_result_by_four",
-        "remediation": "You altered the order of operations. Evaluate multiplication and division strictly from left to right when they share equal priority."
-      },
-      {
-        "id": 3,
         "text": "4",
         "is_correct": false,
         "misconception": "subtracted_instead_of_multiplied",
         "remediation": "You subtracted instead of multiplying. The operation calls for multiplication; compute the product of the terms."
+      },
+      {
+        "id": 3,
+        "text": "8",
+        "is_correct": false,
+        "misconception": "divided_result_by_four",
+        "remediation": "You altered the order of operations. Evaluate multiplication and division strictly from left to right when they share equal priority."
       }
     ],
     "correct_option": 0,
-    "explanation": "Multiplication and Division have equal precedence and are performed strictly left-to-right: 8 \u00f7 2 = 4, then 4 * 4 = 16."
+    "explanation": "Multiplication and Division have equal precedence and are performed strictly left-to-right: 8 ÷ 2 = 4, then 4 * 4 = 16."
   },
   {
     "id": "q_var_01",
@@ -1190,34 +1190,34 @@
     "options": [
       {
         "id": 0,
-        "text": "19",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "41",
         "is_correct": false,
         "misconception": "concatenated_digits_instead_of_multiplying",
         "remediation": "You placed digits side by side instead of multiplying. A coefficient next to a variable (like 3x) means 3 multiplied by x, not concatenation."
       },
       {
+        "id": 1,
+        "text": "14",
+        "is_correct": false,
+        "misconception": "added_variable_value_directly",
+        "remediation": "You added the variable value instead of multiplying by its coefficient. Compute coefficient × variable before performing subsequent additions."
+      },
+      {
         "id": 2,
+        "text": "19",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
         "text": "33",
         "is_correct": false,
         "misconception": "added_three_and_seven_then_multiplied",
         "remediation": "You added the coefficient and constant before substituting. Multiply the coefficient by the variable value first, then add the constant."
-      },
-      {
-        "id": 3,
-        "text": "14",
-        "is_correct": false,
-        "misconception": "added_variable_value_directly",
-        "remediation": "You added the variable value instead of multiplying by its coefficient. Compute coefficient \u00d7 variable before performing subsequent additions."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Substitute 4 for x: 3(4) + 7 = 12 + 7 = 19. Do not concatenate 3 and 4 to make '34'!"
   },
   {
@@ -1227,17 +1227,17 @@
     "options": [
       {
         "id": 0,
+        "text": "7",
+        "is_correct": false,
+        "misconception": "ignored_coefficients",
+        "remediation": "You ignored the coefficient preceding the variable. Multiply the variable by its coefficient before combining with constants."
+      },
+      {
+        "id": 1,
         "text": "16",
         "is_correct": true,
         "misconception": null,
         "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "4",
-        "is_correct": false,
-        "misconception": "treated_subtraction_of_negative_as_subtraction",
-        "remediation": "You subtracted the negative variable without converting signs. Subtracting a negative variable creates an addition step (e.g., 4 - (-3) = 4 + 3)."
       },
       {
         "id": 2,
@@ -1248,13 +1248,13 @@
       },
       {
         "id": 3,
-        "text": "7",
+        "text": "4",
         "is_correct": false,
-        "misconception": "ignored_coefficients",
-        "remediation": "You ignored the coefficient preceding the variable. Multiply the variable by its coefficient before combining with constants."
+        "misconception": "treated_subtraction_of_negative_as_subtraction",
+        "remediation": "You subtracted the negative variable without converting signs. Subtracting a negative variable creates an addition step (e.g., 4 - (-3) = 4 + 3)."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "2(5) - 3(-2) = 10 - (-6) = 10 + 6 = 16."
   },
   {
@@ -1271,17 +1271,17 @@
       },
       {
         "id": 1,
-        "text": "8 - 2n",
-        "is_correct": false,
-        "misconception": "reversed_subtraction_order_in_word_problem",
-        "remediation": "You reversed the subtraction order. Phrases like 'less than a number' mean subtracting from the variable (e.g., '5 less than x' translates to x - 5, not 5 - x)."
-      },
-      {
-        "id": 2,
         "text": "2(n - 8)",
         "is_correct": false,
         "misconception": "applied_grouping_prematurely",
         "remediation": "You grouped with parentheses inappropriately. Translate words step-by-step according to algebraic precedence."
+      },
+      {
+        "id": 2,
+        "text": "8 - 2n",
+        "is_correct": false,
+        "misconception": "reversed_subtraction_order_in_word_problem",
+        "remediation": "You reversed the subtraction order. Phrases like 'less than a number' mean subtracting from the variable (e.g., '5 less than x' translates to x - 5, not 5 - x)."
       },
       {
         "id": 3,
@@ -1301,34 +1301,34 @@
     "options": [
       {
         "id": 0,
-        "text": "21",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "3",
+        "is_correct": false,
+        "misconception": "dropped_negative_sign_in_both_terms",
+        "remediation": "You dropped negative signs during evaluation. Maintain negative signs when substituting and follow integer multiplication rules."
       },
       {
         "id": 1,
-        "text": "-3",
-        "is_correct": false,
-        "misconception": "squared_without_parentheses_giving_negative",
-        "remediation": "You assumed (-x)\u00b2 is negative. When a negative number is squared inside parentheses, negative \u00d7 negative produces a positive result."
-      },
-      {
-        "id": 2,
         "text": "-21",
         "is_correct": false,
         "misconception": "sign_error_on_second_term",
         "remediation": "You miscalculated the sign on the substituted term. Carefully track signs during substitution and multiplication."
       },
       {
+        "id": 2,
+        "text": "21",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
         "id": 3,
-        "text": "3",
+        "text": "-3",
         "is_correct": false,
-        "misconception": "dropped_negative_sign_in_both_terms",
-        "remediation": "You dropped negative signs during evaluation. Maintain negative signs when substituting and follow integer multiplication rules."
+        "misconception": "squared_without_parentheses_giving_negative",
+        "remediation": "You assumed (-x)² is negative. When a negative number is squared inside parentheses, negative × negative produces a positive result."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "(-3)^2 - 4(-3) = 9 - (-12) = 9 + 12 = 21."
   },
   {
@@ -1338,34 +1338,34 @@
     "options": [
       {
         "id": 0,
-        "text": "2x + 10",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "2x^2 + 10",
+        "is_correct": false,
+        "misconception": "changed_exponent_when_adding_terms",
+        "remediation": "You added exponents while adding like terms. When adding like terms, add only the numerical coefficients; the variable and its exponent remain unchanged."
       },
       {
         "id": 1,
-        "text": "12x",
-        "is_correct": false,
-        "misconception": "combined_unlike_terms_variables_and_constants",
-        "remediation": "You combined variable terms with constant terms. Only like terms (terms with the exact same variable and exponent) can be combined together."
-      },
-      {
-        "id": 2,
         "text": "6x + 10",
         "is_correct": false,
         "misconception": "added_coefficients_ignoring_subtraction_sign",
         "remediation": "You ignored the subtraction sign preceding the term. Treat the minus sign as a negative coefficient when combining like terms."
       },
       {
-        "id": 3,
-        "text": "2x^2 + 10",
+        "id": 2,
+        "text": "12x",
         "is_correct": false,
-        "misconception": "changed_exponent_when_adding_terms",
-        "remediation": "You added exponents while adding like terms. When adding like terms, add only the numerical coefficients; the variable and its exponent remain unchanged."
+        "misconception": "combined_unlike_terms_variables_and_constants",
+        "remediation": "You combined variable terms with constant terms. Only like terms (terms with the exact same variable and exponent) can be combined together."
+      },
+      {
+        "id": 3,
+        "text": "2x + 10",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Group variable terms: 4x - 2x = 2x. Group constant terms: 7 + 3 = 10. Result: 2x + 10."
   },
   {
@@ -1375,34 +1375,34 @@
     "options": [
       {
         "id": 0,
-        "text": "5a - 3b",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "5a - 13b",
+        "is_correct": false,
+        "misconception": "added_negative_magnitudes_incorrectly",
+        "remediation": "You made an arithmetic error when combining signed coefficients. Combine coefficients as integers on a number line."
       },
       {
         "id": 1,
-        "text": "2ab",
-        "is_correct": false,
-        "misconception": "combined_different_variable_terms",
-        "remediation": "You combined terms containing different variables. Terms with different variables (like x and y) are unlike terms and cannot be combined."
-      },
-      {
-        "id": 2,
         "text": "5a + 13b",
         "is_correct": false,
         "misconception": "sign_error_on_subtraction_term",
         "remediation": "You misapplied the sign of the subtracted term. The minus sign in front of a term belongs to its coefficient."
       },
       {
+        "id": 2,
+        "text": "5a - 3b",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
         "id": 3,
-        "text": "5a - 13b",
+        "text": "2ab",
         "is_correct": false,
-        "misconception": "added_negative_magnitudes_incorrectly",
-        "remediation": "You made an arithmetic error when combining signed coefficients. Combine coefficients as integers on a number line."
+        "misconception": "combined_different_variable_terms",
+        "remediation": "You combined terms containing different variables. Terms with different variables (like x and y) are unlike terms and cannot be combined."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Combine 'a' terms: 3a + 2a = 5a. Combine 'b' terms: 5b - 8b = -3b. Result: 5a - 3b."
   },
   {
@@ -1412,10 +1412,10 @@
     "options": [
       {
         "id": 0,
-        "text": "No, they have different exponents so they are not like terms",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "Yes, but it equals 7x instead",
+        "is_correct": false,
+        "misconception": "ignored_higher_degree_exponent",
+        "remediation": "You combined terms with different powers. Terms like x and x² have different degrees and cannot be added together."
       },
       {
         "id": 1,
@@ -1426,20 +1426,20 @@
       },
       {
         "id": 2,
-        "text": "Yes, but it equals 7x instead",
-        "is_correct": false,
-        "misconception": "ignored_higher_degree_exponent",
-        "remediation": "You combined terms with different powers. Terms like x and x\u00b2 have different degrees and cannot be added together."
-      },
-      {
-        "id": 3,
         "text": "No, but they can be combined into 12x^2",
         "is_correct": false,
         "misconception": "multiplied_terms_instead_of_leaving_uncombined",
         "remediation": "You multiplied unlike terms together instead of keeping them separate. When simplifying a polynomial sum, unlike terms must remain separate."
+      },
+      {
+        "id": 3,
+        "text": "No, they have different exponents so they are not like terms",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Terms must have identical variables and identical exponents to be like terms. 3x and 4x^2 cannot be combined."
   },
   {
@@ -1449,10 +1449,10 @@
     "options": [
       {
         "id": 0,
-        "text": "4y - 5",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "8y - 13",
+        "is_correct": false,
+        "misconception": "added_instead_of_subtracting_variable",
+        "remediation": "You added the variable term instead of subtracting it. Check the operational sign preceding the term before combining coefficients."
       },
       {
         "id": 1,
@@ -1463,20 +1463,20 @@
       },
       {
         "id": 2,
-        "text": "8y - 13",
-        "is_correct": false,
-        "misconception": "added_instead_of_subtracting_variable",
-        "remediation": "You added the variable term instead of subtracting it. Check the operational sign preceding the term before combining coefficients."
-      },
-      {
-        "id": 3,
         "text": "-y",
         "is_correct": false,
         "misconception": "combined_unlike_terms_variables_and_constants",
         "remediation": "You combined variable terms with constant terms. Only like terms (terms with the exact same variable and exponent) can be combined together."
+      },
+      {
+        "id": 3,
+        "text": "4y - 5",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Distribute negative sign: 6y - 9 - 2y + 4 = (6y - 2y) + (-9 + 4) = 4y - 5."
   },
   {
@@ -1493,17 +1493,17 @@
       },
       {
         "id": 1,
-        "text": "x = 22",
-        "is_correct": false,
-        "misconception": "added_instead_of_subtracted",
-        "remediation": "You added instead of using the inverse operation. To eliminate an added constant, subtract that same amount from both sides of the equation."
-      },
-      {
-        "id": 2,
         "text": "x = -8",
         "is_correct": false,
         "misconception": "subtracted_fifteen_from_seven",
         "remediation": "You subtracted in the reverse order. Subtract the constant from the side containing the variable from the other side (e.g., x + a = b means x = b - a)."
+      },
+      {
+        "id": 2,
+        "text": "x = 22",
+        "is_correct": false,
+        "misconception": "added_instead_of_subtracted",
+        "remediation": "You added instead of using the inverse operation. To eliminate an added constant, subtract that same amount from both sides of the equation."
       },
       {
         "id": 3,
@@ -1560,17 +1560,17 @@
     "options": [
       {
         "id": 0,
-        "text": "m = 17",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "m = -7",
         "is_correct": false,
         "misconception": "subtracted_twelve_instead_of_adding",
         "remediation": "You subtracted instead of adding. The inverse of subtracting 12 is adding 12 to both sides of the equation."
+      },
+      {
+        "id": 1,
+        "text": "m = -17",
+        "is_correct": false,
+        "misconception": "sign_inversion_error",
+        "remediation": "You inverted the sign of the solution incorrectly. Balance the equation step-by-step preserving correct signs."
       },
       {
         "id": 2,
@@ -1581,13 +1581,13 @@
       },
       {
         "id": 3,
-        "text": "m = -17",
-        "is_correct": false,
-        "misconception": "sign_inversion_error",
-        "remediation": "You inverted the sign of the solution incorrectly. Balance the equation step-by-step preserving correct signs."
+        "text": "m = 17",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Add 12 to both sides: m = 5 + 12 = 17."
   },
   {
@@ -1634,34 +1634,34 @@
     "options": [
       {
         "id": 0,
-        "text": "x = 7",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "x = 252",
-        "is_correct": false,
-        "misconception": "multiplied_instead_of_divided",
-        "remediation": "You multiplied instead of dividing. To undo multiplication by a coefficient, divide both sides by that coefficient."
-      },
-      {
-        "id": 2,
         "text": "x = 36",
         "is_correct": false,
         "misconception": "subtracted_coefficient_instead_of_dividing",
         "remediation": "You subtracted the coefficient. When a coefficient multiplies a variable (e.g., 4x), use division to isolate the variable."
       },
       {
-        "id": 3,
+        "id": 1,
         "text": "x = 48",
         "is_correct": false,
         "misconception": "added_coefficient",
         "remediation": "You added the coefficient. Coefficients multiply variables; use division to undo multiplication."
+      },
+      {
+        "id": 2,
+        "text": "x = 7",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "x = 252",
+        "is_correct": false,
+        "misconception": "multiplied_instead_of_divided",
+        "remediation": "You multiplied instead of dividing. To undo multiplication by a coefficient, divide both sides by that coefficient."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Divide both sides by 6: x = 42 / 6 = 7."
   },
   {
@@ -1678,10 +1678,10 @@
       },
       {
         "id": 1,
-        "text": "w = 2.25",
+        "text": "w = 5",
         "is_correct": false,
-        "misconception": "divided_instead_of_multiplied",
-        "remediation": "You divided instead of multiplying. To undo division (e.g., x/4 = 7), multiply both sides by the denominator."
+        "misconception": "subtracted_four",
+        "remediation": "You subtracted the denominator. Undo division by multiplying both sides of the equation by that denominator."
       },
       {
         "id": 2,
@@ -1692,10 +1692,10 @@
       },
       {
         "id": 3,
-        "text": "w = 5",
+        "text": "w = 2.25",
         "is_correct": false,
-        "misconception": "subtracted_four",
-        "remediation": "You subtracted the denominator. Undo division by multiplying both sides of the equation by that denominator."
+        "misconception": "divided_instead_of_multiplied",
+        "remediation": "You divided instead of multiplying. To undo division (e.g., x/4 = 7), multiply both sides by the denominator."
       }
     ],
     "correct_option": 0,
@@ -1708,34 +1708,34 @@
     "options": [
       {
         "id": 0,
-        "text": "k = -7",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "k = 7",
-        "is_correct": false,
-        "misconception": "forgot_negative_coefficient_sign",
-        "remediation": "You forgot to divide by the negative sign. Divide both sides by the full negative coefficient (-n) to ensure the variable is positive."
-      },
-      {
-        "id": 2,
         "text": "k = -40",
         "is_correct": false,
         "misconception": "subtracted_instead_of_divided",
         "remediation": "You subtracted instead of dividing. Perform the division operation between the values and determine the resulting sign."
       },
       {
-        "id": 3,
+        "id": 1,
+        "text": "k = -7",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
         "text": "k = 30",
         "is_correct": false,
         "misconception": "added_five_instead_of_dividing",
         "remediation": "You added instead of dividing. Coefficients multiply variables; divide both sides by the negative coefficient."
+      },
+      {
+        "id": 3,
+        "text": "k = 7",
+        "is_correct": false,
+        "misconception": "forgot_negative_coefficient_sign",
+        "remediation": "You forgot to divide by the negative sign. Divide both sides by the full negative coefficient (-n) to ensure the variable is positive."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Divide both sides by -5: k = 35 / (-5) = -7."
   },
   {
@@ -1745,34 +1745,34 @@
     "options": [
       {
         "id": 0,
-        "text": "z = 12",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "z = 16/3",
         "is_correct": false,
         "misconception": "multiplied_by_fraction_without_reciprocal",
         "remediation": "You multiplied by the fractional coefficient directly. To isolate the variable, multiply both sides by the reciprocal of the fractional coefficient."
       },
       {
-        "id": 2,
-        "text": "z = 6",
-        "is_correct": false,
-        "misconception": "inverted_fraction_division_step",
-        "remediation": "You made an inversion error. Multiply both sides by the flipped reciprocal of the fraction."
-      },
-      {
-        "id": 3,
+        "id": 1,
         "text": "z = 24",
         "is_correct": false,
         "misconception": "multiplied_by_denominator_only",
         "remediation": "You multiplied by only the denominator without dividing by the numerator. Multiply by the complete reciprocal (b/a)."
+      },
+      {
+        "id": 2,
+        "text": "z = 12",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "z = 6",
+        "is_correct": false,
+        "misconception": "inverted_fraction_division_step",
+        "remediation": "You made an inversion error. Multiply both sides by the flipped reciprocal of the fraction."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Multiply both sides by the reciprocal 3/2: z = 8 * (3/2) = 24/2 = 12."
   },
   {
@@ -1782,17 +1782,17 @@
     "options": [
       {
         "id": 0,
-        "text": "4x + 12",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "4x + 3",
         "is_correct": false,
         "misconception": "distributed_only_to_first_term",
         "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
+      },
+      {
+        "id": 1,
+        "text": "4x + 12",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 2,
@@ -1809,7 +1809,7 @@
         "remediation": "You introduced an improper exponent. Distribute the scalar factor across the terms without changing variable powers."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Distribute 4 to both terms inside the parentheses: 4 * x + 4 * 3 = 4x + 12."
   },
   {
@@ -1819,10 +1819,10 @@
     "options": [
       {
         "id": 0,
-        "text": "-6y + 15",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "6y - 15",
+        "is_correct": false,
+        "misconception": "dropped_first_negative_sign",
+        "remediation": "You dropped the negative sign on the outside factor. Multiply both terms inside by the full negative factor."
       },
       {
         "id": 1,
@@ -1833,20 +1833,20 @@
       },
       {
         "id": 2,
+        "text": "-6y + 15",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
         "text": "-6y - 5",
         "is_correct": false,
         "misconception": "distributed_only_to_first_term",
         "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
-      },
-      {
-        "id": 3,
-        "text": "6y - 15",
-        "is_correct": false,
-        "misconception": "dropped_first_negative_sign",
-        "remediation": "You dropped the negative sign on the outside factor. Multiply both terms inside by the full negative factor."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "(-3)*(2y) + (-3)*(-5) = -6y + 15. Multiplying negative by negative yields positive 15."
   },
   {
@@ -1856,24 +1856,24 @@
     "options": [
       {
         "id": 0,
-        "text": "6x + 3",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "21x - 7",
         "is_correct": false,
         "misconception": "added_before_distributing",
         "remediation": "You added terms before distributing. Multiplication distributes over addition; perform distributive multiplication before adding outside constants."
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "6x + 4",
         "is_correct": false,
         "misconception": "distributed_only_to_first_term",
         "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
+      },
+      {
+        "id": 2,
+        "text": "6x + 3",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       },
       {
         "id": 3,
@@ -1883,7 +1883,7 @@
         "remediation": "You distributed correctly but forgot to combine the outside constant term. Complete the simplification by adding all constant terms together."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Distribute first: 2(3x - 1) = 6x - 2. Then add 5: 5 + 6x - 2 = 6x + 3. Computing 5+2=7 first violates order of operations."
   },
   {
@@ -1893,34 +1893,34 @@
     "options": [
       {
         "id": 0,
-        "text": "-4k + 7",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "-4k - 7",
         "is_correct": false,
         "misconception": "failed_to_distribute_negative_sign_to_second_term",
         "remediation": "You did not distribute the negative sign to the second term inside parentheses. Distribute the minus sign to every term within the parentheses."
       },
       {
-        "id": 2,
-        "text": "4k - 7",
-        "is_correct": false,
-        "misconception": "ignored_negative_outside_parentheses",
-        "remediation": "You ignored the negative sign outside the parentheses. A negative sign preceding parentheses acts as -1, inverting the sign of every term inside."
-      },
-      {
-        "id": 3,
+        "id": 1,
         "text": "4k + 7",
         "is_correct": false,
         "misconception": "flipped_both_signs_to_positive",
         "remediation": "You converted both terms to positive. Distribute the negative sign carefully: each term flips to its opposite sign."
+      },
+      {
+        "id": 2,
+        "text": "-4k + 7",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "4k - 7",
+        "is_correct": false,
+        "misconception": "ignored_negative_outside_parentheses",
+        "remediation": "You ignored the negative sign outside the parentheses. A negative sign preceding parentheses acts as -1, inverting the sign of every term inside."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "A negative sign outside parentheses is -1: -1 * 4k + (-1) * (-7) = -4k + 7."
   },
   {
@@ -1930,34 +1930,34 @@
     "options": [
       {
         "id": 0,
-        "text": "x = 5",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "x = 15",
+        "is_correct": false,
+        "misconception": "subtracted_five_but_forgot_to_divide",
+        "remediation": "You subtracted the constant but forgot to divide by the coefficient. Finish solving by dividing both sides by the variable's coefficient."
       },
       {
         "id": 1,
-        "text": "x = 8.33",
-        "is_correct": false,
-        "misconception": "added_five_instead_of_subtracting",
-        "remediation": "You added the constant instead of subtracting it. First isolate the variable term by subtracting the added constant from both sides."
-      },
-      {
-        "id": 2,
         "text": "x = 5/3",
         "is_correct": false,
         "misconception": "divided_before_subtracting_constant",
         "remediation": "You divided before isolating the variable term. Standard two-step order is to undo addition/subtraction first, then undo multiplication/division."
       },
       {
-        "id": 3,
-        "text": "x = 15",
+        "id": 2,
+        "text": "x = 8.33",
         "is_correct": false,
-        "misconception": "subtracted_five_but_forgot_to_divide",
-        "remediation": "You subtracted the constant but forgot to divide by the coefficient. Finish solving by dividing both sides by the variable's coefficient."
+        "misconception": "added_five_instead_of_subtracting",
+        "remediation": "You added the constant instead of subtracting it. First isolate the variable term by subtracting the added constant from both sides."
+      },
+      {
+        "id": 3,
+        "text": "x = 5",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Step 1: Subtract 5 from both sides: 3x = 15. Step 2: Divide both sides by 3: x = 5."
   },
   {
@@ -1974,10 +1974,10 @@
       },
       {
         "id": 1,
-        "text": "y = 8",
+        "text": "y = 1",
         "is_correct": false,
-        "misconception": "forgot_negative_coefficient_sign",
-        "remediation": "You forgot to divide by the negative sign. Divide both sides by the full negative coefficient (-n) to ensure the variable is positive."
+        "misconception": "double_sign_inversion_error",
+        "remediation": "You made multiple sign errors during inverse operations. Track negative signs carefully at each isolation step."
       },
       {
         "id": 2,
@@ -1988,10 +1988,10 @@
       },
       {
         "id": 3,
-        "text": "y = 1",
+        "text": "y = 8",
         "is_correct": false,
-        "misconception": "double_sign_inversion_error",
-        "remediation": "You made multiple sign errors during inverse operations. Track negative signs carefully at each isolation step."
+        "misconception": "forgot_negative_coefficient_sign",
+        "remediation": "You forgot to divide by the negative sign. Divide both sides by the full negative coefficient (-n) to ensure the variable is positive."
       }
     ],
     "correct_option": 0,
@@ -2004,10 +2004,10 @@
     "options": [
       {
         "id": 0,
-        "text": "m = 18",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "m = 26",
+        "is_correct": false,
+        "misconception": "multiplied_ten_by_three_and_subtracted_four",
+        "remediation": "You multiplied before undoing the constant. Add or subtract the standalone constant before multiplying by the denominator."
       },
       {
         "id": 1,
@@ -2018,20 +2018,20 @@
       },
       {
         "id": 2,
-        "text": "m = 26",
-        "is_correct": false,
-        "misconception": "multiplied_ten_by_three_and_subtracted_four",
-        "remediation": "You multiplied before undoing the constant. Add or subtract the standalone constant before multiplying by the denominator."
-      },
-      {
-        "id": 3,
         "text": "m = 42",
         "is_correct": false,
         "misconception": "added_four_to_ten_then_multiplied",
         "remediation": "You performed operations out of order. Add or subtract the constant term first, then multiply across by the denominator."
+      },
+      {
+        "id": 3,
+        "text": "m = 18",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Subtract 4: m / 3 = 6. Multiply by 3: m = 6 * 3 = 18."
   },
   {
@@ -2041,34 +2041,34 @@
     "options": [
       {
         "id": 0,
-        "text": "Add 8 to both sides",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "Divide only 22 by 5",
-        "is_correct": false,
-        "misconception": "divided_constant_without_distributing_to_all_terms",
-        "remediation": "You divided without distributing across all terms. Undo addition/subtraction first to avoid fractional complications."
-      },
-      {
-        "id": 2,
         "text": "Subtract 8 from both sides",
         "is_correct": false,
         "misconception": "applied_same_operation_instead_of_inverse",
         "remediation": "You repeated the same operation instead of the inverse. To isolate the variable, always apply the opposite operation to both sides."
       },
       {
-        "id": 3,
+        "id": 1,
         "text": "Multiply both sides by 5",
         "is_correct": false,
         "misconception": "confused_operations_order",
         "remediation": "You confused the order of inverse operations. Follow reverse PEMDAS: undo addition/subtraction first, then multiplication/division."
+      },
+      {
+        "id": 2,
+        "text": "Add 8 to both sides",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "Divide only 22 by 5",
+        "is_correct": false,
+        "misconception": "divided_constant_without_distributing_to_all_terms",
+        "remediation": "You divided without distributing across all terms. Undo addition/subtraction first to avoid fractional complications."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Undoing addition/subtraction first (adding 8) isolates the variable term 5x cleanly."
   },
   {
@@ -2078,34 +2078,34 @@
     "options": [
       {
         "id": 0,
-        "text": "x = 4",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "x = 6",
-        "is_correct": false,
-        "misconception": "added_variable_terms_across_equals",
-        "remediation": "You added variable terms across the equals sign. To move a variable term to the other side, apply the inverse operation (subtract it)."
-      },
-      {
-        "id": 2,
         "text": "x = 2.57",
         "is_correct": false,
         "misconception": "added_three_and_fifteen",
         "remediation": "You added constants on the same side incorrectly. Combine like terms with their proper operational signs."
       },
       {
-        "id": 3,
+        "id": 1,
+        "text": "x = 4",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 2,
         "text": "x = -4",
         "is_correct": false,
         "misconception": "sign_inversion_error",
         "remediation": "You inverted the sign of the solution incorrectly. Balance the equation step-by-step preserving correct signs."
+      },
+      {
+        "id": 3,
+        "text": "x = 6",
+        "is_correct": false,
+        "misconception": "added_variable_terms_across_equals",
+        "remediation": "You added variable terms across the equals sign. To move a variable term to the other side, apply the inverse operation (subtract it)."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Subtract 2x from both sides: 3x + 3 = 15. Subtract 3: 3x = 12. Divide by 3: x = 4."
   },
   {
@@ -2115,34 +2115,34 @@
     "options": [
       {
         "id": 0,
-        "text": "y = 8",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "y = 6",
         "is_correct": false,
         "misconception": "distributed_only_to_first_term",
         "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
       },
       {
-        "id": 2,
+        "id": 1,
         "text": "y = 4",
         "is_correct": false,
         "misconception": "subtracted_six_from_ten_instead_of_adding",
         "remediation": "You subtracted instead of adding to isolate constants. Apply the opposite operation to move constants across the equals sign."
       },
       {
-        "id": 3,
+        "id": 2,
         "text": "y = 12",
         "is_correct": false,
         "misconception": "added_variables_instead_of_subtracting",
         "remediation": "You added variable terms across the equals sign instead of subtracting. Collect all variable terms onto one side using inverse operations."
+      },
+      {
+        "id": 3,
+        "text": "y = 8",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Distribute: 3y - 6 = y + 10. Subtract y: 2y - 6 = 10. Add 6: 2y = 16. Divide by 2: y = 8."
   },
   {
@@ -2152,34 +2152,34 @@
     "options": [
       {
         "id": 0,
+        "text": "k = 3.5",
+        "is_correct": false,
+        "misconception": "forgot_to_add_distributed_constant",
+        "remediation": "You forgot to combine the distributed constant with existing constants. Combine all constant terms on each side before isolating."
+      },
+      {
+        "id": 1,
         "text": "k = 7",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 2,
         "text": "k = 1",
         "is_correct": false,
         "misconception": "sign_error_distributing_negative",
         "remediation": "You made a sign error distributing the negative coefficient. Distribute the negative sign to all terms inside before combining."
       },
       {
-        "id": 2,
+        "id": 3,
         "text": "k = 5.5",
         "is_correct": false,
         "misconception": "distributed_only_to_first_term",
         "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
-      },
-      {
-        "id": 3,
-        "text": "k = 3.5",
-        "is_correct": false,
-        "misconception": "forgot_to_add_distributed_constant",
-        "remediation": "You forgot to combine the distributed constant with existing constants. Combine all constant terms on each side before isolating."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Distribute -2: 4k - 2k - 6 = 8. Combine like terms: 2k - 6 = 8. Add 6: 2k = 14. Divide by 2: k = 7."
   },
   {
@@ -2189,34 +2189,34 @@
     "options": [
       {
         "id": 0,
-        "text": "p = 3",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
-      },
-      {
-        "id": 1,
         "text": "p = 5",
         "is_correct": false,
         "misconception": "subtracted_constant_incorrectly",
         "remediation": "You made an arithmetic error when moving constants. Use balance operations carefully on both sides."
       },
       {
-        "id": 2,
-        "text": "p = 1",
-        "is_correct": false,
-        "misconception": "distributed_only_to_first_term",
-        "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
-      },
-      {
-        "id": 3,
+        "id": 1,
         "text": "p = 6",
         "is_correct": false,
         "misconception": "dropped_multipliers",
         "remediation": "You dropped a coefficient multiplier. Distribute and balance terms systematically without omitting factors."
+      },
+      {
+        "id": 2,
+        "text": "p = 3",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
+      },
+      {
+        "id": 3,
+        "text": "p = 1",
+        "is_correct": false,
+        "misconception": "distributed_only_to_first_term",
+        "remediation": "You distributed only to the first term. The distributive property requires you to multiply the outside factor by EVERY term inside the parentheses (a(b + c) = ab + ac)."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 2,
     "explanation": "Distribute: 6p + 2 = 4p + 8. Subtract 4p: 2p + 2 = 8. Subtract 2: 2p = 6. Divide by 2: p = 3."
   },
   {
@@ -2226,17 +2226,17 @@
     "options": [
       {
         "id": 0,
+        "text": "x < 4",
+        "is_correct": false,
+        "misconception": "dropped_both_negative_and_sign_flip",
+        "remediation": "You dropped both the negative sign and the required inequality flip. Dividing by a negative flips the sign and produces a negative quotient."
+      },
+      {
+        "id": 1,
         "text": "x > -4",
         "is_correct": true,
         "misconception": null,
         "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "x < -4",
-        "is_correct": false,
-        "misconception": "forgot_to_flip_inequality_sign",
-        "remediation": "You didn't flip the inequality sign. Crucial rule: whenever you multiply or divide both sides of an inequality by a negative number, the inequality sign must flip direction."
       },
       {
         "id": 2,
@@ -2247,13 +2247,13 @@
       },
       {
         "id": 3,
-        "text": "x < 4",
+        "text": "x < -4",
         "is_correct": false,
-        "misconception": "dropped_both_negative_and_sign_flip",
-        "remediation": "You dropped both the negative sign and the required inequality flip. Dividing by a negative flips the sign and produces a negative quotient."
+        "misconception": "forgot_to_flip_inequality_sign",
+        "remediation": "You didn't flip the inequality sign. Crucial rule: whenever you multiply or divide both sides of an inequality by a negative number, the inequality sign must flip direction."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "When dividing or multiplying an inequality by a negative number (-3), you must flip the inequality direction: x > 12 / (-3) = x > -4."
   },
   {
@@ -2263,34 +2263,34 @@
     "options": [
       {
         "id": 0,
-        "text": "y <= 5",
-        "is_correct": true,
-        "misconception": null,
-        "remediation": null
+        "text": "y <= -5",
+        "is_correct": false,
+        "misconception": "sign_inversion_error",
+        "remediation": "You inverted the sign of the solution incorrectly. Balance the equation step-by-step preserving correct signs."
       },
       {
         "id": 1,
-        "text": "y >= 5",
-        "is_correct": false,
-        "misconception": "flipped_inequality_when_not_dividing_by_negative",
-        "remediation": "You flipped the inequality sign when dividing by a positive number. Only flip the inequality sign when multiplying or dividing by a negative number."
-      },
-      {
-        "id": 2,
         "text": "y <= 10",
         "is_correct": false,
         "misconception": "subtracted_five_but_forgot_to_divide",
         "remediation": "You subtracted the constant but forgot to divide by the coefficient. Finish solving by dividing both sides by the variable's coefficient."
       },
       {
-        "id": 3,
-        "text": "y <= -5",
+        "id": 2,
+        "text": "y >= 5",
         "is_correct": false,
-        "misconception": "sign_inversion_error",
-        "remediation": "You inverted the sign of the solution incorrectly. Balance the equation step-by-step preserving correct signs."
+        "misconception": "flipped_inequality_when_not_dividing_by_negative",
+        "remediation": "You flipped the inequality sign when dividing by a positive number. Only flip the inequality sign when multiplying or dividing by a negative number."
+      },
+      {
+        "id": 3,
+        "text": "y <= 5",
+        "is_correct": true,
+        "misconception": null,
+        "remediation": null
       }
     ],
-    "correct_option": 0,
+    "correct_option": 3,
     "explanation": "Subtract 5: 2y <= 10. Divide by positive 2 (no flip needed): y <= 5."
   },
   {
@@ -2300,17 +2300,17 @@
     "options": [
       {
         "id": 0,
+        "text": "z >= -2.5",
+        "is_correct": false,
+        "misconception": "subtracted_three_instead_of_adding",
+        "remediation": "You subtracted when you needed to add to isolate terms. Add 3 to both sides first, then divide by the coefficient."
+      },
+      {
+        "id": 1,
         "text": "z <= -4",
         "is_correct": true,
         "misconception": null,
         "remediation": null
-      },
-      {
-        "id": 1,
-        "text": "z >= -4",
-        "is_correct": false,
-        "misconception": "forgot_to_flip_inequality_sign",
-        "remediation": "You didn't flip the inequality sign. Crucial rule: whenever you multiply or divide both sides of an inequality by a negative number, the inequality sign must flip direction."
       },
       {
         "id": 2,
@@ -2321,13 +2321,13 @@
       },
       {
         "id": 3,
-        "text": "z >= -2.5",
+        "text": "z >= -4",
         "is_correct": false,
-        "misconception": "subtracted_three_instead_of_adding",
-        "remediation": "You subtracted when you needed to add to isolate terms. Add 3 to both sides first, then divide by the coefficient."
+        "misconception": "forgot_to_flip_inequality_sign",
+        "remediation": "You didn't flip the inequality sign. Crucial rule: whenever you multiply or divide both sides of an inequality by a negative number, the inequality sign must flip direction."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Add 3 to both sides: -4z >= 16. Divide by -4 and reverse the inequality sign: z <= -4."
   },
   {
@@ -2337,24 +2337,24 @@
     "options": [
       {
         "id": 0,
+        "text": "Whenever the right side of the inequality has a negative number",
+        "is_correct": false,
+        "misconception": "confused_right_hand_sign_with_divisor_sign",
+        "remediation": "You decided to flip based on the constant's sign rather than the divisor's sign. The inequality sign ONLY flips if the number you are multiplying or dividing BY is negative."
+      },
+      {
+        "id": 1,
         "text": "Whenever you multiply or divide both sides by a negative number",
         "is_correct": true,
         "misconception": null,
         "remediation": null
       },
       {
-        "id": 1,
+        "id": 2,
         "text": "Whenever you subtract a number from both sides",
         "is_correct": false,
         "misconception": "flipped_sign_on_subtraction",
         "remediation": "You flipped the inequality sign during subtraction. Subtracting or adding numbers never flips the inequality sign; it only flips when multiplying or dividing by a negative."
-      },
-      {
-        "id": 2,
-        "text": "Whenever the right side of the inequality has a negative number",
-        "is_correct": false,
-        "misconception": "confused_right_hand_sign_with_divisor_sign",
-        "remediation": "You decided to flip based on the constant's sign rather than the divisor's sign. The inequality sign ONLY flips if the number you are multiplying or dividing BY is negative."
       },
       {
         "id": 3,
@@ -2364,7 +2364,7 @@
         "remediation": "You based the fraction on location or visual direction rather than equal portion size. Fraction values depend strictly on equal part quantities, not spatial position."
       }
     ],
-    "correct_option": 0,
+    "correct_option": 1,
     "explanation": "Only multiplying or dividing both sides by a negative number reverses the order of the numbers on the number line, requiring the inequality symbol to flip."
   }
 ]

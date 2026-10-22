@@ -3,7 +3,6 @@ import { useTheme } from '../context/ThemeContext';
 import { loginUser } from '../services/api';
 import type { UserRole } from '../types';
 import {
-  BrainIcon,
   EyeIcon,
   EyeOffIcon,
   GraduationCapIcon,
@@ -136,21 +135,16 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <div
+          <img
+            src="/logo.svg"
+            alt="Cognify Logo"
             style={{
               width: '46px',
               height: '46px',
               borderRadius: '14px',
-              background: 'linear-gradient(135deg, #6366f1, #06b6d4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
               boxShadow: '0 4px 18px var(--primary-glow)',
             }}
-          >
-            <BrainIcon size={26} />
-          </div>
+          />
           <div>
             <h1
               style={{
