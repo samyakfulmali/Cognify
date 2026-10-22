@@ -6,9 +6,16 @@ import { AlertTriangleIcon, ArrowRightIcon, CheckIcon, CloseIcon, RefreshIcon, S
 interface QuizScreenProps {
   studentId: string;
   studentName: string;
+  targetConceptId?: string | null;
+  onClearTargetConcept?: () => void;
 }
 
-export const QuizScreen: React.FC<QuizScreenProps> = ({ studentId, studentName }) => {
+export const QuizScreen: React.FC<QuizScreenProps> = ({
+  studentId,
+  studentName,
+  targetConceptId,
+  onClearTargetConcept,
+}) => {
   const [question, setQuestion] = useState<NextQuestionResponse | null>(null);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -16,16 +23,22 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ studentId, studentName }
   const [error, setError] = useState<string | null>(null);
   const [answerResult, setAnswerResult] = useState<AnswerResponse | null>(null);
   const [studentMastery, setStudentMastery] = useState<StudentMasteryResponse | null>(null);
+  const [selectedSubject, setSelectedSubject] = useState<string>('all');
+  const [activeConceptOverride, setActiveConceptOverride] = useState<string | null>(targetConceptId || null);
 
-  const loadQuestionAndMastery = async () => {
+  const loadQuestionAndMastery = async (
+    subjectToUse: string = selectedSubject,
+    conceptToUse: string | null = activeConceptOverride
+  ) => {
     setLoading(true);
     setError(null);
     setSelectedOption(null);
     setAnswerResult(null);
 
     try {
+      const subjectParam = subjectToUse === 'all' ? null : subjectToUse;
       const [qData, mData] = await Promise.all([
-        fetchNextQuestion(studentId),
+        fetchNextQuestion(studentId, conceptToUse, subjectParam),
         fetchStudentMastery(studentId),
       ]);
       setQuestion(qData);
@@ -38,8 +51,22 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ studentId, studentName }
   };
 
   useEffect(() => {
-    loadQuestionAndMastery();
+    loadQuestionAndMastery(selectedSubject, activeConceptOverride);
   }, [studentId]);
+
+  useEffect(() => {
+    if (targetConceptId) {
+      setActiveConceptOverride(targetConceptId);
+      loadQuestionAndMastery(selectedSubject, targetConceptId);
+    }
+  }, [targetConceptId]);
+
+  const handleSubjectChange = (newSubject: string) => {
+    setSelectedSubject(newSubject);
+    setActiveConceptOverride(null);
+    if (onClearTargetConcept) onClearTargetConcept();
+    loadQuestionAndMastery(newSubject, null);
+  };
 
   const handleSubmitAnswer = async () => {
     if (selectedOption === null || !question) return;
@@ -100,12 +127,91 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ studentId, studentName }
             )}
             <button
               className="btn btn-secondary"
-              onClick={loadQuestionAndMastery}
+              onClick={() => loadQuestionAndMastery()}
               title="Refresh Question"
               style={{ padding: '6px 12px' }}
             >
               <RefreshIcon size={14} />
             </button>
+          </div>
+        </div>
+
+        {/* Subject Switcher Bar */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '12px',
+            background: 'var(--bg-input)',
+            border: '1px solid var(--border-color)',
+            borderRadius: 'var(--radius-md)',
+            padding: '10px 14px',
+            marginBottom: '16px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-secondary)' }}>
+              📚 Subject:
+            </span>
+            <select
+              value={selectedSubject}
+              onChange={(e) => handleSubjectChange(e.target.value)}
+              className="select-dropdown"
+              style={{
+                fontWeight: 600,
+                minWidth: '220px',
+                padding: '6px 12px',
+                fontSize: '13px',
+                borderRadius: '8px',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+              }}
+            >
+              <option value="all">🎯 All Subjects (AI Recommended)</option>
+              <option value="Fractions">🍕 Fractions (Basics, LCM, Add/Sub, Mult, Div)</option>
+              <option value="Pre-Algebra">🔢 Pre-Algebra (Negatives & PEMDAS)</option>
+              <option value="Algebra Basics">📐 Algebra Basics (Variables & Expressions)</option>
+              <option value="Equations">⚖️ Equations (One-Step, Two-Step, Multi-Step)</option>
+              <option value="Inequalities">📊 Linear Inequalities</option>
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {activeConceptOverride ? (
+              <span className="badge badge-warning" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                Topic Locked: {activeConceptOverride}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveConceptOverride(null);
+                    if (onClearTargetConcept) onClearTargetConcept();
+                    loadQuestionAndMastery(selectedSubject, null);
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: 'inherit',
+                    cursor: 'pointer',
+                    fontWeight: 'bold',
+                    padding: '0 2px',
+                  }}
+                  title="Return to adaptive flow"
+                >
+                  ✕
+                </button>
+              </span>
+            ) : selectedSubject !== 'all' ? (
+              <span className="badge badge-primary" style={{ fontSize: '11px' }}>
+                Subject: {selectedSubject}
+              </span>
+            ) : (
+              <span className="badge badge-accent" style={{ fontSize: '11px' }}>
+                Adaptive Mode
+              </span>
+            )}
           </div>
         </div>
 
@@ -280,10 +386,10 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ studentId, studentName }
               ) : (
                 <button
                   className="btn btn-primary"
-                  onClick={loadQuestionAndMastery}
+                  onClick={() => loadQuestionAndMastery()}
                   style={{ minWidth: '180px' }}
                 >
-                  <span>Next Adaptive Question</span>
+                  <span>Next Question</span>
                   <ArrowRightIcon size={16} />
                 </button>
               )}

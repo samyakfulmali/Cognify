@@ -34,6 +34,8 @@ export const AppContent: React.FC = () => {
     return savedRole === 'teacher' ? 'heatmap' : 'quiz';
   });
 
+  const [targetConceptId, setTargetConceptId] = useState<string | null>(null);
+
   // Listen to 401/403 auth changes from api.ts
   useEffect(() => {
     const handleAuthChange = () => {
@@ -102,8 +104,9 @@ export const AppContent: React.FC = () => {
     }
   };
 
-  const handlePracticeConceptFromGraph = (_conceptId: string) => {
+  const handlePracticeConceptFromGraph = (conceptId: string) => {
     if (userRole === 'student') {
+      setTargetConceptId(conceptId);
       setActiveTab('quiz');
     }
   };
@@ -143,6 +146,8 @@ export const AppContent: React.FC = () => {
                   <QuizScreen
                     studentId={studentId}
                     studentName={activeStudentDisplayName}
+                    targetConceptId={targetConceptId}
+                    onClearTargetConcept={() => setTargetConceptId(null)}
                   />
                 )}
 

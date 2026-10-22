@@ -895,7 +895,26 @@
             <select id="student-select" class="select-dropdown" onchange="loadNextQuestion()">
               <!-- Options populated dynamically for teacher -->
             </select>
-            <button class="btn btn-secondary" onclick="loadNextQuestion()">🔄 Next Question</button>
+          </div>
+
+          <!-- Subject / Topic Switcher for Students -->
+          <div id="subject-selector-bar" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(18, 24, 41, 0.75); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 16px; margin-bottom: 20px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <label for="subject-select" style="font-size: 13px; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: 4px;">
+                <span>📚 Subject:</span>
+              </label>
+              <select id="subject-select" class="select-dropdown" onchange="onSubjectChange()" style="font-weight: 600; min-width: 220px; padding: 6px 12px; font-size: 13px; border-radius: 8px; background: var(--bg-primary); border: 1px solid var(--border-color); color: #fff;">
+                <option value="all">🎯 All Subjects (AI Recommended)</option>
+                <option value="Fractions">🍕 Fractions (Basics, LCM, Add/Sub, Mult, Div)</option>
+                <option value="Pre-Algebra">🔢 Pre-Algebra (Negatives & PEMDAS)</option>
+                <option value="Algebra Basics">📐 Algebra Basics (Variables & Expressions)</option>
+                <option value="Equations">⚖️ Equations (One-Step, Two-Step, Multi-Step)</option>
+                <option value="Inequalities">📊 Linear Inequalities</option>
+              </select>
+            </div>
+            <div id="subject-current-badge" class="badge badge-accent" style="font-size: 11px;">
+              Adaptive Mode
+            </div>
           </div>
 
           <!-- Question Display -->
@@ -1317,7 +1336,23 @@
       return (select && select.value) ? select.value : 'std_frac_01';
     }
 
-    async function loadNextQuestion() {
+    function onSubjectChange() {
+      const subjectSel = document.getElementById('subject-select');
+      const subjectVal = subjectSel ? subjectSel.value : 'all';
+      const badge = document.getElementById('subject-current-badge');
+      if (badge) {
+        if (subjectVal === 'all') {
+          badge.textContent = 'Adaptive Mode';
+          badge.className = 'badge badge-accent';
+        } else {
+          badge.textContent = `Focus: ${subjectVal}`;
+          badge.className = 'badge badge-primary';
+        }
+      }
+      loadNextQuestion();
+    }
+
+    async function loadNextQuestion(explicitConceptId) {
       const studentId = getActiveStudentId();
       if (!studentId) return;
 
@@ -1325,8 +1360,23 @@
       selectedOptionIndex = null;
       document.getElementById('submit-btn').disabled = false;
 
+      const subjectSel = document.getElementById('subject-select');
+      const subjectVal = subjectSel ? subjectSel.value : 'all';
+
+      let url = `/next-question/${studentId}`;
+      const params = new URLSearchParams();
+      if (explicitConceptId) {
+        params.set('concept_id', explicitConceptId);
+      }
+      if (subjectVal && subjectVal !== 'all') {
+        params.set('subject', subjectVal);
+      }
+      if (params.toString()) {
+        url += `?${params.toString()}`;
+      }
+
       try {
-        const res = await authFetch(`/next-question/${studentId}`);
+        const res = await authFetch(url);
         currentQuestion = await res.json();
 
         document.getElementById('q-concept').textContent = currentQuestion.concept_name;
@@ -1612,18 +1662,46 @@
       }
     }
 
+    function practiceConceptFromCurriculum(conceptId, category) {
+      const subjectSel = document.getElementById('subject-select');
+      if (subjectSel) {
+        let matched = false;
+        for (let i = 0; i < subjectSel.options.length; i++) {
+          if (subjectSel.options[i].value === category) {
+            subjectSel.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) subjectSel.value = 'all';
+      }
+      const badge = document.getElementById('subject-current-badge');
+      if (badge) {
+        badge.textContent = `Focus: ${category}`;
+        badge.className = 'badge badge-primary';
+      }
+      switchTab('tutor');
+      loadNextQuestion(conceptId);
+    }
+
     function renderCurriculum(data) {
       const grid = document.getElementById('curriculum-grid');
+      const isStudent = localStorage.getItem('cognify_user_role') === 'student';
       grid.innerHTML = data.nodes.map(c => `
         <div class="concept-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
             <h4>${c.name}</h4>
             <span class="badge badge-primary">Diff ${c.difficulty}</span>
           </div>
-          <p>${c.category}</p>
-          <div style="font-size: 12px; color: var(--text-muted);">
+          <p style="color: var(--accent-cyan); font-weight: 600; font-size: 12px; margin-bottom: 6px;">${c.category}</p>
+          <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
             Prerequisites: ${c.prerequisites.length > 0 ? c.prerequisites.map(p => `<span class="badge badge-primary" style="margin: 2px;">${p}</span>`).join(' ') : '<em>None (Foundational Root)</em>'}
           </div>
+          ${isStudent ? `
+            <button class="btn btn-secondary" onclick="practiceConceptFromCurriculum('${c.id}', '${c.category}')" style="width: 100%; font-size: 12px; padding: 7px 12px; border-radius: 8px; font-weight: 600;">
+              🎯 Practice This Topic ➔
+            </button>
+          ` : ''}
         </div>
       `).join('');
     }

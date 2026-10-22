@@ -57,6 +57,11 @@ class ConceptGraph:
             cycles = list(nx.simple_cycles(self.graph))
             raise ValueError(f"Concept graph contains cycles! Cycles: {cycles}")
 
+    @property
+    def concepts(self) -> Dict[str, dict]:
+        """Provides backward-compatible dictionary of concepts."""
+        return self.concepts_data
+
     def get_concept(self, concept_id: str) -> Optional[dict]:
         """Returns concept metadata for a given concept ID."""
         return self.concepts_data.get(concept_id)

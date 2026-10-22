@@ -323,10 +323,16 @@ def get_cached_misconception_explanations(current_user: dict = Depends(require_t
 
 
 @app.get("/next-question/{student_id}", response_model=NextQuestionResponse)
-def get_next_question(student_id: str, current_user: dict = Depends(get_current_user)):
+def get_next_question(
+    student_id: str,
+    concept_id: Optional[str] = Query(None, description="Optional specific concept ID to practice"),
+    subject: Optional[str] = Query(None, description="Optional subject/category filter (e.g. Fractions, Pre-Algebra, Algebra Basics, Equations)"),
+    current_user: dict = Depends(get_current_user),
+):
     """
     Intelligently recommends the next question for the student:
     - Enforces student access control (students may only access their own student_id).
+    - Supports student topic/subject selection (e.g. Fractions, Pre-Algebra, Algebra Basics, Equations).
     - If a prerequisite root gap is detected, routes to the foundational concept.
     - Otherwise targets the student's Zone of Proximal Development (ZPD).
     - Returns sanitized question options (hiding correct answer and misconceptions).
@@ -334,7 +340,11 @@ def get_next_question(student_id: str, current_user: dict = Depends(get_current_
     verify_student_access(student_id, current_user)
     create_or_get_student(student_id)
 
-    rec = recommendation_engine.recommend_next_question(student_id)
+    rec = recommendation_engine.recommend_next_question(
+        student_id=student_id,
+        concept_id=concept_id,
+        subject=subject,
+    )
     
     root_alert = None
     if rec.get("root_gap_alert"):

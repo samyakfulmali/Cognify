@@ -65,8 +65,16 @@ export async function fetchConcepts(): Promise<ConceptGraphData> {
   return res.json();
 }
 
-export async function fetchNextQuestion(studentId: string): Promise<NextQuestionResponse> {
-  const res = await authFetch(`/next-question/${encodeURIComponent(studentId)}`);
+export async function fetchNextQuestion(
+  studentId: string,
+  conceptId?: string | null,
+  subject?: string | null
+): Promise<NextQuestionResponse> {
+  const params = new URLSearchParams();
+  if (conceptId) params.set('concept_id', conceptId);
+  if (subject && subject !== 'all') params.set('subject', subject);
+  const query = params.toString() ? `?${params.toString()}` : '';
+  const res = await authFetch(`/next-question/${encodeURIComponent(studentId)}${query}`);
   if (!res.ok) throw new Error(`Failed to fetch next question for ${studentId}`);
   return res.json();
 }

@@ -321,3 +321,25 @@ def test_get_cached_misconceptions(client, teacher_headers):
     assert "total_cached" in data
     assert "cached_explanations" in data
     assert isinstance(data["cached_explanations"], list)
+
+
+def test_get_next_question_with_subject_filter(client, make_student_headers):
+    """Student can filter next questions by subject (e.g. Fractions)."""
+    student_id = "std_adv_01"
+    headers = make_student_headers(student_id)
+    response = client.get(f"/next-question/{student_id}?subject=Fractions", headers=headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["concept_category"] == "Fractions"
+
+
+def test_get_next_question_with_concept_id_filter(client, make_student_headers):
+    """Student can practice a specific concept."""
+    student_id = "std_adv_01"
+    headers = make_student_headers(student_id)
+    response = client.get(f"/next-question/{student_id}?concept_id=negative_numbers", headers=headers)
+    assert response.status_code == 200
+    data = response.json()
+    # Concept is either targeted or remedial prerequisite
+    assert data["concept_id"] == "negative_numbers"
+

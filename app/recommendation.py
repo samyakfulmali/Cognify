@@ -63,40 +63,112 @@ class RecommendationEngine:
         self.bank = bank or question_bank
         self.detector = detector or default_gap_detector
 
-    def recommend_next_question(self, student_id: str) -> dict:
+    def recommend_next_question(
+        self,
+        student_id: str,
+        concept_id: Optional[str] = None,
+        subject: Optional[str] = None,
+    ) -> dict:
         mastery_map = get_student_mastery_map(student_id)
         answered_ids = get_student_answered_question_ids(student_id)
         topo_order = self.graph.topological_order()
-
-        # Step 1: Check if any struggling concept has an active prerequisite root gap
-        struggling_concepts = [
-            cid for cid, p in mastery_map.items()
-            if p < 0.60
-        ]
-        
-        # Sort struggling concepts from most advanced to earliest
-        struggling_concepts.sort(
-            key=lambda c: topo_order.index(c) if c in topo_order else 999,
-            reverse=True,
-        )
 
         target_concept = None
         recommendation_reason = None
         root_gap_alert = None
 
-        for sc in struggling_concepts:
-            gap_info = self.detector.detect_root_gap(sc, mastery_map)
+        # Clean subject string
+        subject_clean = (subject or "").strip().lower()
+        if subject_clean in ("", "all", "all subjects", "none"):
+            subject_clean = None
+
+        # Case A: Explicit concept requested by student
+        if concept_id and concept_id in self.graph.concepts:
+            gap_info = self.detector.detect_root_gap(concept_id, mastery_map)
             if gap_info and gap_info["root_gap_found"] and not gap_info.get("is_foundational"):
                 root_cid = gap_info["root_concept_id"]
                 if mastery_map.get(root_cid, BKT_P_INIT) < MASTERY_THRESHOLD:
                     target_concept = root_cid
                     root_gap_alert = gap_info
+                    c_name = self.graph.get_concept(concept_id)["name"]
                     recommendation_reason = (
-                        f"Targeted Remediation: You are struggling with '{gap_info['failed_concept_name']}' "
-                        f"because of a foundational gap in '{gap_info['root_concept_name']}'. "
-                        f"Let's strengthen this prerequisite first!"
+                        f"Subject Focus: You selected '{c_name}', but a prerequisite root gap was detected in "
+                        f"'{gap_info['root_concept_name']}'. Let's practice the prerequisite first to build mastery!"
                     )
-                    break
+            if not target_concept:
+                target_concept = concept_id
+                c_name = self.graph.get_concept(concept_id)["name"]
+                recommendation_reason = f"Subject Focus: Practicing '{c_name}'."
+
+        # Case B: Specific subject / category requested by student (e.g. 'Fractions', 'Pre-Algebra')
+        elif subject_clean:
+            subject_concepts = [
+                cid for cid in topo_order
+                if self.graph.get_concept(cid).get("category", "").lower() == subject_clean
+            ]
+
+            if subject_concepts:
+                # 1. Check for prerequisite root gap within or impacting this subject
+                for sc in reversed(subject_concepts):
+                    gap_info = self.detector.detect_root_gap(sc, mastery_map)
+                    if gap_info and gap_info["root_gap_found"] and not gap_info.get("is_foundational"):
+                        root_cid = gap_info["root_concept_id"]
+                        if mastery_map.get(root_cid, BKT_P_INIT) < MASTERY_THRESHOLD:
+                            target_concept = root_cid
+                            root_gap_alert = gap_info
+                            recommendation_reason = (
+                                f"Subject Focus ({subject.title()}): Remediation needed for '{gap_info['failed_concept_name']}' "
+                                f"due to root gap in '{gap_info['root_concept_name']}'."
+                            )
+                            break
+
+                # 2. If no gap alert, find unmastered concept in this subject
+                if not target_concept:
+                    unmastered = [
+                        cid for cid in subject_concepts
+                        if mastery_map.get(cid, BKT_P_INIT) < MASTERY_THRESHOLD
+                    ]
+                    if unmastered:
+                        target_concept = unmastered[0]
+                        c_name = self.graph.get_concept(target_concept)["name"]
+                        recommendation_reason = (
+                            f"Subject Focus ({subject.title()}): Advancing your mastery in '{c_name}'."
+                        )
+                    else:
+                        # All mastered in this subject; review the lowest score
+                        target_concept = min(
+                            subject_concepts,
+                            key=lambda c: mastery_map.get(c, BKT_P_INIT)
+                        )
+                        c_name = self.graph.get_concept(target_concept)["name"]
+                        recommendation_reason = (
+                            f"Subject Mastery Review ({subject.title()}): Reinforcing practice in '{c_name}'."
+                        )
+
+        # Case C: Adaptive default (Curriculum-wide ZPD & Root Gaps)
+        if not target_concept:
+            struggling_concepts = [
+                cid for cid, p in mastery_map.items()
+                if p < 0.60
+            ]
+            struggling_concepts.sort(
+                key=lambda c: topo_order.index(c) if c in topo_order else 999,
+                reverse=True,
+            )
+
+            for sc in struggling_concepts:
+                gap_info = self.detector.detect_root_gap(sc, mastery_map)
+                if gap_info and gap_info["root_gap_found"] and not gap_info.get("is_foundational"):
+                    root_cid = gap_info["root_concept_id"]
+                    if mastery_map.get(root_cid, BKT_P_INIT) < MASTERY_THRESHOLD:
+                        target_concept = root_cid
+                        root_gap_alert = gap_info
+                        recommendation_reason = (
+                            f"Targeted Remediation: You are struggling with '{gap_info['failed_concept_name']}' "
+                            f"because of a foundational gap in '{gap_info['root_concept_name']}'. "
+                            f"Let's strengthen this prerequisite first!"
+                        )
+                        break
 
         # Step 2: If no active prerequisite gap, find next concept in ZPD
         if not target_concept:
